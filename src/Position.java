@@ -4,7 +4,7 @@ public class Position {
     private boolean hasToken;
     private final int x;
     private final int y;
-    private Token occupyingToken;
+//    private Token occupyingToken;
 
     public Position(int x, int y) {
         this.x = x;
@@ -28,25 +28,25 @@ public class Position {
         return y;
     }
 
-    public Token getOccupyingToken() {
-        return occupyingToken;
-    }
+//    public Token getOccupyingToken() {
+//        return occupyingToken;
+//    }
 
-    public void setOccupyingToken(Token occupyingToken) {
-        this.occupyingToken = occupyingToken;
-    }
+//    public void setOccupyingToken(Token occupyingToken) {
+//        this.occupyingToken = occupyingToken;
+//    }
 
-    public void removeToken() {
-        this.hasToken = false;
-        this.occupyingToken = null;
-    }
+//    public void removeToken() {
+//        this.hasToken = false;
+//        this.occupyingToken = null;
+//    }
 
-    public void placeToken(Token token) {
-        if (this.hasToken) {
-            System.out.println("There is already a token on this position");
-        } else {
-            this.hasToken = true;
-            this.occupyingToken = token;
-        }
-    }
+//    public void placeToken(Token token) {
+//        if (this.hasToken) {
+//            System.out.println("There is already a token on this position");
+//        } else {
+//            this.hasToken = true;
+//            this.occupyingToken = token;
+//        }
+//    }
 }
