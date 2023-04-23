@@ -2,9 +2,9 @@ package src;
 
 public class Position {
     private boolean hasToken;
-    private int x;
-    private int y;
-//    private Token occupyingToken;
+    private final int x;
+    private final int y;
+    private Token occupyingToken;
 
     public Position(int x, int y) {
         this.x = x;
@@ -28,13 +28,13 @@ public class Position {
         return y;
     }
 
-//    public Token getOccupyingToken() {
-//        return occupyingToken;
-//    }
+    public Token getOccupyingToken() {
+        return occupyingToken;
+    }
 
-//    public void setOccupyingToken(Token occupyingToken) {
-//        this.occupyingToken = occupyingToken;
-//    }
+    public void setOccupyingToken(Token occupyingToken) {
+        this.occupyingToken = occupyingToken;
+    }
 
     public void removeToken() {
         this.hasToken = false;
