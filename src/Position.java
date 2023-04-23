@@ -2,8 +2,8 @@ package src;
 
 public class Position {
     private boolean hasToken;
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 //    private Token occupyingToken;
 
     public Position(int x, int y) {
@@ -36,17 +36,17 @@ public class Position {
 //        this.occupyingToken = occupyingToken;
 //    }
 
-    public void removeToken() {
-        this.hasToken = false;
-        this.occupyingToken = null;
-    }
+//    public void removeToken() {
+//        this.hasToken = false;
+//        this.occupyingToken = null;
+//    }
 
-    public void placeToken(Token token) {
-        if (this.hasToken) {
-            System.out.println("There is already a token on this position");
-        } else {
-            this.hasToken = true;
-            this.occupyingToken = token;
-        }
-    }
+//    public void placeToken(Token token) {
+//        if (this.hasToken) {
+//            System.out.println("There is already a token on this position");
+//        } else {
+//            this.hasToken = true;
+//            this.occupyingToken = token;
+//        }
+//    }
 }
