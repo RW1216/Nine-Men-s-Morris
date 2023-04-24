@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Board {
     private static Board instance = null;
     protected int turns;
-//    protected ArrayList<Token> tokens = new ArrayList<Token>();
+//    protected ArrayList<src.Token> tokens = new ArrayList<src.Token>();
 
     private Board() {
     }

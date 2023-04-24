@@ -20,13 +20,13 @@ public class Game {
 
         while (gameActive()) {
             if (currentPhase == PLACING) {
-                System.out.println("Placing phase");
+                System.out.println("src.Placing phase");
                 currentPhase = MOVING;
             } else if (currentPhase == MOVING) {
-                System.out.println("Moving phase");
+                System.out.println("src.Moving phase");
                 currentPhase = FLYING;
             } else if (currentPhase == FLYING) {
-                System.out.println("Flying phase");
+                System.out.println("src.Flying phase");
                 currentPhase = PLACING;
             }
         }
