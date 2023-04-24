@@ -20,7 +20,7 @@ public class Game {
         turn = 0;
     }
 
-    public void start() {
+    private void start() {
         System.out.println("Game started");
 
         while (gameActive()) {
@@ -56,7 +56,7 @@ public class Game {
         Board board = Board.getInstance();
 
         Game game = new Game(board);
-//        game.start();
+        game.start();
         board.printBoard();
     }
 
@@ -66,10 +66,6 @@ public class Game {
 
     public int getCurrentPhase() {
         return currentPhase;
-    }
-
-    private void setCurrentPhase(int currentPhase) {
-        this.currentPhase = currentPhase;
     }
 
     private boolean gameActive() {
