@@ -2,6 +2,8 @@ package src;
 
 import src.Display.Board_UI;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Game {
 
     private final int PLACING = 0;
@@ -16,6 +18,7 @@ public class Game {
 
     private final Board board;
     private Board_UI board_ui;
+    CountDownLatch latch = new CountDownLatch(1);
 
     public Game(Board_UI board_ui) {
         this.board_ui = board_ui;
@@ -25,40 +28,48 @@ public class Game {
         turn = 0;
     }
 
-    public void start() {
+    public void start(){
         System.out.println("Game started");
-        int position;
+        int selectedPosition;
 
         while (gameActive()) {
+            //Initialize CountDownLatch
+            latch = new CountDownLatch(1);
+
             if (turn % 2 == 0) {
                 currentPlayer = PLAYERRED;
                 System.out.println("red's turn");
 
-                board_ui.chooseCircle();
-                //Wait until board_ui picks its position
-                while(board_ui.selectingStatus()){
-
+                //Wait until board picks its position
+                try {
+                    latch.await();
+                } catch (InterruptedException e){
+                    e.printStackTrace();
                 }
-                //Get the picked position
-                position = board_ui.getPickedPosition();
+
+                //Get the selected position
+                selectedPosition = board_ui.getSelectedPosition();
 
             } else {
                 currentPlayer = PLAYERYELLOW;
                 System.out.println("yellow's turn");
 
-                board_ui.chooseCircle();
-                //Wait until board_ui picks its position
-                while(board_ui.selectingStatus()){
-
+                //Wait until board picks its position
+                try {
+                    latch.await();
+                } catch (InterruptedException e){
+                    e.printStackTrace();
                 }
-                //Get the picked position
-                position = board_ui.getPickedPosition();
+
+                //Get the selected position
+                selectedPosition = board_ui.getSelectedPosition();
             }
 
-            System.out.println(position);
+            System.out.println(selectedPosition);
 
             turn++;
         }
+
 
         /*while (gameActive()) {
             if (turn % 2 == 0) {
@@ -97,6 +108,13 @@ public class Game {
 //        game.start();
         board.printBoard();
     }*/
+
+    public void positionSelected(){
+        // If a latch exists, count down by 1 to release the blocked thread
+        if (latch != null) {
+            latch.countDown();
+        }
+    }
 
     public Board getBoard() {
         return board;

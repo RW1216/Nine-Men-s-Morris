@@ -25,9 +25,7 @@ public class Board_UI implements Initializable {
     private static final String LightBlue = "#68aafc";
     private static final String Black = "#000000";
 
-    private int turn = 0;
-    private boolean currentlySelecting;
-    private int pickedCircle;
+    private int selectedPosition;
 
     Game game;
 
@@ -35,61 +33,24 @@ public class Board_UI implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         game = new Game(this);
 
-        //game.start();
-
-        currentlySelecting = false;
-        pickedCircle = -1;
+        selectedPosition = -1;
         UIPosition[0] = Pos_1;
         UIPosition[1] = Pos_2;
         UIPosition[2] = Pos_3;
-
-        UpdateAllowedMove();
     }
 
     @FXML
     void positionClicked(MouseEvent event) {
         Circle clickedCircle = (Circle) event.getSource();
-        pickedCircle = Integer.valueOf(clickedCircle.getId());
-        disableCircle();
-
-        /*if (turn <= 18){
-            //Check if the position is empty
-            if (circle.getFill().equals(Paint.valueOf(White))){
-                //Even number, Red
-                if (turn % 2 == 0){
-                    circle.setFill(Paint.valueOf(Red));
-                }
-                //Odd number, Yellow
-                else{
-                    circle.setFill(Paint.valueOf(Yellow));
-                }
-
-                turn += 1;
-            }
-        }*/
+        selectedPosition = Integer.valueOf(clickedCircle.getId());
+        game.positionSelected();
     }
 
-    private void UpdateAllowedMove(){
-        for (Circle circle: UIPosition){
-            /*//If the circle color is red or yellow
-            if (circle.getStroke().equals(Paint.valueOf(Red)) || circle.getStroke().equals(Paint.valueOf(Yellow))){
-                circle.setStroke(Paint.valueOf(Black));
-            }
-            else{
-                circle.setStroke(Paint.valueOf(LightBlue));
-            }
-            //System.out.println(circle.getStroke().toString());*/
-            circle.setStroke(Paint.valueOf(Black));
-        }
-    }
-
-    public void chooseCircle(){
+    public void pickPosition(){
         //Enable all circles
         for (Circle circle: UIPosition){
             circle.setDisable(false);
         }
-
-        currentlySelecting = true;
     }
     
     public void disableCircle(){
@@ -97,16 +58,10 @@ public class Board_UI implements Initializable {
         for (Circle circle: UIPosition){
             circle.setDisable(true);
         }
-
-        currentlySelecting = false;
     }
 
-    public boolean selectingStatus(){
-        return currentlySelecting;
-    }
-
-    public int getPickedPosition(){
-        return pickedCircle;
+    public int getSelectedPosition(){
+        return selectedPosition;
     }
 
     @FXML
@@ -115,7 +70,10 @@ public class Board_UI implements Initializable {
     }
 
     @FXML
-    void btnTesting2Clicked(ActionEvent event) {
-        game.start();
+    void btnTesting2Clicked(ActionEvent event) throws InterruptedException {
+        Thread gameThread = new Thread(() -> {
+            game.start();
+        });
+        gameThread.start();
     }
 }
