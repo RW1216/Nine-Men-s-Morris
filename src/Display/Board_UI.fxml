@@ -31,5 +31,6 @@
       <Circle fill="WHITE" layoutX="409.0" layoutY="263.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fill="WHITE" layoutX="409.0" layoutY="193.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Button layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#btnTestingClicked" text="Testing" />
+      <Button layoutX="14.0" layoutY="181.0" mnemonicParsing="false" onAction="#btnTesting2Clicked" text="Testing 2" />
    </children>
 </AnchorPane>

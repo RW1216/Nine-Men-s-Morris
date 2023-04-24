@@ -3,6 +3,7 @@ package src.Display;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -60,19 +61,25 @@ public class Board_UI implements Initializable {
 
     private void UpdateAllowedMove(){
         for (Circle circle: UIPosition){
-            //If the circle color is red or yellow
+            /*//If the circle color is red or yellow
             if (circle.getStroke().equals(Paint.valueOf(Red)) || circle.getStroke().equals(Paint.valueOf(Yellow))){
                 circle.setStroke(Paint.valueOf(Black));
             }
             else{
                 circle.setStroke(Paint.valueOf(LightBlue));
             }
-            System.out.println(circle.getStroke().toString());
+            //System.out.println(circle.getStroke().toString());*/
+            circle.setStroke(Paint.valueOf(Black));
         }
     }
 
     @FXML
     void btnTestingClicked(ActionEvent event) {
-        UpdateAllowedMove();
+        Pos_1.setStroke(Paint.valueOf(LightBlue));
+    }
+
+    @FXML
+    void btnTesting2Clicked(ActionEvent event) {
+        Pos_1.setStroke(Paint.valueOf(Black));
     }
 }
