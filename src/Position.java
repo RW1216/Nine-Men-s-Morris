@@ -10,6 +10,7 @@ public class Position {
         this.x = x;
         this.y = y;
         this.hasToken = false;
+//        this.occupyingToken = null;
     }
 
     public boolean hasToken() {
@@ -49,4 +50,8 @@ public class Position {
 //            this.occupyingToken = token;
 //        }
 //    }
+
+    public String toString() {
+        return "Position: " + x + ", " + y;
+    }
 }
