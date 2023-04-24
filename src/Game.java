@@ -27,6 +27,38 @@ public class Game {
 
     public void start() {
         System.out.println("Game started");
+        int position;
+
+        while (gameActive()) {
+            if (turn % 2 == 0) {
+                currentPlayer = PLAYERRED;
+                System.out.println("red's turn");
+
+                board_ui.chooseCircle();
+                //Wait until board_ui picks its position
+                while(board_ui.selectingStatus()){
+
+                }
+                //Get the picked position
+                position = board_ui.getPickedPosition();
+
+            } else {
+                currentPlayer = PLAYERYELLOW;
+                System.out.println("yellow's turn");
+
+                board_ui.chooseCircle();
+                //Wait until board_ui picks its position
+                while(board_ui.selectingStatus()){
+
+                }
+                //Get the picked position
+                position = board_ui.getPickedPosition();
+            }
+
+            System.out.println(position);
+
+            turn++;
+        }
 
         /*while (gameActive()) {
             if (turn % 2 == 0) {

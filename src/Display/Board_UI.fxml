@@ -6,9 +6,9 @@
 
 <AnchorPane prefHeight="526.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Display.Board_UI">
    <children>
-      <Circle fx:id="Pos_1" fill="WHITE" layoutX="77.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_2" fill="WHITE" layoutX="332.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_3" fill="WHITE" layoutX="586.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Circle id="1" fx:id="Pos_1" fill="WHITE" layoutX="77.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Circle id="2" fx:id="Pos_2" fill="WHITE" layoutX="332.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Circle id="3" fx:id="Pos_3" fill="WHITE" layoutX="586.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fill="WHITE" layoutX="332.0" layoutY="122.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fill="WHITE" layoutX="332.0" layoutY="193.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fill="WHITE" layoutX="332.0" layoutY="334.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
