@@ -7,6 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import src.Board;
+import src.Game;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,9 +28,14 @@ public class Board_UI implements Initializable {
     private static final String Black = "#000000";
 
     private int turn = 0;
+    Game game;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Board board = Board.getInstance();
+        game = new Game(board);
+        game.start();
+
         UIPosition[0] = Pos_1;
         UIPosition[1] = Pos_2;
         UIPosition[2] = Pos_3;
@@ -80,6 +87,6 @@ public class Board_UI implements Initializable {
 
     @FXML
     void btnTesting2Clicked(ActionEvent event) {
-        Pos_1.setStroke(Paint.valueOf(Black));
+        game.printTesting();
     }
 }

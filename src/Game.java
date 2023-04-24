@@ -20,7 +20,7 @@ public class Game {
         turn = 0;
     }
 
-    private void start() {
+    public void start() {
         System.out.println("Game started");
 
         while (gameActive()) {
@@ -52,13 +52,13 @@ public class Game {
         }
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         Board board = Board.getInstance();
 
         Game game = new Game(board);
 //        game.start();
         board.printBoard();
-    }
+    }*/
 
     public Board getBoard() {
         return board;
@@ -71,5 +71,9 @@ public class Game {
     private boolean gameActive() {
 //        todo: check if game is active
         return true;
+    }
+
+    public void printTesting(){
+        System.out.println("TESTING");
     }
 }
