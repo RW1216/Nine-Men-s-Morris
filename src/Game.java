@@ -1,5 +1,7 @@
 package src;
 
+import src.Display.Board_UI;
+
 public class Game {
 
     private final int PLACING = 0;
@@ -12,10 +14,13 @@ public class Game {
     private int turn;
     private int currentPlayer;
 
-    private Board board;
+    private final Board board;
+    private Board_UI board_ui;
 
-    public Game(Board board) {
-        this.board = board;
+    public Game(Board_UI board_ui) {
+        this.board_ui = board_ui;
+        board = Board.getInstance();
+
         currentPhase = PLACING;
         turn = 0;
     }
@@ -23,10 +28,11 @@ public class Game {
     public void start() {
         System.out.println("Game started");
 
-        while (gameActive()) {
+        /*while (gameActive()) {
             if (turn % 2 == 0) {
                 currentPlayer = PLAYERRED;
                 System.out.println("red's turn");
+
             } else {
                 currentPlayer = PLAYERYELLOW;
                 System.out.println("yellow's turn");
@@ -49,7 +55,7 @@ public class Game {
             }
 
             turn++;
-        }
+        }*/
     }
 
 /*    public static void main(String[] args) {
@@ -68,7 +74,7 @@ public class Game {
         return currentPhase;
     }
 
-    private boolean gameActive() {
+    public boolean gameActive() {
 //        todo: check if game is active
         return true;
     }
@@ -76,4 +82,5 @@ public class Game {
     public void printTesting(){
         System.out.println("TESTING");
     }
+
 }

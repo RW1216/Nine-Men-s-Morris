@@ -32,9 +32,8 @@ public class Board_UI implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Board board = Board.getInstance();
-        game = new Game(board);
-        game.start();
+        game = new Game(this);
+        //game.start();
 
         UIPosition[0] = Pos_1;
         UIPosition[1] = Pos_2;
@@ -77,6 +76,20 @@ public class Board_UI implements Initializable {
             }
             //System.out.println(circle.getStroke().toString());*/
             circle.setStroke(Paint.valueOf(Black));
+        }
+    }
+
+    public void chooseCircle(){
+        //Enable all circles
+        for (Circle circle: UIPosition){
+            circle.setDisable(false);
+        }
+    }
+    
+    public void disableCircle(){
+        //Disable all circles
+        for (Circle circle: UIPosition){
+            circle.setDisable(true);
         }
     }
 
