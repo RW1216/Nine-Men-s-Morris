@@ -1,8 +1,11 @@
 package src;
 
 public class Flying implements TokenState {
+
+    Token token;
+
     public Flying(Token token) {
-        super();
+        this.token = token;
     }
 
     public ActionList getAllowableActions() {
