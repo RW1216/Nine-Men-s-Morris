@@ -31,22 +31,22 @@ public class Token {
         this.tokenState = newTokenState;
     }
 
-    public ActionList getAllowableActions() {
-        return tokenState.getAllowableActions();
-    }
+//    public ActionList getAllowableActions() {
+//        return tokenState.getAllowableActions();
+//    }
 
     public void addAction(Action action) {
         if(action == null){
             throw new NullPointerException("Unable to add a null action!");
         }
-        this.allowableActions.add(action);
+//        this.allowableActions.add(action);
     }
 
     public void removeAction(Action action){
         if(action == null){
             throw new NullPointerException("Unable to add a null action!");
         }
-        this.allowableActions.remove(action);
+//        this.allowableActions.remove(action);
     }
 
     public void clearActions(){

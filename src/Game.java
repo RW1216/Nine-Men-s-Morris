@@ -56,7 +56,7 @@ public class Game {
         Board board = Board.getInstance();
 
         Game game = new Game(board);
-        game.start();
+//        game.start();
         board.printBoard();
     }
 

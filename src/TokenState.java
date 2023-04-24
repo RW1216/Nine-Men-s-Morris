@@ -1,5 +1,5 @@
 package src;
 
 public interface TokenState {
-    public ActionList getAllowableActions();
+//    public ActionList getAllowableActions();
 }

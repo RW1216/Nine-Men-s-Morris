@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Board {
     private static Board instance = null;
-//    protected ArrayList<Token> tokens = new ArrayList<Token>();
+    protected ArrayList<Token> tokens = new ArrayList<Token>();
     private Position[][] positions = new Position[7][7];
 
     private Board() {
@@ -63,9 +63,9 @@ public class Board {
         for (Position[] position : positions) {
             for (Position value : position) {
                 if (value != null) {
-                    System.out.print("X");
+                    System.out.print("0");
                 } else {
-                    System.out.print("O");
+                    System.out.print("X");
                 }
             }
             System.out.println();
