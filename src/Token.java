@@ -8,6 +8,7 @@ public class Token {
     private TokenState flying;
 
     private int id;
+    private ActionList allowableActions;
 
     public Token(int id) {
         this.id = id;
@@ -32,6 +33,24 @@ public class Token {
 
     public ActionList getAllowableActions() {
         return tokenState.getAllowableActions();
+    }
+
+    public void addAction(Action action) {
+        if(action == null){
+            throw new NullPointerException("Unable to add a null action!");
+        }
+        this.allowableActions.add(action);
+    }
+
+    public void removeAction(Action action){
+        if(action == null){
+            throw new NullPointerException("Unable to add a null action!");
+        }
+        this.allowableActions.remove(action);
+    }
+
+    public void clearActions(){
+        this.allowableActions = new ActionList();
     }
 
 
