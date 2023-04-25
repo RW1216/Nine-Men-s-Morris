@@ -59,18 +59,32 @@ public class Board {
         return positions[x][y];
     }
 
-    public String toString() {
-        StringBuilder result = new StringBuilder();
+    public ArrayList<Position> getEmptyPositions() {
+        ArrayList<Position> emptyPositions = new ArrayList<Position>();
         for (Position[] position : positions) {
             for (Position value : position) {
-                if (value != null) {
-                    result.append(value.toString());
-                } else {
-                    result.append("X");
+                if (value != null && !value.hasToken()) {
+                    emptyPositions.add(value);
                 }
             }
         }
+        return emptyPositions;
+    }
 
-        return result.toString();
+    public Token getToken(int x, int y) {
+        return positions[x][y].getOccupyingToken();
+    }
+
+    public void printBoard() {
+        for (Position[] position : positions) {
+            for (Position value : position) {
+                if (value != null) {
+                    System.out.print("0");
+                } else {
+                    System.out.print("X");
+                }
+            }
+            System.out.println();
+        }
     }
 }

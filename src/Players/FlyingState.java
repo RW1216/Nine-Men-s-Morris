@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FlyingState implements PlayerState {
 
-    public FlyingState() {
+    public FlyingState(Player player) {
     }
 
     public void setTokensAllowableActions(ArrayList<Token> tokens, ArrayList<Position> emptyPositions) {

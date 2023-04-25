@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public abstract class Player {
 
-    private String name;
     private String tokenColor;
     private ArrayList<Token> tokens;
     private PlayerState playerState;
@@ -15,18 +14,15 @@ public abstract class Player {
     private PlayerState MovingState;
     private PlayerState FlyingState;
 
-    public Player(String name, String tokenColor) {
-        this.name = name;
+    public Player(String tokenColor) {
         this.tokenColor = tokenColor;
         tokens = new ArrayList<>();
-        playerState = new PlacingState();
-        placingState = new PlacingState();
-        MovingState = new MovingState();
-        FlyingState = new FlyingState();
-    }
 
-    public String getName() {
-        return name;
+        placingState = new PlacingState(this);
+        MovingState = new MovingState(this);
+        FlyingState = new FlyingState(this);
+
+        playerState = placingState;
     }
 
     public String getTokenColor() {
@@ -60,6 +56,22 @@ public abstract class Player {
             token.getAllowableActions().clear();
         }
         playerState.setTokensAllowableActions(this.tokens, emptyPositions);
+    }
+
+    public PlayerState getPlayerState() {
+        return playerState;
+    }
+
+    public PlayerState getPlacingState() {
+        return placingState;
+    }
+
+    public PlayerState getMovingState() {
+        return MovingState;
+    }
+
+    public PlayerState getFlyingState() {
+        return FlyingState;
     }
 }
 

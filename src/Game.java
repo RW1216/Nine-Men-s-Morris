@@ -1,6 +1,10 @@
 package src;
 
 import src.Display.Board_UI;
+import src.Players.Human;
+import src.Players.PlacingState;
+import src.Players.Player;
+import src.Players.PlayerState;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -9,48 +13,58 @@ public class Game {
     private final int PLACING = 0;
     private final int MOVING = 1;
     private final int FLYING = 2;
+
     private final int PLAYERRED = 0;
     private final int PLAYERYELLOW = 1;
 
-    private int currentPhase;
+    private PlayerState currentPhase;
     private int turn;
-    private int currentPlayer;
-
+    private Player currentPlayer;
+    private Player opponent;
+    private Player playerRed;
+    private Player playerYellow;
     private final Board board;
     private Board_UI board_ui;
     CountDownLatch latch;
+    private Token selectedToken;
 
     public Game(Board_UI board_ui) {
         this.board_ui = board_ui;
         board = Board.getInstance();
-
-        currentPhase = PLACING;
+        playerRed = new Human("Red");
+        playerYellow = new Human("Yellow");
         turn = 0;
     }
 
     public void start(){
         System.out.println("Game started");
-        int selectedPosition;
+        int selectedCol;
+        int selectedRow;
 
         while (gameActive()) {
             //Initialize CountDownLatch
             latch = new CountDownLatch(1);
 
             if (turn % 2 == 0) {
-                currentPlayer = PLAYERRED;
-                System.out.println("red's turn");
+                currentPlayer = playerRed;
+                opponent = playerYellow;
+
+                currentPhase = currentPlayer.getPlayerState();
+                System.out.println("Red's turn");
 
                 //Wait until board picks its position
                 try {
                     latch.await();
+
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
 
 
             } else {
-                currentPlayer = PLAYERYELLOW;
-                System.out.println("yellow's turn");
+                currentPlayer = playerYellow;
+                opponent = playerRed;
+                System.out.println("Yellow's turn");
 
                 //Wait until board picks its position
                 try {
@@ -61,9 +75,23 @@ public class Game {
 
             }
             //Get the selected row
-            selectedPosition = board_ui.getSelectedRow();
+            selectedRow = board_ui.getSelectedRow();
+            selectedCol = board_ui.getSelectedCol();
 
-            System.out.println(selectedPosition);
+            System.out.println("Selected row: " + selectedRow + " Selected col: " + selectedCol);
+
+            // find the token that is in the selected position
+            selectedToken = board.getToken(selectedRow, selectedCol);
+
+//            System.out.println("Selected token: " + selectedToken);
+            if (currentPhase instanceof PlacingState) {
+                // If the selected token is not null, place it on the board
+                if (selectedToken != null) {
+                    board.placeToken(selectedToken, selectedRow, selectedCol);
+                }
+            }
+
+
 
             updateBoardUI();
             turn++;
@@ -91,10 +119,6 @@ public class Game {
 
     public Board getBoard() {
         return board;
-    }
-
-    public int getCurrentPhase() {
-        return currentPhase;
     }
 
     public boolean gameActive() {
