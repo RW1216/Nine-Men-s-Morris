@@ -59,16 +59,18 @@ public class Board {
         return positions[x][y];
     }
 
-    public void printBoard() {
+    public String toString() {
+        StringBuilder result = new StringBuilder();
         for (Position[] position : positions) {
             for (Position value : position) {
                 if (value != null) {
-                    System.out.print("0");
+                    result.append(value.toString());
                 } else {
-                    System.out.print("X");
+                    result.append("X");
                 }
             }
-            System.out.println();
         }
+
+        return result.toString();
     }
 }

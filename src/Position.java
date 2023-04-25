@@ -56,6 +56,6 @@ public class Position {
     }
 
     public String toString() {
-        return "Position: " + x + ", " + y;
+        return "Position: " + x + ", " + y + " has token: " + hasToken;
     }
 }
