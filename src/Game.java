@@ -1,77 +1,139 @@
 package src;
 
 import src.Display.Board_UI;
+import src.Players.*;
 
 import java.util.concurrent.CountDownLatch;
 
 public class Game {
 
-    private final int PLACING = 0;
-    private final int MOVING = 1;
-    private final int FLYING = 2;
-    private final int PLAYERRED = 0;
-    private final int PLAYERYELLOW = 1;
-
-    private int currentPhase;
+    private PlayerState currentPhase;
     private int turn;
-    private int currentPlayer;
-
+    private Player currentPlayer;
+    private Player opponent;
+    private Player playerRed;
+    private Player playerYellow;
     private final Board board;
     private Board_UI board_ui;
     CountDownLatch latch;
+    private Token selectedToken;
+
+    private static final String White = "#ffffff";
+    private static final String Red = "#ff0000";
+    private static final String Yellow = "#fffd00";
 
     public Game(Board_UI board_ui) {
         this.board_ui = board_ui;
         board = Board.getInstance();
-
-        currentPhase = PLACING;
+        playerRed = new Human("Red");
+        playerYellow = new Human("Yellow");
         turn = 0;
     }
 
     public void start(){
         System.out.println("Game started");
-        int selectedPosition;
 
         while (gameActive()) {
             //Initialize CountDownLatch
             latch = new CountDownLatch(1);
 
             if (turn % 2 == 0) {
-                currentPlayer = PLAYERRED;
-                System.out.println("red's turn");
+                currentPlayer = playerRed;
+                opponent = playerYellow;
 
-                //Wait until board picks its position
-                try {
-                    latch.await();
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-
+                currentPhase = currentPlayer.getPlayerState();
+                System.out.println("Red's turn");
 
             } else {
-                currentPlayer = PLAYERYELLOW;
-                System.out.println("yellow's turn");
+                currentPlayer = playerYellow;
+                opponent = playerRed;
 
-                //Wait until board picks its position
+                currentPhase = currentPlayer.getPlayerState();
+                System.out.println("Yellow's turn");
+            }
+
+
+
+            // PLACING PHASE
+            if (currentPhase instanceof PlacingState) {
+                System.out.println("Placing phase!");
+
+                Position selectedPosition = getClickedPosition();
+                // If the selected token is not null, place it on the board
+                if (!selectedPosition.hasToken()) {
+                    Token newToken = new Token(currentPlayer);
+                    currentPlayer.addToken(newToken);
+                    board.placeToken(newToken, selectedPosition);
+                    System.out.println("Placed token at " + selectedPosition + " for " + currentPlayer.getTokenColor());
+                    turn++;
+                } else {
+                    System.out.println("Invalid position");
+                }
+
+
+                // MOVING PHASE
+            } else if (currentPhase instanceof MovingState) {
+                System.out.println("Moving phase!");
+
+                Position selectedPosition = getClickedPosition();
+                selectedToken = selectedPosition.getOccupyingToken();
+                if (selectedToken == null || selectedToken.owner != currentPlayer) {
+                    System.out.println("Please select your token");
+                    continue;
+                } else {
+                    System.out.println("Selected token at " + selectedPosition);
+                }
+
+                latch = new CountDownLatch(1);
+
                 try {
                     latch.await();
+
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
 
+
+                Position selectedPosition2 = getClickedPosition();
+
+                if (selectedPosition2.hasToken()) {
+                    System.out.println("Invalid position");
+                    continue;
+                } else {
+                    boolean suc = board.moveToken(selectedToken, selectedPosition, selectedPosition2);
+                    if (suc) {
+                        System.out.println("Moved token from " + selectedPosition + " to " + selectedPosition2);
+                        turn++;
+                    } else {
+                        System.out.println("Invalid move");
+                    }
+                }
             }
-            //Get the selected row
-            selectedPosition = board_ui.getSelectedRow();
 
-            System.out.println(selectedPosition);
+            updatePlayerState();
 
+            // Update the board UI
             updateBoardUI();
-            turn++;
         }
     }
 
     private void updateBoardUI(){
-        
+        for (int i = 0; i < board.getPositions().length; i++) {
+            for (int j = 0; j < board.getPositions()[i].length; j++) {
+                if (board.getPosition(i, j) != null){
+                    Token token = board.getPosition(i, j).getOccupyingToken();
+                    if (token == null){
+                        board_ui.updatePositionFill(i, j, White);
+                    }
+                    else if (token.owner.getTokenColor().equals("Red")){
+                        board_ui.updatePositionFill(i, j, Red);
+                    }
+                    else if (token.owner.getTokenColor().equals("Yellow")){
+                        board_ui.updatePositionFill(i, j, Yellow);
+                    }
+                }
+            }
+        }
     }
 
 /*    public static void main(String[] args) {
@@ -93,17 +155,29 @@ public class Game {
         return board;
     }
 
-    public int getCurrentPhase() {
-        return currentPhase;
-    }
-
     public boolean gameActive() {
 //        todo: check if game is active
         return true;
     }
 
-    public void printTesting(){
-        System.out.println("TESTING");
+    public void updatePlayerState() {
+        playerRed.updateSelfState();
+        playerYellow.updateSelfState();
+    }
+
+    private Position getClickedPosition(){
+
+        try {
+            latch.await();
+
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        int selectedCol = board_ui.getSelectedCol();
+        int selectedRow = board_ui.getSelectedRow();
+
+        return board.getPosition(selectedRow, selectedCol);
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class MovingState implements PlayerState {
 
-    public MovingState() {
+    public MovingState(Player player) {
 
     }
 

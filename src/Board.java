@@ -1,5 +1,8 @@
 package src;
 
+import src.Actions.Action;
+import src.Actions.MoveAction;
+
 import java.util.ArrayList;
 
 public class Board {
@@ -47,6 +50,10 @@ public class Board {
         positions[6][6] = new Position(6, 6);
     }
 
+    public Position[][] getPositions() {
+        return positions;
+    }
+
     public static Board getInstance() {
         if (instance == null) {
             instance = new Board();
@@ -69,6 +76,24 @@ public class Board {
             }
         }
         return emptyPositions;
+    }
+
+    public Token getToken(int x, int y) {
+        return positions[x][y].getOccupyingToken();
+    }
+
+    public void placeToken(Token token, Position position) {
+        position.setOccupyingToken(token);
+        tokens.add(token);
+    }
+
+    public boolean moveToken(Token token, Position position1, Position position2) {
+        if (position1.getOccupyingToken() == token && position2.getOccupyingToken() == null) {
+            position1.removeToken();
+            position2.setOccupyingToken(token);
+            return true;
+        }
+        return false;
     }
 
     public void printBoard() {

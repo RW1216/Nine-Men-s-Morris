@@ -2,19 +2,19 @@ package src;
 
 import src.Actions.Action;
 import src.Actions.ActionList;
+import src.Players.Player;
 
 public class Token {
 
 
-
+    public Player owner;
     private ActionList allowableActions;
     public boolean isPlaced = false;
 
-    public Token() {
-
+    public Token(Player owner) {
+        this.owner = owner;
+        this.allowableActions = new ActionList();
     }
-
-
 
     public ActionList getAllowableActions() {
         return this.getAllowableActions();
