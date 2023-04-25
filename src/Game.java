@@ -10,13 +10,6 @@ import java.util.concurrent.CountDownLatch;
 
 public class Game {
 
-    private final int PLACING = 0;
-    private final int MOVING = 1;
-    private final int FLYING = 2;
-
-    private final int PLAYERRED = 0;
-    private final int PLAYERYELLOW = 1;
-
     private PlayerState currentPhase;
     private int turn;
     private Player currentPlayer;
@@ -27,6 +20,10 @@ public class Game {
     private Board_UI board_ui;
     CountDownLatch latch;
     private Token selectedToken;
+
+    private static final String White = "#ffffff";
+    private static final String Red = "#ff0000";
+    private static final String Yellow = "#fffd00";
 
     public Game(Board_UI board_ui) {
         this.board_ui = board_ui;
@@ -102,7 +99,22 @@ public class Game {
     }
 
     private void updateBoardUI(){
-        
+        for (int i = 0; i < board.getPositions().length; i++) {
+            for (int j = 0; j < board.getPositions()[i].length; j++) {
+                if (board.getPosition(i, j) != null){
+                    Token token = board.getPosition(i, j).getOccupyingToken();
+                    if (token == null){
+                        board_ui.updatePositionFill(i, j, White);
+                    }
+                    else if (token.owner.getTokenColor().equals("Red")){
+                        board_ui.updatePositionFill(i, j, Red);
+                    }
+                    else if (token.owner.getTokenColor().equals("Yellow")){
+                        board_ui.updatePositionFill(i, j, Yellow);
+                    }
+                }
+            }
+        }
     }
 
 /*    public static void main(String[] args) {

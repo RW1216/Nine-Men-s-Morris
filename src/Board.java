@@ -47,6 +47,10 @@ public class Board {
         positions[6][6] = new Position(6, 6);
     }
 
+    public Position[][] getPositions() {
+        return positions;
+    }
+
     public static Board getInstance() {
         if (instance == null) {
             instance = new Board();
