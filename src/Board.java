@@ -75,6 +75,11 @@ public class Board {
         return positions[x][y].getOccupyingToken();
     }
 
+    public void placeToken(Token token, Position position) {
+        position.setOccupyingToken(token);
+        tokens.add(token);
+    }
+
     public void printBoard() {
         for (Position[] position : positions) {
             for (Position value : position) {
