@@ -1,5 +1,5 @@
 package src;
 
-public interface TokenState {
+public interface PlayerState {
 //    public ActionList getAllowableActions();
 }
