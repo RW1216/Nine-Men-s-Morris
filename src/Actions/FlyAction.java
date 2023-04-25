@@ -1,6 +1,11 @@
-package src;
+package src.Actions;
 
-public class FlyAction extends Action{
+import src.Actions.Action;
+import src.Board;
+import src.Position;
+import src.Token;
+
+public class FlyAction extends Action {
     public Token token;
     public Position moveToPosition;
 

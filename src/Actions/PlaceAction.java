@@ -1,4 +1,9 @@
-package src;
+package src.Actions;
+
+import src.Actions.Action;
+import src.Board;
+import src.Position;
+import src.Token;
 
 public class PlaceAction extends Action {
 
@@ -15,7 +20,7 @@ public class PlaceAction extends Action {
     @Override
     public String execute(Token token, Board board) {
         token.isPlaced = true; //so the token cannot be placed again
-//        board.addToken(token, moveToPosition);
+        //board.addToken(token, moveToPosition);
         return null;
     }
 
