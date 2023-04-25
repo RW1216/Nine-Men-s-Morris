@@ -56,6 +56,7 @@ public class Game {
 
             // PLACING PHASE
             if (currentPhase instanceof PlacingState) {
+                System.out.println("Placing phase!");
 
                 Position selectedPosition = getClickedPosition();
                 // If the selected token is not null, place it on the board
@@ -72,6 +73,7 @@ public class Game {
 
                 // MOVING PHASE
             } else if (currentPhase instanceof MovingState) {
+                System.out.println("Moving phase!");
 
                 Position selectedPosition = getClickedPosition();
                 selectedToken = selectedPosition.getOccupyingToken();

@@ -35,6 +35,7 @@ public class Position {
 
     public void setOccupyingToken(Token occupyingToken) {
         this.occupyingToken = occupyingToken;
+        hasToken = true;
     }
 
     public void removeToken() {

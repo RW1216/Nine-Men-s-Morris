@@ -89,7 +89,7 @@ public class Board {
 
     public boolean moveToken(Token token, Position position1, Position position2) {
         if (position1.getOccupyingToken() == token && position2.getOccupyingToken() == null) {
-            position1.setOccupyingToken(null);
+            position1.removeToken();
             position2.setOccupyingToken(token);
             return true;
         }
