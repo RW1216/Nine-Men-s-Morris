@@ -7,11 +7,9 @@ public class Token {
     private TokenState moving;
     private TokenState flying;
 
-    private int id;
     private ActionList allowableActions;
 
-    public Token(int id) {
-        this.id = id;
+    public Token() {
         placing = new Placing(this);
         moving =  new Moving(this);
         flying = new Flying(this);
@@ -24,8 +22,6 @@ public class Token {
     public TokenState getMoving() { return moving; }
 
     public TokenState getFlying() { return flying; }
-
-    public int getId() { return id; }
 
     public void setTokenState(TokenState newTokenState) {
         this.tokenState = newTokenState;

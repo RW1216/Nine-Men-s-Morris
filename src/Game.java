@@ -47,8 +47,6 @@ public class Game {
                     e.printStackTrace();
                 }
 
-                //Get the selected position
-                selectedPosition = board_ui.getSelectedPosition();
 
             } else {
                 currentPlayer = PLAYERYELLOW;
@@ -61,9 +59,9 @@ public class Game {
                     e.printStackTrace();
                 }
 
-                //Get the selected position
-                selectedPosition = board_ui.getSelectedPosition();
             }
+            //Get the selected position
+            selectedPosition = board_ui.getSelectedPosition();
 
             System.out.println(selectedPosition);
 
