@@ -17,7 +17,7 @@ public class Application extends javafx.application.Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_UI.class.getResource("Main_UI.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 660, 600);
         Stage stage = new Stage();
-        stage.setTitle("Hello!");
+        stage.setTitle("Nine Men's Morris");
         stage.setScene(scene);
         stage.show();
     }
