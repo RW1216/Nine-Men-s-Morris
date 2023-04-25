@@ -58,6 +58,12 @@ public abstract class Player {
         playerState.setTokensAllowableActions(this.tokens, emptyPositions);
     }
 
+    public void updateSelfState(){
+        if (tokens.size() == 9){
+            playerState = MovingState;
+        }
+    }
+
     public PlayerState getPlayerState() {
         return playerState;
     }
