@@ -1,4 +1,7 @@
-package src;
+package src.Players;
+
+import src.Position;
+import src.Token;
 
 public class FlyingState implements PlayerState {
 

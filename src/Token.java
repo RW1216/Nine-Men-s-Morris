@@ -1,5 +1,8 @@
 package src;
 
+import src.Actions.Action;
+import src.Actions.ActionList;
+
 public class Token {
 
 //    private TokenState tokenState;
@@ -10,22 +13,8 @@ public class Token {
     private ActionList allowableActions;
 
     public Token() {
-//        placing = new Placing(this);
-//        moving =  new Moving(this);
-//        flying = new Flying(this);
     }
 
-//    public TokenState getTokenState() { return tokenState; }
-//
-//    public TokenState getPlacing() { return placing; }
-//
-//    public TokenState getMoving() { return moving; }
-//
-//    public TokenState getFlying() { return flying; }
-//
-//    public void setTokenState(TokenState newTokenState) {
-//        this.tokenState = newTokenState;
-//    }
 
     public ActionList getAllowableActions() {
         return this.getAllowableActions();

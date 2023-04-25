@@ -1,4 +1,4 @@
-package src;
+package src.Players;
 
 public class Human extends Player {
 

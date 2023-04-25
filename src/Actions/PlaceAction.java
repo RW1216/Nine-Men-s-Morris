@@ -1,4 +1,8 @@
-package src;
+package src.Actions;
+
+import src.Board;
+import src.Position;
+import src.Token;
 
 public class PlaceAction extends Action {
 

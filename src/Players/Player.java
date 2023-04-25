@@ -1,4 +1,6 @@
-package src;
+package src.Players;
+
+import src.Token;
 
 import java.util.ArrayList;
 
