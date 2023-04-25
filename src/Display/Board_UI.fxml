@@ -13,8 +13,8 @@
       <Circle fx:id="Pos_5" fill="WHITE" layoutX="332.0" layoutY="122.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_8" fill="WHITE" layoutX="332.0" layoutY="193.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_17" fill="WHITE" layoutX="332.0" layoutY="334.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_20" fill="WHITE" layoutX="332.0" layoutY="410.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_23" fill="WHITE" layoutX="332.0" layoutY="478.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Circle fx:id="Pos_20" fill="WHITE" layoutX="333.0" layoutY="410.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Circle fx:id="Pos_23" fill="WHITE" layoutX="333.0" layoutY="478.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_10" fill="WHITE" layoutX="77.0" layoutY="263.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_22" fill="WHITE" layoutX="77.0" layoutY="478.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_24" fill="WHITE" layoutX="586.0" layoutY="478.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
@@ -35,7 +35,7 @@
       <Button layoutX="666.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnTesting2Clicked" text="Testing 2" />
       <Line endY="108.0" layoutX="77.0" layoutY="134.0" startY="-61.0" />
       <Line endX="-21.0" endY="123.0" layoutX="98.0" layoutY="334.0" startX="-21.0" startY="-50.0" />
-      <Line endX="127.0" endY="35.0" layoutX="184.0" layoutY="443.0" startX="-86.0" startY="35.0" />
+      <Line endX="128.0" endY="35.0" layoutX="184.0" layoutY="443.0" startX="-86.0" startY="35.0" />
       <Line endX="371.0" endY="25.0" layoutX="194.0" layoutY="453.0" startX="159.0" startY="25.0" />
       <Line endX="382.0" endY="-6.0" layoutX="204.0" layoutY="463.0" startX="382.0" startY="-179.0" />
       <Line endX="372.0" endY="-400.0" layoutX="214.0" layoutY="473.0" startX="372.0" startY="-231.0" />
@@ -44,5 +44,26 @@
       <Line endX="-60.0" endY="-381.0" layoutX="244.0" layoutY="503.0" startX="67.0" startY="-381.0" />
       <Line endX="99.0" endY="-391.0" layoutX="254.0" layoutY="513.0" startX="224.0" startY="-391.0" />
       <Line endX="68.0" endY="-351.0" layoutX="264.0" layoutY="523.0" startX="68.0" startY="-380.0" />
+      <Line endX="-91.0" endY="-271.0" layoutX="254.0" layoutY="513.0" startX="-91.0" startY="-370.0" />
+      <Line endX="-101.0" endY="-134.0" layoutX="264.0" layoutY="523.0" startX="-101.0" startY="-239.0" />
+      <Line endX="-90.0" endY="-123.0" layoutX="274.0" layoutY="533.0" startX="38.0" startY="-123.0" />
+      <Line endX="69.0" endY="-133.0" layoutX="284.0" layoutY="543.0" startX="192.0" startY="-133.0" />
+      <Line endX="203.0" endY="-269.0" layoutX="294.0" layoutY="553.0" startX="203.0" startY="-164.0" />
+      <Line endX="193.0" endY="-321.0" layoutX="304.0" layoutY="563.0" startX="193.0" startY="-420.0" />
+      <Line endX="59.0" endY="-219.0" layoutX="294.0" layoutY="553.0" startX="94.0" startY="-219.0" />
+      <Line endX="-33.0" endY="-229.0" layoutX="304.0" layoutY="563.0" startX="7.0" startY="-229.0" />
+      <Line endX="-64.0" endY="-289.0" layoutX="314.0" layoutY="573.0" startX="-64.0" startY="-260.0" />
+      <Line endX="-74.0" endY="-369.0" layoutX="324.0" layoutY="583.0" startX="-74.0" startY="-341.0" />
+      <Line endX="-63.0" endY="-400.0" layoutX="334.0" layoutY="593.0" startX="-23.0" startY="-400.0" />
+      <Line endX="9.0" endY="-410.0" layoutX="344.0" layoutY="603.0" startX="44.0" startY="-410.0" />
+      <Line endX="55.0" endY="-371.0" layoutX="354.0" layoutY="613.0" startX="55.0" startY="-399.0" />
+      <Line endX="45.0" endY="-310.0" layoutX="364.0" layoutY="623.0" startX="45.0" startY="-339.0" />
+      <Line endX="-42.0" endY="-532.0" layoutX="374.0" layoutY="633.0" startX="-42.0" startY="-560.0" />
+      <Line endX="-51.0" endY="-254.0" layoutX="384.0" layoutY="643.0" startX="-52.0" startY="-288.0" />
+      <Line endX="-61.0" endY="-222.0" layoutX="394.0" layoutY="653.0" startX="-61.0" startY="-196.0" />
+      <Line endX="102.0" endY="-370.0" layoutX="374.0" layoutY="633.0" startX="56.0" startY="-370.0" />
+      <Line endX="181.0" endY="-380.0" layoutX="384.0" layoutY="643.0" startX="134.0" startY="-380.0" />
+      <Line endX="-150.0" endY="-330.0" layoutX="334.0" layoutY="593.0" startX="-105.0" startY="-330.0" />
+      <Line endX="-246.0" endY="-340.0" layoutX="344.0" layoutY="603.0" startX="-202.0" startY="-340.0" />
    </children>
 </AnchorPane>
