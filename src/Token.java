@@ -5,16 +5,15 @@ import src.Actions.ActionList;
 
 public class Token {
 
-//    private TokenState tokenState;
-//    private TokenState placing;
-//    private TokenState moving;
-//    private TokenState flying;
+
 
     private ActionList allowableActions;
-    boolean isPlaced = false;
+    public boolean isPlaced = false;
 
     public Token() {
+
     }
+
 
 
     public ActionList getAllowableActions() {

@@ -1,5 +1,6 @@
 package src.Actions;
 
+import src.Actions.Action;
 import src.Board;
 import src.Position;
 import src.Token;
