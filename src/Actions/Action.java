@@ -1,4 +1,7 @@
-package src;
+package src.Actions;
+
+import src.Board;
+import src.Token;
 
 public abstract class Action {
 

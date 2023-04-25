@@ -1,8 +1,12 @@
-package src;
+package src.Players;
+
+import src.Actions.PlaceAction;
+import src.Position;
+import src.Token;
 
 import java.util.ArrayList;
 
-public class PlacingState implements PlayerState{
+public class PlacingState implements PlayerState {
 
     public PlacingState() {
 
