@@ -86,15 +86,18 @@ public class Game {
 //            System.out.println("Selected token: " + selectedToken);
             if (currentPhase instanceof PlacingState) {
                 // If the selected token is not null, place it on the board
-                if (selectedToken != null) {
-                    board.placeToken(selectedToken, selectedRow, selectedCol);
+                if (selectedToken == null) {
+                    Position selectedPosition = board.getPosition(selectedRow, selectedCol);
+                    Token newToken = new Token(currentPlayer);
+                    board.placeToken(newToken, selectedPosition);
+                    System.out.println("Placed token at " + selectedPosition + " for " + currentPlayer.getTokenColor());
+                    turn++;
+                } else {
+                    System.out.println("Invalid position");
                 }
             }
 
-
-
             updateBoardUI();
-            turn++;
         }
     }
 
