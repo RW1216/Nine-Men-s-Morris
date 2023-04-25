@@ -18,7 +18,7 @@ public class Game {
 
     private final Board board;
     private Board_UI board_ui;
-    CountDownLatch latch = new CountDownLatch(1);
+    CountDownLatch latch;
 
     public Game(Board_UI board_ui) {
         this.board_ui = board_ui;
@@ -60,43 +60,18 @@ public class Game {
                 }
 
             }
-            //Get the selected position
-            selectedPosition = board_ui.getSelectedPosition();
+            //Get the selected row
+            selectedPosition = board_ui.getSelectedRow();
 
             System.out.println(selectedPosition);
 
+            updateBoardUI();
             turn++;
         }
+    }
 
-
-        /*while (gameActive()) {
-            if (turn % 2 == 0) {
-                currentPlayer = PLAYERRED;
-                System.out.println("red's turn");
-
-            } else {
-                currentPlayer = PLAYERYELLOW;
-                System.out.println("yellow's turn");
-            }
-
-            if (currentPhase == PLACING) {
-                System.out.println("Placing phase");
-//                todo: place token action
-
-                currentPhase = MOVING;
-            } else if (currentPhase == MOVING) {
-                System.out.println("Moving phase");
-//                todo: move token action
-
-                currentPhase = FLYING;
-            } else if (currentPhase == FLYING) {
-                System.out.println("Flying phase");
-//                todo: fly token
-                currentPhase = PLACING;
-            }
-
-            turn++;
-        }*/
+    private void updateBoardUI(){
+        
     }
 
 /*    public static void main(String[] args) {

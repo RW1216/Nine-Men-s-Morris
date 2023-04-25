@@ -1,12 +1,12 @@
 package src;
 
-public class Placing extends Action implements TokenState {
+public class PlaceAction extends Action {
 
     public Token token;
     public Position placeAt;
 
 
-    public Placing(Token token,Position placeAt) {
+    public PlaceAction(Token token,Position placeAt) {
         this.token = token;
         this.placeAt = placeAt;
     }
@@ -14,6 +14,7 @@ public class Placing extends Action implements TokenState {
 
     @Override
     public String execute(Token token, Board board) {
+        token.isPlaced = true; //so the token cannot be placed again
 //        board.addToken(token, moveToPosition);
         return null;
     }
