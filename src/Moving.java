@@ -1,11 +1,19 @@
 package src;
 
-public class Moving implements TokenState {
+public class Moving extends Action implements TokenState {
+    public Token token;
+    public Position moveToPosition;
 
-    Token token;
 
-    public Moving(Token token) {
+    public Moving(Token token,Position moveToPosition) {
         this.token = token;
+        this.moveToPosition = moveToPosition;
+    }
+
+    @Override
+    public String execute(Token token, Board board) {
+//        board.moveTo(token, moveToPosition);
+        return null;
     }
 
 //    public ActionList getAllowableActions() {

@@ -10,9 +10,9 @@ public class Token {
     private ActionList allowableActions;
 
     public Token() {
-        placing = new Placing(this);
-        moving =  new Moving(this);
-        flying = new Flying(this);
+//        placing = new Placing(this);
+//        moving =  new Moving(this);
+//        flying = new Flying(this);
     }
 
     public TokenState getTokenState() { return tokenState; }
