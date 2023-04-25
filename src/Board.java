@@ -59,6 +59,18 @@ public class Board {
         return positions[x][y];
     }
 
+    public ArrayList<Position> getEmptyPositions() {
+        ArrayList<Position> emptyPositions = new ArrayList<Position>();
+        for (Position[] position : positions) {
+            for (Position value : position) {
+                if (value != null && !value.hasToken()) {
+                    emptyPositions.add(value);
+                }
+            }
+        }
+        return emptyPositions;
+    }
+
     public void printBoard() {
         for (Position[] position : positions) {
             for (Position value : position) {

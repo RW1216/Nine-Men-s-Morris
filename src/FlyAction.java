@@ -1,12 +1,11 @@
 package src;
 
-public class Flying extends Action implements TokenState {
-
+public class FlyAction extends Action{
     public Token token;
     public Position moveToPosition;
 
 
-    public Flying(Token token,Position moveToPosition) {
+    public FlyAction(Token token,Position moveToPosition) {
         this.token = token;
         this.moveToPosition = moveToPosition;
     }
@@ -20,6 +19,4 @@ public class Flying extends Action implements TokenState {
         return null;
     }
 
-//    public ActionList getAllowableActions() {
-//    }
 }
