@@ -1,13 +1,12 @@
 package src.Display;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Loader extends Application {
+public class Application extends javafx.application.Application {
 
     public static void main(String[] args) {
         launch(args);

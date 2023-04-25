@@ -11,6 +11,7 @@ public class Token {
 //    private TokenState flying;
 
     private ActionList allowableActions;
+    boolean isPlaced = false;
 
     public Token() {
     }

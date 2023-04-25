@@ -20,6 +20,10 @@ public class ActionList {
         add(action);
     }
 
+    public void clear() {
+        actions = new ArrayList<Action>();
+    }
+
 //    public void addAction (ActionList actions){
 //        for (Action action :actions){
 //            add(action);

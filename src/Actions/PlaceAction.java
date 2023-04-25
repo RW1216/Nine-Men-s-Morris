@@ -18,6 +18,7 @@ public class PlaceAction extends Action {
 
     @Override
     public String execute(Token token, Board board) {
+        token.isPlaced = true; //so the token cannot be placed again
 //        board.addToken(token, moveToPosition);
         return null;
     }
