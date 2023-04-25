@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PlacingState implements PlayerState {
 
-    public PlacingState() {
+    public PlacingState(Player player) {
 
     }
 

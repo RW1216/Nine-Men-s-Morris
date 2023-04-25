@@ -71,6 +71,10 @@ public class Board {
         return emptyPositions;
     }
 
+    public Token getToken(int x, int y) {
+        return positions[x][y].getOccupyingToken();
+    }
+
     public void printBoard() {
         for (Position[] position : positions) {
             for (Position value : position) {
