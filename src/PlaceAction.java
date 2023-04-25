@@ -1,12 +1,12 @@
 package src;
 
-public class Placing extends Action implements TokenState {
+public class PlaceAction extends Action {
 
     public Token token;
     public Position placeAt;
 
 
-    public Placing(Token token,Position placeAt) {
+    public PlaceAction(Token token,Position placeAt) {
         this.token = token;
         this.placeAt = placeAt;
     }
