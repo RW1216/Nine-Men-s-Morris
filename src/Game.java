@@ -6,17 +6,12 @@ import src.Players.*;
 import java.util.concurrent.CountDownLatch;
 
 public class Game {
-
-    private PlayerState currentPhase;
     private int turn;
-    private Player currentPlayer;
-    private Player opponent;
-    private Player playerRed;
-    private Player playerYellow;
+    private final Player playerRed;
+    private final Player playerYellow;
     private final Board board;
-    private Board_UI board_ui;
+    private final Board_UI board_ui;
     CountDownLatch latch;
-    private Token selectedToken;
 
     private static final String White = "#ffffff";
     private static final String Red = "#ff0000";
@@ -32,6 +27,11 @@ public class Game {
 
     public void start(){
         System.out.println("Game started");
+
+        PlayerState currentPhase;
+        Player currentPlayer;
+        Player opponent;
+        Token selectedToken;
 
         while (gameActive()) {
             //Initialize CountDownLatch
@@ -128,14 +128,6 @@ public class Game {
         }
     }
 
-/*    public static void main(String[] args) {
-        Board board = Board.getInstance();
-
-        Game game = new Game(board);
-//        game.start();
-        board.printBoard();
-    }*/
-
     public void positionSelected(){
         // If a latch exists, count down by 1 to release the blocked thread
         if (latch != null) {
@@ -148,7 +140,7 @@ public class Game {
     }
 
     public boolean gameActive() {
-//        todo: check if game is active
+        // todo: check if game is active
         return true;
     }
 
