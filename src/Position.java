@@ -21,10 +21,6 @@ public class Position {
         return hasToken;
     }
 
-    public void setHasToken(boolean hasToken) {
-        this.hasToken = hasToken;
-    }
-
     public int getX() {
         return x;
     }
@@ -35,11 +31,6 @@ public class Position {
 
     public Token getOccupyingToken() {
         return occupyingToken;
-    }
-
-    public void setOccupyingToken(Token occupyingToken) {
-        this.occupyingToken = occupyingToken;
-        hasToken = true;
     }
 
     public void removeToken() {
@@ -56,20 +47,12 @@ public class Position {
         }
     }
 
-    public boolean isHasToken() {
-        return hasToken;
-    }
-
     public void addAdjacentPosition(Position pos) {
         if (!adjacentPositions.contains(pos)) {
             adjacentPositions.add(pos);
         } else {
             System.out.println("Position already adjacent");
         }
-    }
-
-    public ArrayList<Position> getAdjacentPositions() {
-        return adjacentPositions;
     }
 
     public boolean isAdjacentTo(Position position) {

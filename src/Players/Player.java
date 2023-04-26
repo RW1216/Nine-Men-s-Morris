@@ -7,14 +7,14 @@ import java.util.ArrayList;
 
 public abstract class Player {
 
-    private String tokenColor;
+    private Color tokenColor;
     private ArrayList<Token> tokens;
     private PlayerState playerState;
     private PlayerState placingState;
     private PlayerState MovingState;
     private PlayerState FlyingState;
 
-    public Player(String tokenColor) {
+    public Player(Color tokenColor) {
         this.tokenColor = tokenColor;
         tokens = new ArrayList<>();
 
@@ -25,7 +25,7 @@ public abstract class Player {
         playerState = placingState;
     }
 
-    public String getTokenColor() {
+    public Color getTokenColor() {
         return tokenColor;
     }
 
