@@ -54,56 +54,48 @@ public class Game {
 
 
 
-            // PLACING PHASE
+            // PLACING PHASE =====================================================
             if (currentPhase instanceof PlacingState) {
                 System.out.println("Placing phase!");
 
-                Position selectedPosition = getClickedPosition();
+                Position selectedPos = getClickedPosition();
                 // If the selected token is not null, place it on the board
-                if (!selectedPosition.hasToken()) {
+                if (!selectedPos.hasToken()) {
                     Token newToken = new Token(currentPlayer);
                     currentPlayer.addToken(newToken);
-                    board.placeToken(newToken, selectedPosition);
-                    System.out.println("Placed token at " + selectedPosition + " for " + currentPlayer.getTokenColor());
+                    board.placeToken(newToken, selectedPos);
+                    System.out.println("Placed token at " + selectedPos + " for " + currentPlayer.getTokenColor());
                     turn++;
                 } else {
                     System.out.println("Invalid position");
                 }
 
-
-                // MOVING PHASE
+            // MOVING PHASE =====================================================
             } else if (currentPhase instanceof MovingState) {
                 System.out.println("Moving phase!");
 
-                Position selectedPosition = getClickedPosition();
-                selectedToken = selectedPosition.getOccupyingToken();
+                Position selectedPos1 = getClickedPosition();
+                selectedToken = selectedPos1.getOccupyingToken();
                 if (selectedToken == null || selectedToken.owner != currentPlayer) {
                     System.out.println("Please select your token");
+                    System.out.println("Selected token at " + selectedPos1);
                     continue;
                 } else {
-                    System.out.println("Selected token at " + selectedPosition);
+                    System.out.println("Selected token at " + selectedPos1);
                 }
 
                 latch = new CountDownLatch(1);
 
-                try {
-                    latch.await();
+                Position selectedPos2 = getClickedPosition();
 
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-
-
-                Position selectedPosition2 = getClickedPosition();
-
-                if (selectedPosition2.hasToken()) {
+                if (selectedPos2.hasToken()) {
                     System.out.println("Invalid position");
                     continue;
                 } else {
-                    boolean suc = board.moveToken(selectedToken, selectedPosition, selectedPosition2);
-                    if (suc) {
-                        System.out.println("Moved token from " + selectedPosition + " to " + selectedPosition2);
-                        turn++;
+                    boolean success = board.moveToken(selectedToken, selectedPos1, selectedPos2);
+                    if (success) {
+                        System.out.println("Moved token from " + selectedPos1 + " to " + selectedPos2);
+//                        turn++;
                     } else {
                         System.out.println("Invalid move");
                     }

@@ -1,16 +1,20 @@
 package src;
 
+import java.util.ArrayList;
+
 public class Position {
     private boolean hasToken;
     private final int x;
     private final int y;
     private Token occupyingToken;
+    private ArrayList<Position> adjacentPositions;
 
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
         this.hasToken = false;
         this.occupyingToken = null;
+        adjacentPositions = new ArrayList<>();
     }
 
     public boolean hasToken() {
@@ -54,6 +58,22 @@ public class Position {
 
     public boolean isHasToken() {
         return hasToken;
+    }
+
+    public void addAdjacentPosition(Position pos) {
+        if (!adjacentPositions.contains(pos)) {
+            adjacentPositions.add(pos);
+        } else {
+            System.out.println("Position already adjacent");
+        }
+    }
+
+    public ArrayList<Position> getAdjacentPositions() {
+        return adjacentPositions;
+    }
+
+    public boolean isAdjacentTo(Position position) {
+        return adjacentPositions.contains(position);
     }
 
     public String toString() {

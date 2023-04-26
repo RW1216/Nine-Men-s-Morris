@@ -59,7 +59,7 @@ public abstract class Player {
     }
 
     public void updateSelfState(){
-        if (tokens.size() == 9){
+        if (tokens.size() == 2){
             playerState = MovingState;
         }
     }
