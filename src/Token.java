@@ -7,7 +7,7 @@ import src.Players.Player;
 public class Token {
 
 
-    public Player owner;
+    private Player owner;
     private ActionList allowableActions;
     public boolean isPlaced = false;
 
@@ -32,6 +32,10 @@ public class Token {
             throw new NullPointerException("Unable to add a null action!");
         }
 //        this.allowableActions.remove(action);
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 
     public void clearActions(){
