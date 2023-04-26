@@ -36,7 +36,7 @@ public class Board {
     }
 
     public boolean moveToken(Token token, Position pos1, Position pos2) {
-        if (pos1.getOccupyingToken() == token && !pos2.hasToken() && pos1.isAdjacentTo(pos2)) {
+        if (pos1.getOccupyingToken() == token && !pos2.hasToken()) {
             pos1.removeToken();
             pos2.placeToken(token);
             return true;
