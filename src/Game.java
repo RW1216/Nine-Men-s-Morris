@@ -95,7 +95,7 @@ public class Game {
                     boolean success = board.moveToken(selectedToken, selectedPos1, selectedPos2);
                     if (success) {
                         System.out.println("Moved token from " + selectedPos1 + " to " + selectedPos2);
-//                        turn++;
+                        turn++;
                     } else {
                         System.out.println("Invalid move");
                     }
