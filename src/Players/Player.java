@@ -7,25 +7,25 @@ import java.util.ArrayList;
 
 public abstract class Player {
 
-    private String tokenColor;
+    private Color tokenColor;
     private ArrayList<Token> tokens;
     private PlayerState playerState;
     private PlayerState placingState;
-    private PlayerState MovingState;
-    private PlayerState FlyingState;
+    private PlayerState movingState;
+    private PlayerState flyingState;
 
-    public Player(String tokenColor) {
+    public Player(Color tokenColor) {
         this.tokenColor = tokenColor;
         tokens = new ArrayList<>();
 
         placingState = new PlacingState(this);
-        MovingState = new MovingState(this);
-        FlyingState = new FlyingState(this);
+        movingState = new MovingState(this);
+        flyingState = new FlyingState(this);
 
         playerState = placingState;
     }
 
-    public String getTokenColor() {
+    public Color getTokenColor() {
         return tokenColor;
     }
 
@@ -60,7 +60,7 @@ public abstract class Player {
 
     public void updateSelfState(){
         if (tokens.size() == 9){
-            playerState = MovingState;
+            playerState = movingState;
         }
     }
 
@@ -73,11 +73,11 @@ public abstract class Player {
     }
 
     public PlayerState getMovingState() {
-        return MovingState;
+        return movingState;
     }
 
     public PlayerState getFlyingState() {
-        return FlyingState;
+        return flyingState;
     }
 }
 
