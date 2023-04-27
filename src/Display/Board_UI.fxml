@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="530.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Display.Board_UI">
+<AnchorPane prefHeight="530.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Display.Board_UI">
    <children>
       <Circle id="1" fx:id="Pos_1" fill="WHITE" layoutX="77.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle id="2" fx:id="Pos_2" fill="WHITE" layoutX="332.0" layoutY="52.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
@@ -31,8 +30,6 @@
       <Circle fx:id="Pos_18" fill="WHITE" layoutX="409.0" layoutY="334.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_13" fill="WHITE" layoutX="409.0" layoutY="263.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
       <Circle fx:id="Pos_9" fill="WHITE" layoutX="409.0" layoutY="193.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Button layoutX="666.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnTestingClicked" text="Testing" />
-      <Button layoutX="666.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnTesting2Clicked" text="Testing 2" />
       <Line endY="108.0" layoutX="77.0" layoutY="134.0" startY="-61.0" />
       <Line endX="-21.0" endY="123.0" layoutX="98.0" layoutY="334.0" startX="-21.0" startY="-50.0" />
       <Line endX="128.0" endY="35.0" layoutX="184.0" layoutY="443.0" startX="-86.0" startY="35.0" />

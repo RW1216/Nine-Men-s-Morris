@@ -76,7 +76,7 @@ public class Game {
 
                 Position selectedPos1 = getClickedPosition();
                 selectedToken = selectedPos1.getOccupyingToken();
-                if (selectedToken == null || selectedToken.owner != currentPlayer) {
+                if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
                     System.out.println("Please select your token");
                     System.out.println("Selected token at " + selectedPos1);
                     continue;
@@ -117,10 +117,10 @@ public class Game {
                     if (token == null){
                         board_ui.updatePositionFill(i, j, White);
                     }
-                    else if (token.owner.getTokenColor() == Color.RED){
+                    else if (token.getOwner().getTokenColor() == Color.RED){
                         board_ui.updatePositionFill(i, j, Red);
                     }
-                    else if (token.owner.getTokenColor() == Color.YELLOW){
+                    else if (token.getOwner().getTokenColor() == Color.YELLOW){
                         board_ui.updatePositionFill(i, j, Yellow);
                     }
                 }
