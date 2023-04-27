@@ -2,7 +2,7 @@ package src.Players;
 
 public class Human extends Player {
 
-    public Human(String tokenColor) {
+    public Human(Color tokenColor) {
         super(tokenColor);
     }
 }
