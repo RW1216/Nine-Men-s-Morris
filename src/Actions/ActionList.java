@@ -24,7 +24,11 @@ public class ActionList {
         actions = new ArrayList<Action>();
     }
 
-//    public void addAction (ActionList actions){
+    public ArrayList<Action> getActions() {
+        return actions;
+    }
+
+    //    public void addAction (ActionList actions){
 //        for (Action action :actions){
 //            add(action);
 //        }

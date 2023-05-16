@@ -23,6 +23,7 @@ public class MoveAction extends Action {
         if (board.isPositionEmpty(moveToPosition) && initialPosition.isAdjacentTo(moveToPosition)) {
             success = true;
             board.moveToken(token, initialPosition, moveToPosition);
+            token.setPosition(moveToPosition);
         } else {
             success = false;
         }

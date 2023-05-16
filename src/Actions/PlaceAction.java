@@ -21,7 +21,7 @@ public class PlaceAction extends Action {
     public boolean execute(Board board) {
         boolean success;
         if (board.isPositionEmpty(placeAt)) {
-            Token token = new Token(owner);
+            Token token = new Token(owner, placeAt);
             owner.addToken(token);
             success = true;
             board.placeToken(token, placeAt);

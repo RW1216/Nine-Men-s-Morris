@@ -137,6 +137,12 @@ public class Game {
                 turn++;
                 System.out.println("Player Red tokens: " + playerRed.getTokenCount() + " Player Yellow tokens: " + playerYellow.getTokenCount());
             }
+            System.out.println("Red state: " + playerRed.getPlayerState());
+            System.out.println("Yellow state: " + playerYellow.getPlayerState());
+            if (currentPlayer.cannotMove() || opponent.cannotMove()) {
+                System.out.println("GAME ENDS");
+                break;
+            }
         }
     }
 
@@ -180,6 +186,18 @@ public class Game {
 
     public boolean gameActive() {
 //        todo: check if game is active
+
+        if (playerRed.getPlayerState() != PlayerState.Placing)
+            if (playerRed.getTokenCount() < 3) {
+                System.out.println("Game ended, Yellow wins");
+                return false;
+            }
+
+        else if (playerYellow.getPlayerState() != PlayerState.Placing)
+            if (playerYellow.getTokenCount() < 3) {
+                System.out.println("Game ended, Red wins");
+                return false;
+            }
         return true;
     }
 

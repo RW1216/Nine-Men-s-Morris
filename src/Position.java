@@ -47,6 +47,10 @@ public class Position {
         }
     }
 
+    public ArrayList<Position> getAdjacentPositions() {
+        return adjacentPositions;
+    }
+
     public void addAdjacentPosition(Position pos) {
         if (!adjacentPositions.contains(pos)) {
             adjacentPositions.add(pos);
