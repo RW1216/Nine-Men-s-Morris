@@ -35,10 +35,6 @@ public class Token {
 //        this.allowableActions.remove(action);
     }
 
-    public Player getOwner() {
-        return owner;
-    }
-
     public void clearActions(){
         this.allowableActions = new ActionList();
     }

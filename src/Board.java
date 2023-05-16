@@ -124,14 +124,14 @@ public class Board {
     }
 
     public void placeToken(Token token, Position position) {
-        position.setOccupyingToken(token);
+        position.placeToken(token);
         tokens.add(token);
     }
 
     public boolean moveToken(Token token, Position pos1, Position pos2) {
         if (pos1.getOccupyingToken() == token && isPositionEmpty(pos2)) {
             pos1.removeToken();
-            pos2.setOccupyingToken(token);
+            pos2.placeToken(token);
             return true;
         }
         return false;

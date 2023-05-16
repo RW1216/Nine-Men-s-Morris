@@ -27,8 +27,8 @@ public class Game {
     public Game(Board_UI board_ui) {
         this.board_ui = board_ui;
         board = Board.getInstance();
-        playerRed = new Human("Red");
-        playerYellow = new Human("Yellow");
+        playerRed = new Human(Color.RED);
+        playerYellow = new Human(Color.YELLOW);
         turn = 0;
     }
 
@@ -124,10 +124,10 @@ public class Game {
                     if (token == null){
                         board_ui.updatePositionFill(i, j, White);
                     }
-                    else if (token.getOwner().getTokenColor().equals("Red")){
+                    else if (token.getOwner().getTokenColor().equals(Color.RED)){
                         board_ui.updatePositionFill(i, j, Red);
                     }
-                    else if (token.getOwner().getTokenColor().equals("Yellow")){
+                    else if (token.getOwner().getTokenColor().equals(Color.YELLOW)){
                         board_ui.updatePositionFill(i, j, Yellow);
                     }
                 }
