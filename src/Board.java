@@ -137,6 +137,14 @@ public class Board {
         return false;
     }
 
+    public boolean removeToken(Position position) {
+        if (position.getOccupyingToken() != null) {
+            position.removeToken();
+            return true;
+        }
+        return false;
+    }
+
     private void connectPositions(Position pos1, Position pos2) {
         pos1.addAdjacentPosition(pos2);
         pos2.addAdjacentPosition(pos1);

@@ -25,6 +25,7 @@ public class PlaceAction extends Action {
             owner.addToken(token);
             success = true;
             board.placeToken(token, placeAt);
+            owner.addTokenCount();
         } else {
             success = false;
         }

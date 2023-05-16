@@ -13,6 +13,8 @@ public abstract class Player {
     private PlayerState placingState;
     private PlayerState MovingState;
     private PlayerState FlyingState;
+    private int tokensPlaced;
+    private int tokenCount;
 
     public Player(Color tokenColor) {
         this.tokenColor = tokenColor;
@@ -23,6 +25,8 @@ public abstract class Player {
         FlyingState = new FlyingState(this);
 
         playerState = placingState;
+        tokensPlaced = 0;
+        tokenCount = 0;
     }
 
     public Color getTokenColor() {
@@ -34,17 +38,23 @@ public abstract class Player {
             throw new NullPointerException("Unable to add a null token!");
         }
         tokens.add(token);
+        tokensPlaced++;
     }
 
 //    todo: fix logic
-    public void removeToken(Token token){
-        boolean tokenInTokens = false;
-        for (Token thisToken: tokens)
-            if (thisToken == token) {
-                tokenInTokens = true;
-            }
-        if (tokenInTokens)
-            tokens.remove(token);
+    public void removeTokenCount(){
+//        boolean tokenInTokens = false;
+//        for (Token thisToken: tokens)
+//            if (thisToken == token) {
+//                tokenInTokens = true;
+//            }
+//        if (tokenInTokens)
+//            tokens.remove(token);
+        tokenCount--;
+    }
+
+    public void addTokenCount(){
+        tokenCount++;
     }
 
     public void setPlayerState(PlayerState newPlayerState) {
@@ -59,11 +69,15 @@ public abstract class Player {
     }
 
     public void updateSelfState(){
-        if (playerState == placingState && tokens.size() == 9){
+        if (playerState == placingState && tokensPlaced == 9){
             playerState = MovingState;
-        } else if (playerState == MovingState && tokens.size() == 3){
+        } else if (playerState == MovingState && tokenCount == 3){
             playerState = FlyingState;
         }
+    }
+
+    public int getTokenCount(){
+        return tokenCount;
     }
 
     public PlayerState getPlayerState() {

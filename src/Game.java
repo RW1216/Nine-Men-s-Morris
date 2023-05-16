@@ -1,7 +1,9 @@
 package src;
 
+import src.Actions.FlyAction;
 import src.Actions.MoveAction;
 import src.Actions.PlaceAction;
+import src.Actions.RemoveAction;
 import src.Display.Board_UI;
 import src.Players.*;
 
@@ -33,12 +35,14 @@ public class Game {
     }
 
     public void start(){
+        MillDetector millDetector = MillDetector.getInstance();
         System.out.println("Game started");
 
         while (gameActive()) {
             //Initialize CountDownLatch
             latch = new CountDownLatch(1);
             boolean moveMade = false;
+            Position moveMadePos = null;
 
             if (turn % 2 == 0) {
                 currentPlayer = playerRed;
@@ -63,28 +67,10 @@ public class Game {
 
                 PlaceAction placeAction = new PlaceAction(currentPlayer, selectedPos);
                 moveMade = placeAction.execute(board);
+                moveMadePos = selectedPos;
 
             // MOVING PHASE =====================================================
             } else if (currentPhase instanceof MovingState) {
-                System.out.println("Select a token to move");
-
-                    Position selectedPos1 = getClickedPosition();
-                    selectedToken = selectedPos1.getOccupyingToken();
-                    if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
-                        System.out.println("Please select your token");
-                        System.out.println("Selected token at " + selectedPos1);
-                        continue;
-                    } else {
-                        System.out.println("Selected token at " + selectedPos1);
-                    }
-
-                    latch = new CountDownLatch(1);
-
-                    Position selectedPos2 = getClickedPosition();
-
-                    MoveAction moveAction = new MoveAction(selectedToken, selectedPos1, selectedPos2);
-                    moveMade = moveAction.execute(board);
-            } else if (currentPhase instanceof FlyingState) {
                 System.out.println("Select a token to move");
 
                 Position selectedPos1 = getClickedPosition();
@@ -103,16 +89,54 @@ public class Game {
 
                 MoveAction moveAction = new MoveAction(selectedToken, selectedPos1, selectedPos2);
                 moveMade = moveAction.execute(board);
-            }
+                moveMadePos = selectedPos2;
+            } else if (currentPhase instanceof FlyingState) {
+                System.out.println("Select a token to fly");
 
-            if (moveMade) {
-                turn++;
+                Position selectedPos1 = getClickedPosition();
+                selectedToken = selectedPos1.getOccupyingToken();
+                if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
+                    System.out.println("Please select your token");
+                    System.out.println("Selected token at " + selectedPos1);
+                    continue;
+                } else {
+                    System.out.println("Selected token at " + selectedPos1);
+                }
+
+                latch = new CountDownLatch(1);
+
+                Position selectedPos2 = getClickedPosition();
+
+                FlyAction flyAction = new FlyAction(selectedToken, selectedPos1, selectedPos2);
+                moveMade = flyAction.execute(board);
+                moveMadePos = selectedPos2;
             }
 
             updatePlayerState();
 
             // Update the board UI
             updateBoardUI();
+
+            if (moveMade) {
+                System.out.println("token placed/moved at " + moveMadePos);
+                if (millDetector.isMill(moveMadePos)) {
+                    System.out.println("Mill formed");
+                    boolean removeMade = false;
+
+                    while (!removeMade) {
+                        System.out.println("Select a token to remove");
+                        latch = new CountDownLatch(1);
+                        Position selectedPos = getClickedPosition();
+                        RemoveAction removeAction = new RemoveAction(opponent, selectedPos);
+                        removeMade = removeAction.execute(board);
+                    }
+
+                    updatePlayerState();
+                    updateBoardUI();
+                }
+                turn++;
+                System.out.println("Player Red tokens: " + playerRed.getTokenCount() + " Player Yellow tokens: " + playerYellow.getTokenCount());
+            }
         }
     }
 
