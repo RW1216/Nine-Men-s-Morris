@@ -59,8 +59,10 @@ public abstract class Player {
     }
 
     public void updateSelfState(){
-        if (tokens.size() == 2){
+        if (playerState == placingState && tokens.size() == 9){
             playerState = MovingState;
+        } else if (playerState == MovingState && tokens.size() == 3){
+            playerState = FlyingState;
         }
     }
 

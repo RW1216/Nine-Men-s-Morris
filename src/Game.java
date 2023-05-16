@@ -1,5 +1,7 @@
 package src;
 
+import src.Actions.MoveAction;
+import src.Actions.PlaceAction;
 import src.Display.Board_UI;
 import src.Players.*;
 
@@ -36,6 +38,7 @@ public class Game {
         while (gameActive()) {
             //Initialize CountDownLatch
             latch = new CountDownLatch(1);
+            boolean moveMade = false;
 
             if (turn % 2 == 0) {
                 currentPlayer = playerRed;
@@ -52,31 +55,41 @@ public class Game {
                 System.out.println("Yellow's turn");
             }
 
-
-
             // PLACING PHASE =====================================================
             if (currentPhase instanceof PlacingState) {
-                System.out.println("Placing phase!");
+                System.out.println("Select a position to place your token");
 
                 Position selectedPos = getClickedPosition();
-                // If the selected token is not null, place it on the board
-                if (!selectedPos.hasToken()) {
-                    Token newToken = new Token(currentPlayer);
-                    currentPlayer.addToken(newToken);
-                    board.placeToken(newToken, selectedPos);
-                    System.out.println("Placed token at " + selectedPos + " for " + currentPlayer.getTokenColor());
-                    turn++;
-                } else {
-                    System.out.println("Invalid position");
-                }
+
+                PlaceAction placeAction = new PlaceAction(currentPlayer, selectedPos);
+                moveMade = placeAction.execute(board);
 
             // MOVING PHASE =====================================================
             } else if (currentPhase instanceof MovingState) {
-                System.out.println("Moving phase!");
+                System.out.println("Select a token to move");
+
+                    Position selectedPos1 = getClickedPosition();
+                    selectedToken = selectedPos1.getOccupyingToken();
+                    if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
+                        System.out.println("Please select your token");
+                        System.out.println("Selected token at " + selectedPos1);
+                        continue;
+                    } else {
+                        System.out.println("Selected token at " + selectedPos1);
+                    }
+
+                    latch = new CountDownLatch(1);
+
+                    Position selectedPos2 = getClickedPosition();
+
+                    MoveAction moveAction = new MoveAction(selectedToken, selectedPos1, selectedPos2);
+                    moveMade = moveAction.execute(board);
+            } else if (currentPhase instanceof FlyingState) {
+                System.out.println("Select a token to move");
 
                 Position selectedPos1 = getClickedPosition();
                 selectedToken = selectedPos1.getOccupyingToken();
-                if (selectedToken == null || selectedToken.owner != currentPlayer) {
+                if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
                     System.out.println("Please select your token");
                     System.out.println("Selected token at " + selectedPos1);
                     continue;
@@ -88,18 +101,12 @@ public class Game {
 
                 Position selectedPos2 = getClickedPosition();
 
-                if (selectedPos2.hasToken()) {
-                    System.out.println("Invalid position");
-                    continue;
-                } else {
-                    boolean success = board.moveToken(selectedToken, selectedPos1, selectedPos2);
-                    if (success) {
-                        System.out.println("Moved token from " + selectedPos1 + " to " + selectedPos2);
-//                        turn++;
-                    } else {
-                        System.out.println("Invalid move");
-                    }
-                }
+                MoveAction moveAction = new MoveAction(selectedToken, selectedPos1, selectedPos2);
+                moveMade = moveAction.execute(board);
+            }
+
+            if (moveMade) {
+                turn++;
             }
 
             updatePlayerState();
@@ -117,10 +124,10 @@ public class Game {
                     if (token == null){
                         board_ui.updatePositionFill(i, j, White);
                     }
-                    else if (token.owner.getTokenColor().equals("Red")){
+                    else if (token.getOwner().getTokenColor().equals("Red")){
                         board_ui.updatePositionFill(i, j, Red);
                     }
-                    else if (token.owner.getTokenColor().equals("Yellow")){
+                    else if (token.getOwner().getTokenColor().equals("Yellow")){
                         board_ui.updatePositionFill(i, j, Yellow);
                     }
                 }

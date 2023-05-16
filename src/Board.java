@@ -1,8 +1,5 @@
 package src;
 
-import src.Actions.Action;
-import src.Actions.MoveAction;
-
 import java.util.ArrayList;
 
 public class Board {
@@ -10,6 +7,10 @@ public class Board {
     protected ArrayList<Token> tokens = new ArrayList<Token>();
     private Position[][] positions = new Position[7][7];
 
+    /**
+     * Constructor for the board. Creates the board and populates
+     * it with positions, then connects all adjacent positions.
+     */
     private Board() {
         // Row 0
         positions[0][0] = new Position(0, 0);
@@ -118,13 +119,17 @@ public class Board {
         return positions[x][y].getOccupyingToken();
     }
 
+    public Token getToken(Position position) {
+        return position.getOccupyingToken();
+    }
+
     public void placeToken(Token token, Position position) {
         position.setOccupyingToken(token);
         tokens.add(token);
     }
 
     public boolean moveToken(Token token, Position pos1, Position pos2) {
-        if (pos1.getOccupyingToken() == token && pos2.getOccupyingToken() == null && pos1.isAdjacentTo(pos2)) {
+        if (pos1.getOccupyingToken() == token && isPositionEmpty(pos2)) {
             pos1.removeToken();
             pos2.setOccupyingToken(token);
             return true;
@@ -135,6 +140,10 @@ public class Board {
     private void connectPositions(Position pos1, Position pos2) {
         pos1.addAdjacentPosition(pos2);
         pos2.addAdjacentPosition(pos1);
+    }
+
+    public boolean isPositionEmpty(Position position) {
+        return position.getOccupyingToken() == null;
     }
 
     public void printBoard() {
