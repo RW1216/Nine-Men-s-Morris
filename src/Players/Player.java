@@ -10,74 +10,66 @@ public abstract class Player {
     private Color tokenColor;
     private ArrayList<Token> tokens;
     private PlayerState playerState;
-    private PlayerState placingState;
-    private PlayerState movingState;
-    private PlayerState flyingState;
+    private int tokensPlaced;
+    private int tokenCount;
 
     public Player(Color tokenColor) {
         this.tokenColor = tokenColor;
         tokens = new ArrayList<>();
-
-        placingState = new PlacingState(this);
-        movingState = new MovingState(this);
-        flyingState = new FlyingState(this);
-
-        playerState = placingState;
+        playerState = PlayerState.Placing;
+        tokensPlaced = 0;
+        tokenCount = 0;
     }
 
     public Color getTokenColor() {
         return tokenColor;
     }
 
-    public void addToken(Token token){
-        if (token == null){
+    public void addToken(Token token) {
+        if (token == null) {
             throw new NullPointerException("Unable to add a null token!");
         }
         tokens.add(token);
+        tokensPlaced++;
     }
 
-//    todo: fix logic
-    public void removeToken(Token token){
-        boolean tokenInTokens = false;
-        for (Token thisToken: tokens)
-            if (thisToken == token) {
-                tokenInTokens = true;
-            }
-        if (tokenInTokens)
-            tokens.remove(token);
+    //    todo: fix logic
+    public void removeTokenCount() {
+//        boolean tokenInTokens = false;
+//        for (Token thisToken: tokens)
+//            if (thisToken == token) {
+//                tokenInTokens = true;
+//            }
+//        if (tokenInTokens)
+//            tokens.remove(token);
+        tokenCount--;
+    }
+
+    public void addTokenCount() {
+        tokenCount++;
     }
 
     public void setPlayerState(PlayerState newPlayerState) {
         this.playerState = newPlayerState;
     }
 
-    public void setTokensAllowableActions(ArrayList<Position> emptyPositions, Object ArrayList) {
-        for(Token token: tokens) {
-            token.getAllowableActions().clear();
+
+    public void updateSelfState() {
+        if (playerState == PlayerState.Placing && tokensPlaced == 9) {
+            playerState = PlayerState.Moving;
+        } else if (playerState == PlayerState.Moving && tokenCount == 3) {
+            playerState = PlayerState.Flying;
         }
-        playerState.setTokensAllowableActions(this.tokens, emptyPositions);
     }
 
-    public void updateSelfState(){
-        if (tokens.size() == 9){
-            playerState = movingState;
-        }
+    public int getTokenCount() {
+        return tokenCount;
     }
 
     public PlayerState getPlayerState() {
         return playerState;
     }
-
-    public PlayerState getPlacingState() {
-        return placingState;
-    }
-
-    public PlayerState getMovingState() {
-        return movingState;
-    }
-
-    public PlayerState getFlyingState() {
-        return flyingState;
-    }
 }
+
+
 

@@ -9,7 +9,8 @@ public class Token {
 
     private Player owner;
     private ActionList allowableActions;
-    public boolean isPlaced = false;
+    private Position position;
+    public boolean isPlaced;
 
     public Token(Player owner) {
         this.owner = owner;
@@ -34,13 +35,11 @@ public class Token {
 //        this.allowableActions.remove(action);
     }
 
-    public Player getOwner() {
-        return owner;
-    }
-
     public void clearActions(){
         this.allowableActions = new ActionList();
     }
 
-
+    public Player getOwner() {
+        return owner;
+    }
 }
