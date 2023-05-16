@@ -6,12 +6,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import src.Game;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Board_UI implements Initializable {
+    public Circle Turn_Circle;
+    public Text Text_Box;
+    public Text Red_Piece_Left_Txt;
+    public Text Yellow_Piece_Left_Txt;
     //UI Position
     @FXML private Circle Pos_1;
     @FXML private Circle Pos_2;
@@ -132,9 +137,25 @@ public class Board_UI implements Initializable {
         UIPositions[row][column].setFill(Paint.valueOf(color));
     }
 
+    public void updateTextBox(String string){
+        Text_Box.setText(string);
+    }
+
+    public void updateRedPiecesLeft(int pieces){
+        Red_Piece_Left_Txt.setText(String.valueOf(pieces));
+    }
+
+    public void updateYellowPiecesLeft(int pieces){
+        Yellow_Piece_Left_Txt.setText(String.valueOf(pieces));
+    }
+
+    public void updateTurnCircle(String color){
+        Turn_Circle.setFill(Paint.valueOf(color));
+    }
+
     @FXML
     void btnTestingClicked(ActionEvent event) {
-        Pos_1.setStroke(Paint.valueOf(LightBlue));
+        updateTurnCircle("#ff0000");
     }
 
     @FXML
@@ -142,11 +163,4 @@ public class Board_UI implements Initializable {
 
     }
 
-    public void pickPosition(){
-        //Enable all circles
-    }
-
-    public void disableCircle(){
-        //Disable all circles
-    }
 }
