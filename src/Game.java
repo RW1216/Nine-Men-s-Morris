@@ -60,7 +60,7 @@ public class Game {
             }
 
             // PLACING PHASE =====================================================
-            if (currentPhase instanceof PlacingState) {
+            if (currentPhase == PlayerState.Placing) {
                 System.out.println("Select a position to place your token");
 
                 Position selectedPos = getClickedPosition();
@@ -70,7 +70,7 @@ public class Game {
                 moveMadePos = selectedPos;
 
             // MOVING PHASE =====================================================
-            } else if (currentPhase instanceof MovingState) {
+            } else if (currentPhase == PlayerState.Moving) {
                 System.out.println("Select a token to move");
 
                 Position selectedPos1 = getClickedPosition();
@@ -90,7 +90,7 @@ public class Game {
                 MoveAction moveAction = new MoveAction(selectedToken, selectedPos1, selectedPos2);
                 moveMade = moveAction.execute(board);
                 moveMadePos = selectedPos2;
-            } else if (currentPhase instanceof FlyingState) {
+            } else if (currentPhase == PlayerState.Flying) {
                 System.out.println("Select a token to fly");
 
                 Position selectedPos1 = getClickedPosition();
