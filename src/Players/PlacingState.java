@@ -13,11 +13,12 @@ public class PlacingState implements PlayerState {
     }
 
     public void setTokensAllowableActions(ArrayList<Token> tokens, ArrayList<Position> emptyPositions) {
-        for(Token token: tokens) {
-            for (Position position: emptyPositions) {
-                if (!token.isPlaced)
-                    token.getAllowableActions().add(new PlaceAction(token, position));
-            }
-        }
+//        for(Token token: tokens) {
+//            for (Position position: emptyPositions) {
+//                if (!token.isPlaced)
+//                    token.getAllowableActions().add(new PlaceAction(token, position));
+//            }
+//        }
+
     }
 }
