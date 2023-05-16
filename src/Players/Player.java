@@ -29,6 +29,8 @@ public abstract class Player {
         return tokenColor;
     }
 
+    public int getTokensPlaced() { return tokensPlaced; }
+
     public void addToken(Token token) {
         if (token == null) {
             throw new NullPointerException("Unable to add a null token!");
