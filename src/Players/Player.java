@@ -21,6 +21,10 @@ public abstract class Player {
         tokenCount = 0;
     }
 
+    public int getTokenCount() {
+        return tokenCount;
+    }
+
     public Color getTokenColor() {
         return tokenColor;
     }
@@ -33,25 +37,54 @@ public abstract class Player {
         tokensPlaced++;
     }
 
-    public int getTokensPlaced(){
-        return tokensPlaced;
-    }
-
-    //    todo: fix logic
-    public void removeTokenCount() {
-//        boolean tokenInTokens = false;
-//        for (Token thisToken: tokens)
-//            if (thisToken == token) {
-//                tokenInTokens = true;
-//            }
-//        if (tokenInTokens)
-//            tokens.remove(token);
+    public void removeToken(Token token) {
+        if (token == null) {
+            throw new NullPointerException("Unable to remove a null token!");
+        }
+        tokens.remove(token);
         tokenCount--;
     }
+
+//    //
+//    public void removeTokenCount() {
+////        boolean tokenInTokens = false;
+////        for (Token thisToken: tokens)
+////            if (thisToken == token) {
+////                tokenInTokens = true;
+////            }
+////        if (tokenInTokens)
+////            tokens.remove(token);
+//        tokenCount--;
+//    }
 
     public void addTokenCount() {
         tokenCount++;
     }
+
+    public boolean cannotMove() {
+        if (playerState == PlayerState.Placing) {
+            return false;
+        }
+
+        boolean hasMovesLeft = false;
+        for (Token token: tokens) {
+            if (hasMovesLeft) {
+                hasMovesLeft = true;
+            }
+            for (Position position: token.getPosition().getAdjacentPositions()) {
+                if (!position.hasToken()) {
+                    hasMovesLeft = true;
+                    break;
+                }
+            }
+        }
+        if (!hasMovesLeft) {
+            System.out.println("Game ended, " + tokenColor.getLabel() + " loses");
+        }
+        return !hasMovesLeft;
+    }
+
+
 
     public void setPlayerState(PlayerState newPlayerState) {
         this.playerState = newPlayerState;
@@ -64,10 +97,6 @@ public abstract class Player {
         } else if (playerState == PlayerState.Moving && tokenCount == 3) {
             playerState = PlayerState.Flying;
         }
-    }
-
-    public int getTokenCount() {
-        return tokenCount;
     }
 
     public PlayerState getPlayerState() {

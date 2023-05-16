@@ -4,6 +4,7 @@ import src.Board;
 import src.MillDetector;
 import src.Players.Player;
 import src.Position;
+import src.Token;
 
 public class RemoveAction extends Action{
     Player opponent;
@@ -21,8 +22,9 @@ public class RemoveAction extends Action{
         if (!board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
                 !millDetector.isMill(position)) {
             success = true;
+            Token tokenRemoved = position.getOccupyingToken();
             board.removeToken(position);
-            opponent.removeTokenCount();
+            opponent.removeToken(tokenRemoved);
         } else {
             success = false;
         }

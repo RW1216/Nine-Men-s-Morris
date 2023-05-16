@@ -1,7 +1,16 @@
 package src.Players;
 
 public enum Color {
-    RED,
+    RED("Red"),
+    YELLOW("Yellow");
 
-    YELLOW
+    private String label;
+
+    public String getLabel() {
+        return label;
+    }
+
+    private Color(String label) {
+        this.label = label;
+    }
 }
