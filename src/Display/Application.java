@@ -15,7 +15,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_UI.class.getResource("Main_UI.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 660, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 660, 700);
         Stage stage = new Stage();
         stage.setTitle("Nine Men's Morris");
         stage.setScene(scene);

@@ -44,11 +44,15 @@ public class Game {
             boolean moveMade = false;
             Position moveMadePos = null;
 
+            //Update UI
+            String turnColor;
+
             if (turn % 2 == 0) {
                 currentPlayer = playerRed;
                 opponent = playerYellow;
 
                 currentPhase = currentPlayer.getPlayerState();
+                turnColor = Red;
                 System.out.println("Red's turn");
 
             } else {
@@ -56,8 +60,25 @@ public class Game {
                 opponent = playerRed;
 
                 currentPhase = currentPlayer.getPlayerState();
+                turnColor = Yellow;
                 System.out.println("Yellow's turn");
             }
+
+            String phaseText = "";
+            if (currentPhase.equals(PlayerState.Placing)){
+                phaseText = "Place";
+            } else if (currentPhase.equals(PlayerState.Moving)){
+                phaseText = "Move";
+            } else if (currentPhase.equals(PlayerState.Flying)){
+                phaseText = "Fly";
+            }
+
+            //Update UI Components
+            board_ui.updateTurnCircle(turnColor);
+            board_ui.updateTextBox(phaseText);
+
+            board_ui.updateRedPiecesLeft(9 - playerRed.getTokensPlaced());
+            board_ui.updateYellowPiecesLeft(9 - playerYellow.getTokensPlaced());
 
             // PLACING PHASE =====================================================
             if (currentPhase == PlayerState.Placing) {
@@ -74,6 +95,9 @@ public class Game {
                 System.out.println("Select a token to move");
 
                 Position selectedPos1 = getClickedPosition();
+
+                //Highlight circle in UI
+
                 selectedToken = selectedPos1.getOccupyingToken();
                 if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
                     System.out.println("Please select your token");
