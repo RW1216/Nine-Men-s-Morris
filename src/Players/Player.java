@@ -33,6 +33,10 @@ public abstract class Player {
         tokensPlaced++;
     }
 
+    public int getTokensPlaced(){
+        return tokensPlaced;
+    }
+
     //    todo: fix logic
     public void removeTokenCount() {
 //        boolean tokenInTokens = false;
