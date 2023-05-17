@@ -12,6 +12,11 @@ public class Application extends javafx.application.Application {
         launch(args);
     }
 
+    /**
+     * Starts after running this application. It creates and shows the main UI of the Nine Men's Morris.
+     * @param primaryStage
+     * @throws IOException
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main_UI.class.getResource("Main_UI.fxml"));

@@ -75,6 +75,11 @@ public class Board_UI implements Initializable {
 
     Game game;
 
+    /**
+     * This method will be invoked when initializing the board UI.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -126,6 +131,10 @@ public class Board_UI implements Initializable {
         gameThread.start();
     }
 
+    /**
+     * This method will invoke when one of the Circle UI is clicked
+     * @param event
+     */
     @FXML
     void positionClicked(MouseEvent event) {
         Circle clickedCircle = (Circle) event.getSource();
@@ -144,38 +153,78 @@ public class Board_UI implements Initializable {
         game.positionSelected();
     }
 
+    /**
+     * Returns the selected row of the Circle UI
+     * @return the selected row of the Circle UI
+     */
     public int getSelectedRow(){
         return selectedRow;
     }
 
+    /**
+     * Returns the selected column of the Circle UI
+     * @return the selected column of the Circle UI
+     */
     public int getSelectedCol(){
         return selectedCol;
     }
 
+    /**
+     * Updates the fill of the circle
+     * @param row Updates circle in the specified row
+     * @param column Updates circle in the specified column
+     * @param color Color that will be updated
+     */
     public void updatePositionFill(int row, int column, String color){
         UIPositions[row][column].setFill(Paint.valueOf(color));
     }
 
+    /**
+     * Highlight the outer part of the circle UI
+     * @param row Updates circle in the specified row
+     * @param column Updates circle in the specified column
+     */
     public void highlightPosition(int row, int column){
         UIPositions[row][column].setStroke(Paint.valueOf(LightBlue));
     }
 
+    /**
+     * Unhighlight the outer part of te Circle UI
+     * @param row Updates circle in the specified row
+     * @param column Updates the circle in the specified column
+     */
     public void unhighlightPosition(int row, int column){
         UIPositions[row][column].setStroke(Paint.valueOf(Black));
     }
 
+    /**
+     * Updates the text box in the board UI
+     * @param string Updates the text
+     */
     public void updateTextBox(String string){
         Text_Box.setText(string);
     }
 
+    /**
+     * Updates the red pieces text box
+     * @param pieces Updates the text
+     */
     public void updateRedPiecesLeft(int pieces){
         Red_Piece_Left_Txt.setText(String.valueOf(pieces));
     }
 
+    /**
+     * Updates the yellow pieces text box
+     * @param pieces Updates the text
+     */
     public void updateYellowPiecesLeft(int pieces){
         Yellow_Piece_Left_Txt.setText(String.valueOf(pieces));
     }
 
+    /**
+     * Updates the turn circle fill color
+     * @param color New color of the circle
+     */
     public void updateTurnCircle(String color){
         Turn_Circle.setFill(Paint.valueOf(color));
     }
@@ -195,6 +244,10 @@ public class Board_UI implements Initializable {
         primaryStage.show();
     }
 
+    /**
+     * Shows the winner of the game. It sets the rectangle and text as visible and updates the text.
+     * @param text String that will be updated.
+     */
     public void showWinner(String text){
         endGameRectangle.setVisible(true);
         endGameText.setText(text);
