@@ -192,12 +192,6 @@ public class Game {
             }
             System.out.println("Red state: " + playerRed.getPlayerState());
             System.out.println("Yellow state: " + playerYellow.getPlayerState());
-
-            // Check if the game has ended
-            if (currentPlayer.cannotMove() || opponent.cannotMove()) {
-                System.out.println("GAME ENDS");
-                break;
-            }
         }
     }
 
@@ -240,20 +234,27 @@ public class Game {
      * @return true if the game is active, false otherwise.
      */
     public boolean gameActive() {
-//        todo: check if game is active
+        boolean active = true;
 
         if (playerRed.getPlayerState() != PlayerState.PLACING)
             if (playerRed.getTokenCount() < 3) {
                 System.out.println("Game ended, Yellow wins");
-                return false;
-            }
-
-        else if (playerYellow.getPlayerState() != PlayerState.PLACING)
+                active = false;
+            } else if (playerYellow.getPlayerState() != PlayerState.PLACING)
             if (playerYellow.getTokenCount() < 3) {
                 System.out.println("Game ended, Red wins");
-                return false;
+                active = false;
             }
-        return true;
+
+        if (playerRed.cannotMove()) {
+            System.out.println("Game ended, Yellow wins");
+            active = false;
+        } else if (playerYellow.cannotMove()) {
+            System.out.println("Game ended, Red wins");
+            active = false;
+        }
+
+        return active;
     }
 
     /**
