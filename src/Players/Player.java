@@ -127,7 +127,7 @@ public abstract class Player {
      * Updates the player's state
      */
     public void updateSelfState() {
-        if (playerState == PlayerState.PLACING && tokensPlaced == 9) {
+        if (playerState == PlayerState.PLACING && tokensPlaced == 4) {
             playerState = PlayerState.MOVING;
         } else if (playerState == PlayerState.MOVING && tokenCount == 3) {
             playerState = PlayerState.FLYING;

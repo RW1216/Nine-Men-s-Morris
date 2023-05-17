@@ -9,14 +9,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import src.Game;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +27,8 @@ import java.util.ResourceBundle;
 public class Board_UI implements Initializable {
 
     public AnchorPane rootPane;
+    public Rectangle endGameRectangle;
+    public Text endGameText;
     private Stage stage;
     public Circle Turn_Circle;
     public Text Text_Box;
@@ -117,6 +122,7 @@ public class Board_UI implements Initializable {
         Thread gameThread = new Thread(() -> {
             game.start();
         });
+        gameThread.setDaemon(true);
         gameThread.start();
     }
 
@@ -174,7 +180,7 @@ public class Board_UI implements Initializable {
         Turn_Circle.setFill(Paint.valueOf(color));
     }
 
-    public void showGameWinner(String text) throws IOException {
+    public void showGameWinnerDELETE(String text) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("WinnerPage.fxml"));
         Parent root = loader.load();
         WinnerPage winnerPage = loader.getController();
@@ -189,14 +195,17 @@ public class Board_UI implements Initializable {
         primaryStage.show();
     }
 
-    @FXML
-    void btnTestingClicked(ActionEvent event) throws IOException {
-        showGameWinner("RED");
+    public void showWinner(String text){
+        endGameRectangle.setVisible(true);
+        endGameText.setText(text);
+        endGameText.setVisible(true);
     }
 
     @FXML
-    void btnTesting2Clicked(ActionEvent event) throws InterruptedException {
-
+    void btnTestingClicked(ActionEvent event){
+        endGameRectangle.setVisible(true);
+        endGameText.setText("RED WON");
+        endGameText.setVisible(true);
+        Text_Box.setText("GAME ENDEDDDDDDD");
     }
-
 }

@@ -239,18 +239,22 @@ public class Game {
         if (playerRed.getPlayerState() != PlayerState.PLACING)
             if (playerRed.getTokenCount() < 3) {
                 System.out.println("Game ended, Yellow wins");
+                board_ui.showWinner("YELLOW WON");
                 active = false;
             } else if (playerYellow.getPlayerState() != PlayerState.PLACING)
             if (playerYellow.getTokenCount() < 3) {
                 System.out.println("Game ended, Red wins");
+                board_ui.showWinner("RED WON");
                 active = false;
             }
 
         if (playerRed.cannotMove()) {
             System.out.println("Game ended, Yellow wins");
+            board_ui.showWinner("YELLOW WON");
             active = false;
         } else if (playerYellow.cannotMove()) {
             System.out.println("Game ended, Red wins");
+            board_ui.showWinner("RED WON");
             active = false;
         }
 
