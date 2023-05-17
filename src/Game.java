@@ -109,8 +109,7 @@ public class Game {
 
                 Position selectedPos1 = getClickedPosition();
 
-                //Highlight circle in the UI
-                board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
+
 
                 selectedToken = selectedPos1.getOccupyingToken();
                 if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
@@ -118,6 +117,9 @@ public class Game {
                     System.out.println("Selected token at " + selectedPos1);
                     continue;
                 } else {
+                    //Highlight circle in the UI
+                    board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
+
                     System.out.println("Selected token at " + selectedPos1);
                 }
 
@@ -138,15 +140,14 @@ public class Game {
 
                 Position selectedPos1 = getClickedPosition();
 
-                //Highlight circle in the UI
-                board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
-
                 selectedToken = selectedPos1.getOccupyingToken();
                 if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
                     System.out.println("Please select your token");
                     System.out.println("Selected token at " + selectedPos1);
                     continue;
                 } else {
+                    //Highlight circle in the UI
+                    board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
                     System.out.println("Selected token at " + selectedPos1);
                 }
 
