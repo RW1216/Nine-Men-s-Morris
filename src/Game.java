@@ -57,6 +57,7 @@ public class Game {
             //Update UI
             String turnColor;
 
+            // Determine whose turn it is
             if (turn % 2 == 0) {
                 currentPlayer = playerRed;
                 opponent = playerYellow;
@@ -74,13 +75,14 @@ public class Game {
                 System.out.println("Yellow's turn");
             }
 
+            // Update UI with current phase
             String phaseText = "";
             if (currentPhase.equals(PlayerState.PLACING)){
-                phaseText = "Place";
+                phaseText = "Place a token";
             } else if (currentPhase.equals(PlayerState.MOVING)){
-                phaseText = "Move";
+                phaseText = "Move a token";
             } else if (currentPhase.equals(PlayerState.FLYING)){
-                phaseText = "Fly";
+                phaseText = "Fly a token";
             }
 
             //Update UI Components
@@ -125,6 +127,8 @@ public class Game {
                 MoveAction moveAction = new MoveAction(selectedToken, selectedPos1, selectedPos2);
                 moveMade = moveAction.execute(board);
                 moveMadePos = selectedPos2;
+
+            // FLYING PHASE =====================================================
             } else if (currentPhase == PlayerState.FLYING) {
                 System.out.println("Select a token to fly");
 
@@ -152,6 +156,7 @@ public class Game {
             // Update the board UI
             updateBoardUI();
 
+            // If a move was made, check if a mill was formed
             if (moveMade) {
                 System.out.println("token placed/moved at " + moveMadePos);
                 if (millDetector.isMill(moveMadePos)) {
@@ -166,6 +171,7 @@ public class Game {
                         removeMade = removeAction.execute(board);
                     }
 
+                    // Update the board UI
                     updatePlayerState();
                     updateBoardUI();
                 }
@@ -174,6 +180,8 @@ public class Game {
             }
             System.out.println("Red state: " + playerRed.getPlayerState());
             System.out.println("Yellow state: " + playerYellow.getPlayerState());
+
+            // Check if the game has ended
             if (currentPlayer.cannotMove() || opponent.cannotMove()) {
                 System.out.println("GAME ENDS");
                 break;
@@ -203,15 +211,6 @@ public class Game {
             }
         }
     }
-
-/*    public static void main(String[] args) {
-        Board board = Board.getInstance();
-
-        Game game = new Game(board);
-//        game.start();
-        board.printBoard();
-    }*/
-
 
     /**
      * Gets the position that the user clicks on.
