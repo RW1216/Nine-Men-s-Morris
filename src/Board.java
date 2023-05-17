@@ -2,10 +2,15 @@ package src;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * This class represents the board for a game of Nine Men's Morris.
+ *
+ */
 public class Board {
     private static Board instance = null;
-    protected ArrayList<Token> tokens = new ArrayList<Token>();
-    private Position[][] positions = new Position[7][7];
+    protected ArrayList<Token> tokens = new ArrayList<>();
+    private final Position[][] positions = new Position[7][7];
 
     /**
      * Constructor for the board. Creates the board and populates
@@ -69,18 +74,19 @@ public class Board {
         connectPositions(positions[3][0], positions[6][0]);
         connectPositions(positions[3][1], positions[3][2]);
         connectPositions(positions[3][1], positions[5][1]);
-        connectPositions(positions[3][2], positions[3][4]);
+//        connectPositions(positions[3][2], positions[3][4]);
         connectPositions(positions[3][2], positions[4][2]);
         connectPositions(positions[3][4], positions[3][5]);
         connectPositions(positions[3][4], positions[4][4]);
         connectPositions(positions[3][5], positions[3][6]);
         connectPositions(positions[3][5], positions[5][5]);
+        connectPositions(positions[3][6], positions[6][6]);
         connectPositions(positions[4][2], positions[4][3]);
-        connectPositions(positions[4][2], positions[5][3]);
+//        connectPositions(positions[4][2], positions[5][3]);
         connectPositions(positions[4][3], positions[4][4]);
         connectPositions(positions[4][3], positions[5][3]);
         connectPositions(positions[5][1], positions[5][3]);
-        connectPositions(positions[5][1], positions[6][3]);
+//        connectPositions(positions[5][1], positions[6][3]);
         connectPositions(positions[5][3], positions[5][5]);
         connectPositions(positions[5][3], positions[6][3]);
         connectPositions(positions[6][0], positions[6][3]);
@@ -91,6 +97,12 @@ public class Board {
         return positions;
     }
 
+
+    /**
+     * Gets the instance of the board. If the board has not been
+     * created yet, it will create it.
+     * @return The instance of the board.
+     */
     public static Board getInstance() {
         if (instance == null) {
             instance = new Board();
@@ -99,12 +111,22 @@ public class Board {
         return instance;
     }
 
+    /**
+     * Gets the position at the given coordinates.
+     * @param x The x coordinate of the position.
+     * @param y The y coordinate of the position.
+     * @return The position at the given coordinates.
+     */
     public Position getPosition(int x, int y) {
         return positions[x][y];
     }
 
+    /**
+     * Get all the empty positions on the board.
+     * @return An ArrayList of all the empty positions on the board.
+     */
     public ArrayList<Position> getEmptyPositions() {
-        ArrayList<Position> emptyPositions = new ArrayList<Position>();
+        ArrayList<Position> emptyPositions = new ArrayList<>();
         for (Position[] position : positions) {
             for (Position value : position) {
                 if (value != null && !value.hasToken()) {
@@ -115,19 +137,42 @@ public class Board {
         return emptyPositions;
     }
 
+    /**
+     * Get the token at the given position.
+     * @param x The x coordinate of the position.
+     * @param y The y coordinate of the position.
+     * @return The token at the given position.
+     */
     public Token getToken(int x, int y) {
         return positions[x][y].getOccupyingToken();
     }
 
+    /**
+     * Gets the token at the given position.
+     * @param position The position to get the token from.
+     * @return The token at the given position.
+     */
     public Token getToken(Position position) {
         return position.getOccupyingToken();
     }
 
+    /**
+     * Places a token at the given position.
+     * @param token The token to place.
+     * @param position The position to place the token at.
+     */
     public void placeToken(Token token, Position position) {
         position.placeToken(token);
         tokens.add(token);
     }
 
+    /**
+     * Moves a token from one position to another.
+     * @param token The token to move.
+     * @param pos1 The position to move the token from.
+     * @param pos2 The position to move the token to.
+     * @return True if the token was moved, false otherwise.
+     */
     public boolean moveToken(Token token, Position pos1, Position pos2) {
         if (pos1.getOccupyingToken() == token && isPositionEmpty(pos2)) {
             pos1.removeToken();
@@ -137,6 +182,11 @@ public class Board {
         return false;
     }
 
+    /**
+     * Removes a token from the given position.
+     * @param position The position to remove the token from.
+     * @return True if the token was removed, false otherwise.
+     */
     public boolean removeToken(Position position) {
         if (position.getOccupyingToken() != null) {
             position.removeToken();
@@ -145,15 +195,28 @@ public class Board {
         return false;
     }
 
+    /**
+     * Connects two positions together.
+     * @param pos1 Position 1.
+     * @param pos2 Position 2.
+     */
     private void connectPositions(Position pos1, Position pos2) {
         pos1.addAdjacentPosition(pos2);
         pos2.addAdjacentPosition(pos1);
     }
 
+    /**
+     * Checks if the given position is empty.
+     * @param position The position to check.
+     * @return True if the position is empty, false otherwise.
+     */
     public boolean isPositionEmpty(Position position) {
         return position.getOccupyingToken() == null;
     }
 
+    /**
+     * Prints the board to the console.
+     */
     public void printBoard() {
         for (Position[] position : positions) {
             for (Position value : position) {

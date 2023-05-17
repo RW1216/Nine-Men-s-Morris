@@ -1,7 +1,23 @@
 package src.Players;
 
+/**
+ *
+ * This enum represents the color of the player.
+ * RED: The player is red.
+ * YELLOW: The player is yellow.
+ *
+ */
 public enum Color {
-    RED,
+    RED("Red"),
+    YELLOW("Yellow");
 
-    YELLOW
+    private final String label;
+
+    public String getLabel() {
+        return label;
+    }
+
+    Color(String label) {
+        this.label = label;
+    }
 }

@@ -12,8 +12,9 @@ public class Token {
     private Position position;
     public boolean isPlaced;
 
-    public Token(Player owner) {
+    public Token(Player owner, Position position) {
         this.owner = owner;
+        this.position = position;
         this.allowableActions = new ActionList();
     }
 
@@ -41,5 +42,11 @@ public class Token {
 
     public Player getOwner() {
         return owner;
+    }
+
+    public Position getPosition() { return position; }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }

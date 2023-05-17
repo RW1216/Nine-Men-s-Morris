@@ -2,13 +2,24 @@ package src;
 
 import src.Players.Player;
 
+
+/**
+ * This class is responsible for detecting mills on the board.
+ */
 public class MillDetector {
     private static MillDetector instance = null;
     private final Board board = Board.getInstance();
 
+    /**
+     * Constructor for the mill detector.
+     */
     private MillDetector() {
     }
 
+    /**
+     * Returns the instance of the mill detector.
+     * @return The instance of the mill detector.
+     */
     public static MillDetector getInstance() {
         if (instance == null) {
             instance = new MillDetector();
@@ -16,10 +27,20 @@ public class MillDetector {
         return instance;
     }
 
+    /**
+     * Checks if a position is part of a mill.
+     * @param position The position to be checked.
+     * @return True if the position is part of a mill, false otherwise.
+     */
     public boolean isMill(Position position) {
         return isMillHorizontal(position) || isMillVertical(position);
     }
 
+    /**
+     * Checks if a position is part of a vertical mill.
+     * @param position The position to be checked.
+     * @return True if the position is part of a vertical mill, false otherwise.
+     */
     private boolean isMillHorizontal(Position position) {
         if (position.getOccupyingToken() == null) {
             return false;
@@ -78,7 +99,11 @@ public class MillDetector {
         return isPartOfMill;
     }
 
-
+    /**
+     * Checks if a position is part of a horizontal mill.
+     * @param position The position to be checked.
+     * @return True if the position is part of a horizontal mill, false otherwise.
+     */
     private boolean isMillVertical(Position position) {
         if (position.getOccupyingToken() == null) {
             return false;

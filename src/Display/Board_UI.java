@@ -1,17 +1,34 @@
 package src.Display;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import src.Game;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Board_UI implements Initializable {
+
+    public AnchorPane rootPane;
+    private Stage stage;
+    public Circle Turn_Circle;
+    public Text Text_Box;
+    public Text Red_Piece_Left_Txt;
+    public Text Yellow_Piece_Left_Txt;
     //UI Position
     @FXML private Circle Pos_1;
     @FXML private Circle Pos_2;
@@ -55,6 +72,7 @@ public class Board_UI implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         game = new Game(this);
 
         // Row 0
@@ -132,9 +150,48 @@ public class Board_UI implements Initializable {
         UIPositions[row][column].setFill(Paint.valueOf(color));
     }
 
+    public void highlightPosition(int row, int column){
+        UIPositions[row][column].setStroke(Paint.valueOf(LightBlue));
+    }
+
+    public void unhighlightPosition(int row, int column){
+        UIPositions[row][column].setStroke(Paint.valueOf(Black));
+    }
+
+    public void updateTextBox(String string){
+        Text_Box.setText(string);
+    }
+
+    public void updateRedPiecesLeft(int pieces){
+        Red_Piece_Left_Txt.setText(String.valueOf(pieces));
+    }
+
+    public void updateYellowPiecesLeft(int pieces){
+        Yellow_Piece_Left_Txt.setText(String.valueOf(pieces));
+    }
+
+    public void updateTurnCircle(String color){
+        Turn_Circle.setFill(Paint.valueOf(color));
+    }
+
+    public void showGameWinner(String text) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("WinnerPage.fxml"));
+        Parent root = loader.load();
+        WinnerPage winnerPage = loader.getController();
+        winnerPage.updateWinner(text);
+
+        Scene scene = new Scene(root, 350, 250);
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Winner Page");
+        primaryStage.setScene(scene);
+        //Not allowing user to close the previous window
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.show();
+    }
+
     @FXML
-    void btnTestingClicked(ActionEvent event) {
-        Pos_1.setStroke(Paint.valueOf(LightBlue));
+    void btnTestingClicked(ActionEvent event) throws IOException {
+        showGameWinner("RED");
     }
 
     @FXML
@@ -142,11 +199,4 @@ public class Board_UI implements Initializable {
 
     }
 
-    public void pickPosition(){
-        //Enable all circles
-    }
-
-    public void disableCircle(){
-        //Disable all circles
-    }
 }
