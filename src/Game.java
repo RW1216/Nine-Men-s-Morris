@@ -109,7 +109,8 @@ public class Game {
 
                 Position selectedPos1 = getClickedPosition();
 
-                //Highlight circle in UI
+                //Highlight circle in the UI
+                board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
 
                 selectedToken = selectedPos1.getOccupyingToken();
                 if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
@@ -128,11 +129,18 @@ public class Game {
                 moveMade = moveAction.execute(board);
                 moveMadePos = selectedPos2;
 
+                //Unhighlight circle in the UI
+                board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
+
             // FLYING PHASE =====================================================
             } else if (currentPhase == PlayerState.FLYING) {
                 System.out.println("Select a token to fly");
 
                 Position selectedPos1 = getClickedPosition();
+
+                //Highlight circle in the UI
+                board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
+
                 selectedToken = selectedPos1.getOccupyingToken();
                 if (selectedToken == null || selectedToken.getOwner() != currentPlayer) {
                     System.out.println("Please select your token");
@@ -149,6 +157,9 @@ public class Game {
                 FlyAction flyAction = new FlyAction(selectedToken, selectedPos1, selectedPos2);
                 moveMade = flyAction.execute(board);
                 moveMadePos = selectedPos2;
+
+                //Unhighlight circle in the UI
+                board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
             }
 
             updatePlayerState();
