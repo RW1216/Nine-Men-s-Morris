@@ -23,3 +23,39 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/out/production/FIT3077/.idea/.gitignore
+/out/production/FIT3077/.gitignore
+/out/production/FIT3077/Docs/low-fi prototype/Tutorial/hints/.gitkeep
+/out/production/FIT3077/.idea/.name
+/out/production/FIT3077/Docs/low-fi prototype/Placing phase/Adding token.pdf
+/out/production/FIT3077/src/Display/Board_UI.fxml
+/out/production/FIT3077/Docs/Domain Model.pdf
+/out/production/FIT3077/Docs/low-fi prototype/End Screen/end1.jpg
+/out/production/FIT3077/Docs/low-fi prototype/End Screen/end2.jpg
+/out/production/FIT3077/Docs/FIT3077_Assignment_1.pdf
+/out/production/FIT3077/.idea/artifacts/FIT3077_jar.xml
+/out/production/FIT3077/Docs/low-fi prototype/Flying Phase/flying.jpg
+/out/production/FIT3077/Docs/low-fi prototype/Flying Phase/flying2.jpg
+/out/production/FIT3077/Docs/low-fi prototype/Flying Phase/flying3.jpg
+/out/production/FIT3077/Docs/low-fi prototype/Placing phase/Forming mill.pdf
+/out/production/FIT3077/Docs/low-fi prototype/Tutorial/hints/hints.pdf
+/out/production/FIT3077/Docs/low-fi prototype/Initial phase/Homepage.pdf
+/out/production/FIT3077/Docs/low-fi prototype/Initial phase/Initial board.pdf
+/out/production/FIT3077/.idea/libraries/lib.xml
+/out/production/FIT3077/Docs/low-fi prototype/Low-Fi_Prototype_Drawings.pdf
+/out/production/FIT3077/src/Display/Main_UI.fxml
+/META-INF/MANIFEST.MF
+/out/production/FIT3077/META-INF/MANIFEST.MF
+/out/production/FIT3077/src/META-INF/MANIFEST.MF
+/out/production/FIT3077/.idea/misc.xml
+/out/production/FIT3077/.idea/modules.xml
+/out/production/FIT3077/Docs/low-fi prototype/Moving Phase/moving.jpg
+/out/production/FIT3077/Docs/low-fi prototype/Moving Phase/moving2.jpg
+/out/production/FIT3077/Docs/low-fi prototype/Moving Phase/moving3.jpg
+/out/production/FIT3077/Docs/low-fi prototype/Player vs AI mode/Player vs AI low-fi.pdf
+/out/production/FIT3077/README.md
+/out/production/FIT3077/Docs/low-fi prototype/Placing phase/Remove token.pdf
+/out/production/FIT3077/Docs/low-fi prototype/Tutorial/hints/tutorial.pdf
+/out/production/FIT3077/.idea/uiDesigner.xml
+/out/production/FIT3077/.idea/vcs.xml
+/out/production/FIT3077/src/Display/WinnerPage.fxml
