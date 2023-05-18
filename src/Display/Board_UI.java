@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -33,6 +34,7 @@ public class Board_UI implements Initializable {
     public AnchorPane rootPane;
     public Rectangle endGameRectangle;
     public Text endGameText;
+    public Button btnGoodGame;
     private Stage stage;
     public Circle Turn_Circle;
     public Text Text_Box;
@@ -256,6 +258,12 @@ public class Board_UI implements Initializable {
         endGameRectangle.setVisible(true);
         endGameText.setText(text);
         endGameText.setVisible(true);
+        btnGoodGame.setVisible(true);
+    }
+
+    @FXML
+    void btnGoodGameClicked(ActionEvent event) {
+        System.exit(0);
     }
 
     @FXML
