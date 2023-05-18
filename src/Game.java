@@ -185,6 +185,7 @@ public class Game {
 
                     while (!removeMade) {
                         System.out.println("Select a token to remove");
+                        board_ui.updateTextBox("Remove a token");
                         latch = new CountDownLatch(1);
                         Position selectedPos = getClickedPosition();
                         RemoveAction removeAction = new RemoveAction(opponent, selectedPos);
