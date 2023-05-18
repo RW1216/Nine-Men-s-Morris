@@ -71,8 +71,8 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Circle id="1" fx:id="Turn_Circle" fill="WHITE" layoutX="241.0" layoutY="593.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Text fx:id="Text_Box" layoutX="388.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="175.13671875">
+      <Circle id="1" fx:id="Turn_Circle" disable="true" fill="WHITE" layoutX="241.0" layoutY="593.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Text fx:id="Text_Box" layoutX="348.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="296.13671875">
          <font>
             <Font size="27.0" />
          </font>
