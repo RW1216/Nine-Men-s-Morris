@@ -16,12 +16,11 @@ public class ActionList {
         return true;
     }
 
-    public ActionList(Action action){
-        add(action);
-    }
-
-    public void clear() {
-        actions = new ArrayList<Action>();
+    public boolean remove(Action action){
+        if (action != null){
+            actions.remove(action);
+        }
+        return true;
     }
 
 }

@@ -13,6 +13,10 @@ public enum Color {
 
     private final String label;
 
+    /**
+     * A getter method to return the label
+     * @return the label text
+     */
     public String getLabel() {
         return label;
     }
