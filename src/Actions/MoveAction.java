@@ -6,7 +6,7 @@ import src.Token;
 
 
 /**
- * This class represents a move action.
+ * This class represents a Move action.
  */
 public class MoveAction extends Action {
     private final Token token;
@@ -14,7 +14,7 @@ public class MoveAction extends Action {
     private final Position initialPosition;
 
     /**
-     * Constructor for a move action.
+     * Constructor for a Move action.
      * @param token The token to be moved.
      * @param initialPosition The initial position of the token.
      * @param moveToPosition The position to which the token is to be moved.
@@ -26,7 +26,7 @@ public class MoveAction extends Action {
     }
 
     /**
-     * Executes the move action.
+     * Executes the Move action.
      * @param board The board on which the action is executed.
      * @return True if the action was executed successfully, false otherwise.
      */
@@ -47,9 +47,9 @@ public class MoveAction extends Action {
     }
 
     /**
-     * Returns a description of the move action.
+     * Returns a description of the Move action.
      * @param success True if the action was executed successfully, false otherwise.
-     * @return A description of the move action.
+     * @return A description of the Move action.
      */
     @Override
     public String description(boolean success) {

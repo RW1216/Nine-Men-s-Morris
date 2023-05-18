@@ -8,14 +8,14 @@ import src.Token;
 
 
 /**
- * This class represents a remove action.
+ * This class represents a Remove action.
  */
 public class RemoveAction extends Action{
     Player opponent;
     Position position;
 
     /**
-     * Constructor for a remove action.
+     * Constructor for a Remove action.
      * @param opponent The opponent of the player.
      * @param position The position of the token to be removed.
      */
@@ -25,7 +25,7 @@ public class RemoveAction extends Action{
     }
 
     /**
-     * Executes the remove action.
+     * Executes the Remove action.
      * @param board The board on which the action is executed.
      * @return True if the action was executed successfully, false otherwise.
      */
@@ -51,9 +51,9 @@ public class RemoveAction extends Action{
 
 
     /**
-     * Returns a description of the remove action.
+     * Returns a description of the Remove action.
      * @param success True if the action was executed successfully, false otherwise.
-     * @return A description of the remove action.
+     * @return A description of the Remove action.
      */
     @Override
     public String description(boolean success) {

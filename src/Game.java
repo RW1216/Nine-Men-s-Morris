@@ -5,9 +5,17 @@ import src.Actions.MoveAction;
 import src.Actions.PlaceAction;
 import src.Actions.RemoveAction;
 import src.Display.Board_UI;
+import src.Enum.Color;
+import src.Enum.PlayerState;
 import src.Players.*;
 
 import java.util.concurrent.CountDownLatch;
+
+/**
+ *
+ * This is the class to get the actual game started and determines the current phase of each Player
+ *
+ */
 
 public class Game {
 

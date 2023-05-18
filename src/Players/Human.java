@@ -1,6 +1,8 @@
 package src.Players;
 
 
+import src.Enum.Color;
+
 /**
  *
  * This class represents a human player.

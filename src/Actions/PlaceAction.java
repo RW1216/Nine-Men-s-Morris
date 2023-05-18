@@ -6,7 +6,7 @@ import src.Position;
 import src.Token;
 
 /**
- * This class represents a place action.
+ * This class represents a Place action.
  */
 public class PlaceAction extends Action {
 
@@ -15,7 +15,7 @@ public class PlaceAction extends Action {
 
 
     /**
-     * Constructor for a place action.
+     * Constructor for a Place action.
      * @param owner The owner of the token to be placed.
      * @param placeAt The position at which the token is to be placed.
      */
@@ -48,9 +48,9 @@ public class PlaceAction extends Action {
     }
 
     /**
-     * Returns a description of the place action.
+     * Returns a description of the Place action.
      * @param success True if the action was executed successfully, false otherwise.
-     * @return A description of the place action.
+     * @return A description of the Place action.
      */
     @Override
     public String description(boolean success) {
