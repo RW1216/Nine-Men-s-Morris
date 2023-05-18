@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -18,7 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import src.Game;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +27,7 @@ import java.util.ResourceBundle;
  *
  */
 
-public class Board_UI implements Initializable {
+public class BoardUI implements Initializable {
 
     public AnchorPane rootPane;
     public Rectangle endGameRectangle;

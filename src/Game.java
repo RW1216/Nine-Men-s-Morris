@@ -4,7 +4,7 @@ import src.Actions.FlyAction;
 import src.Actions.MoveAction;
 import src.Actions.PlaceAction;
 import src.Actions.RemoveAction;
-import src.Display.Board_UI;
+import src.Display.BoardUI;
 import src.Enum.Color;
 import src.Enum.PlayerState;
 import src.Players.*;
@@ -23,7 +23,7 @@ public class Game {
     private final Player playerRed;
     private final Player playerYellow;
     private final Board board;
-    private final Board_UI board_ui;
+    private final BoardUI board_ui;
     CountDownLatch latch;
 
     private static final String White = "#ffffff";
@@ -35,7 +35,7 @@ public class Game {
      * Constructor for a game.
      * @param board_ui The board UI.
      */
-    public Game(Board_UI board_ui) {
+    public Game(BoardUI board_ui) {
         this.board_ui = board_ui;
         board = Board.getInstance();
         playerRed = new Human(Color.RED);
