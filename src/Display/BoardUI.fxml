@@ -78,22 +78,22 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Text layoutX="105.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Piece Left:">
+      <Text layoutX="105.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Tokens Left:">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="368.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yellow Piece Left:">
+      <Text layoutX="368.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yellow Tokens Left:">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fx:id="Red_Piece_Left_Txt" layoutX="225.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="Red_Piece_Left_Txt" layoutX="235.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fx:id="Yellow_Piece_Left_Txt" layoutX="510.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="Yellow_Piece_Left_Txt" layoutX="518.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="17.0" />
          </font>
