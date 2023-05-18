@@ -16,21 +16,11 @@ public class ActionList {
         return true;
     }
 
-    public ActionList(Action action){
-        add(action);
+    public boolean remove(Action action){
+        if (action != null){
+            actions.remove(action);
+        }
+        return true;
     }
 
-    public void clear() {
-        actions = new ArrayList<Action>();
-    }
-
-    public ArrayList<Action> getActions() {
-        return actions;
-    }
-
-    //    public void addAction (ActionList actions){
-//        for (Action action :actions){
-//            add(action);
-//        }
-//    }
 }

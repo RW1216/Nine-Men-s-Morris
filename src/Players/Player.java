@@ -1,5 +1,7 @@
 package src.Players;
 
+import src.Enum.Color;
+import src.Enum.PlayerState;
 import src.Position;
 import src.Token;
 
@@ -31,8 +33,8 @@ public abstract class Player {
     }
 
     /**
-     * Returns the color of the player.
-     * @return The color of the player.
+     * Returns the current token left for the player.
+     * @return The tokenCount of player.
      */
     public int getTokenCount() {
         return tokenCount;
@@ -47,8 +49,8 @@ public abstract class Player {
     }
 
     /**
-     * Returns the player's tokens.
-     * @return The player's tokens.
+     * Returns the amount of token placed on the board.
+     * @return The amount of tokens placed.
      */
     public int getTokensPlaced() { return tokensPlaced; }
 
@@ -74,17 +76,6 @@ public abstract class Player {
         tokenCount--;
     }
 
-//    //
-//    public void removeTokenCount() {
-////        boolean tokenInTokens = false;
-////        for (Token thisToken: tokens)
-////            if (thisToken == token) {
-////                tokenInTokens = true;
-////            }
-////        if (tokenInTokens)
-////            tokens.remove(token);
-//        tokenCount--;
-//    }
 
     /**
      * Adds one to the token count.
@@ -92,6 +83,11 @@ public abstract class Player {
     public void addTokenCount() {
         tokenCount++;
     }
+
+    /**
+     * To check if there are still any valid moves left ,and will end the game if there are no more valid moves
+     * @return a boolean to check if there are any valid moves left
+     */
 
     public boolean cannotMove() {
         if (playerState == PlayerState.PLACING) {

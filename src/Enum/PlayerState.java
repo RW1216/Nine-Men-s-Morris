@@ -1,4 +1,4 @@
-package src.Players;
+package src.Enum;
 
 /**
  *

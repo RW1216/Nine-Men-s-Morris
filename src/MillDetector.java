@@ -4,7 +4,9 @@ import src.Players.Player;
 
 
 /**
+ *
  * This class is responsible for detecting mills on the board.
+ *
  */
 public class MillDetector {
     private static MillDetector instance = null;
@@ -37,9 +39,9 @@ public class MillDetector {
     }
 
     /**
-     * Checks if a position is part of a vertical mill.
+     * Checks if a position is part of a horizontal mill.
      * @param position The position to be checked.
-     * @return True if the position is part of a vertical mill, false otherwise.
+     * @return True if the position is part of a horizontal mill, false otherwise.
      */
     private boolean isMillHorizontal(Position position) {
         if (position.getOccupyingToken() == null) {
@@ -100,9 +102,9 @@ public class MillDetector {
     }
 
     /**
-     * Checks if a position is part of a horizontal mill.
+     * Checks if a position is part of a vertical mill.
      * @param position The position to be checked.
-     * @return True if the position is part of a horizontal mill, false otherwise.
+     * @return True if the position is part of a vertical mill, false otherwise.
      */
     private boolean isMillVertical(Position position) {
         if (position.getOccupyingToken() == null) {

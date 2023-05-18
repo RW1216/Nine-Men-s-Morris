@@ -74,7 +74,6 @@ public class Board {
         connectPositions(positions[3][0], positions[6][0]);
         connectPositions(positions[3][1], positions[3][2]);
         connectPositions(positions[3][1], positions[5][1]);
-//        connectPositions(positions[3][2], positions[3][4]);
         connectPositions(positions[3][2], positions[4][2]);
         connectPositions(positions[3][4], positions[3][5]);
         connectPositions(positions[3][4], positions[4][4]);
@@ -82,11 +81,9 @@ public class Board {
         connectPositions(positions[3][5], positions[5][5]);
         connectPositions(positions[3][6], positions[6][6]);
         connectPositions(positions[4][2], positions[4][3]);
-//        connectPositions(positions[4][2], positions[5][3]);
         connectPositions(positions[4][3], positions[4][4]);
         connectPositions(positions[4][3], positions[5][3]);
         connectPositions(positions[5][1], positions[5][3]);
-//        connectPositions(positions[5][1], positions[6][3]);
         connectPositions(positions[5][3], positions[5][5]);
         connectPositions(positions[5][3], positions[6][3]);
         connectPositions(positions[6][0], positions[6][3]);

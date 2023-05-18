@@ -6,6 +6,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ *
+ * The driver class to start and run the game
+ *
+ */
+
 public class Application extends javafx.application.Application {
 
     public static void main(String[] args) {
