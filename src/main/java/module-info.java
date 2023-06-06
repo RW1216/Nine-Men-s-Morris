@@ -3,6 +3,6 @@ module com.example.ninemensmorris {
     requires javafx.fxml;
 
 
-    opens com.example.ninemensmorris to javafx.fxml;
-    exports com.example.ninemensmorris;
+    opens com.corgi.ninemensmorris to javafx.fxml;
+    exports com.corgi.ninemensmorris;
 }
