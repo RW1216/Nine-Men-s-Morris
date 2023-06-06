@@ -49,6 +49,99 @@ public class Game {
         MillDetector.getInstance().resetInstance();
     }
 
+    public void startTutorial(){
+        MillDetector millDetector = MillDetector.getInstance();
+        System.out.println("Tutorial started");
+
+        //Disable all positions
+        for (int i = 0; i < board.getPositions().length; i++) {
+            for (int j = 0; j < board.getPositions()[i].length; j++) {
+                if (board.getPosition(i, j) != null){
+                    board_ui.disablePosition(i, j);
+                }
+            }
+        }
+
+        //Welcome
+        board_ui.updateTextBox("Welcome to tutorial mode. Click next to continue");
+        startLatch();
+        //Start as red
+        board_ui.updateTextBox("You will start as red! Click next to continue");
+        startLatch();
+
+        //Placing phase, user places their first token
+        board_ui.disableNextBtn();
+        board_ui.updateTextBox("It is placing phase now, click on the highlighted position to place your token!");
+        board_ui.highlightPosition(0, 0);
+        board_ui.enablePosition(0, 0);
+        startLatch();
+        board_ui.unhighlightPosition(0, 0);
+        board_ui.disablePosition(0, 0);
+        //Update boardUI
+        Position selectedPos = getClickedPosition();
+        PlaceAction placeAction = new PlaceAction(playerRed, selectedPos);
+        placeAction.execute(board);
+        updateBoardUI();
+        board_ui.updateTextBox("You have successfully placed your first token! Click next to continue");
+        board_ui.enableNextBtn();
+        startLatch();
+        //Opponent places their token
+        board_ui.updateTextBox("Now your opponent will place their own token. Click next to continue");
+        startLatch();
+        selectedPos = board.getPosition(0, 6);
+        placeAction = new PlaceAction(playerYellow, selectedPos);
+        placeAction.execute(board);
+        updateBoardUI();
+        board_ui.updateTextBox("Your opponent has placed their token at row 0 col 6. Now, lets talk about mill. Click next to continue");
+        startLatch();
+
+        //Mill, Remove opponents token
+        board_ui.updateTextBox("Mill is formed after aligning 3 same tokens. After forming mill, you can remove one opponent token that " +
+                "is not a mill. Click next to continue");
+        startLatch();
+        //Update board
+        selectedPos = board.getPosition(3, 0);
+        placeAction = new PlaceAction(playerRed, selectedPos);
+        placeAction.execute(board);
+        selectedPos = board.getPosition(3, 6);
+        placeAction = new PlaceAction(playerYellow, selectedPos);
+        placeAction.execute(board);
+        updateBoardUI();
+        //Asking user to click on position 6, 0
+        board_ui.updateTextBox("Here is an example. Click on the highlighted position to form a mill");
+        board_ui.disableNextBtn();
+        board_ui.highlightPosition(6, 0);
+        board_ui.enablePosition(6, 0);
+        startLatch();
+        board_ui.unhighlightPosition(6, 0);
+        board_ui.disablePosition(6, 0);
+        //Update board
+        selectedPos = board.getPosition(6, 0);
+        placeAction = new PlaceAction(playerRed, selectedPos);
+        placeAction.execute(board);
+        updateBoardUI();
+        board_ui.updateTextBox("You have formed a mill, you can remove one of your opponents token that is not a mill. Click " +
+                "on the highlighted position to remove a token");
+        //Highlight and enable yellow tokens/position
+        board_ui.disableNextBtn();
+        board_ui.highlightPosition(0, 6);
+        board_ui.highlightPosition(3, 6);
+        board_ui.enablePosition(0, 6);
+        board_ui.enablePosition(3, 6);
+        //Ask user to click on yellow tokens
+        latch = new CountDownLatch(1);
+        selectedPos = getClickedPosition();
+        RemoveAction removeAction = new RemoveAction(playerYellow, selectedPos);
+        removeAction.execute(board);
+        updateBoardUI();
+        board_ui.unhighlightPosition(0, 6);
+        board_ui.unhighlightPosition(3, 6);
+        board_ui.disablePosition(0, 6);
+        board_ui.disablePosition(3, 6);
+        board_ui.updateTextBox("You have removed the opponents token! Now lets move on to flying phase. Click " +
+                "next to continue");
+        board_ui.enableNextBtn();
+    }
 
     /**
      * Starts the game.
@@ -301,6 +394,18 @@ public class Game {
         int selectedRow = board_ui.getSelectedRow();
 
         return board.getPosition(selectedRow, selectedCol);
+    }
+
+    private void startLatch(){
+        //Wait for the user to click on a button
+        latch = new CountDownLatch(1);
+
+        try {
+            latch.await();
+
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
 }

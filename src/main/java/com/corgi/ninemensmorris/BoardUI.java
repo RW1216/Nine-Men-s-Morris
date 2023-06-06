@@ -8,11 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -27,11 +29,14 @@ import java.util.ResourceBundle;
  */
 
 public class BoardUI implements Initializable {
-
+    
     public AnchorPane rootPane;
     public Rectangle endGameRectangle;
     public Text endGameText;
     public Button btnGoodGame;
+    public Label title;
+    //Only for tutorial mode
+    public Button btnNext;
     private Stage stage;
     public Circle Turn_Circle;
     public Text Text_Box;
@@ -72,9 +77,12 @@ public class BoardUI implements Initializable {
     private static final String LightBlue = "#68aafc";
     private static final String Black = "#000000";
 
+    //Mode (Normal mode or tutorial mode)
+    //0 = tutorial, 1 = PvP
+    private int mode;
+
     private int selectedRow;
     private int selectedCol;
-    private String positionColor;
 
     Game game;
 
@@ -128,7 +136,17 @@ public class BoardUI implements Initializable {
 
         //Start the game
         Thread gameThread = new Thread(() -> {
-            game.start();
+            //Tutorial mode, mode = 0
+            if (mode == 0){
+                //Enable next button
+                btnNext.setVisible(true);
+                Text_Box.setFont(new Font("System", 15));
+
+                game.startTutorial();
+            } //Normal game, mode = 1
+            else if (mode == 1) {
+                game.start();
+            }
         });
         gameThread.setDaemon(true);
         gameThread.start();
@@ -232,21 +250,6 @@ public class BoardUI implements Initializable {
         Turn_Circle.setFill(Paint.valueOf(color));
     }
 
-    public void showGameWinnerDELETE(String text) throws IOException {
-        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/com/team21/ninemm/WinnerPage.fxml"));
-        Parent root = loader.load();
-        WinnerPage winnerPage = loader.getController();
-        winnerPage.updateWinner(text);
-
-        Scene scene = new Scene(root, 350, 250);
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Winner Page");
-        primaryStage.setScene(scene);
-        //Not allowing user to close the previous window
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.show();*/
-    }
-
     /**
      * Shows the winner of the game. It sets the rectangle and text as visible and updates the text.
      * @param text String that will be updated.
@@ -271,10 +274,7 @@ public class BoardUI implements Initializable {
 
     @FXML
     void btnTestingClicked(ActionEvent event){
-        endGameRectangle.setVisible(true);
-        endGameText.setText("RED WON");
-        endGameText.setVisible(true);
-        Text_Box.setText("GAME ENDEDDDDDDD");
+        System.out.println("Mode" + this.mode);
     }
 
     public void btnReturnToMainClicked(ActionEvent actionEvent) throws IOException {
@@ -287,4 +287,31 @@ public class BoardUI implements Initializable {
         scene.setRoot(boardUI);
     }
 
+    public void setTitle(String title){
+        this.title.setText(title);
+    }
+
+    public void setMode(int mode){
+        this.mode = mode;
+    }
+
+    public void btnNextClicked(ActionEvent actionEvent) {
+        game.positionSelected();
+    }
+
+    public void disablePosition(int row, int column){
+        UIPositions[row][column].setDisable(true);
+    }
+
+    public void enablePosition(int row, int column){
+        UIPositions[row][column].setDisable(false);
+    }
+
+    public void enableNextBtn(){
+        btnNext.setDisable(false);
+    }
+
+    public void disableNextBtn(){
+        btnNext.setDisable(true);
+    }
 }
