@@ -30,4 +30,22 @@ public class MainUI {
         scene.setRoot(boardUI);
     }
 
+    public void btnPlayAgainstPlayerClicked(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BoardUI.fxml"));
+        Parent boardUI = loader.load();
+
+        Scene scene = rootPane.getScene();
+        scene.setRoot(boardUI);
+    }
+
+    public void btnPlayAgainstAIClicked(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayAgainstAIUI.fxml"));
+        Parent boardUI = loader.load();
+
+        Scene scene = rootPane.getScene();
+        scene.setRoot(boardUI);
+    }
+
+    public void btnTutorialClicked(ActionEvent actionEvent) {
+    }
 }

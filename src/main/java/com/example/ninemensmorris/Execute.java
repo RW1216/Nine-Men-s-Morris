@@ -1,7 +1,7 @@
 package com.example.ninemensmorris;
 
-public class Main {
+public class Execute {
     public static void main(String[] args) {
-        HelloApplication.main(args);
+        Application.main(args);
     }
 }
