@@ -1,5 +1,7 @@
 package com.corgi.ninemensmorris.Game;
 
+import com.corgi.ninemensmorris.Players.Player;
+
 import java.util.ArrayList;
 
 /**
@@ -136,6 +138,42 @@ public class Board {
             }
         }
         return emptyPositions;
+    }
+
+    /**
+     * Get all the positions that are occupied by the given player.
+     * @param player The player to get the positions for.
+    * @return An ArrayList of all the positions that are occupied by the given player.
+    */
+    public ArrayList<Position> getOccupiedPositions(Player player) {
+        ArrayList<Position> playerPositions = new ArrayList<>();
+        for (Position[] position : positions) {
+            for (Position value : position) {
+                if (value != null && value.hasToken()) {
+                    Token token = value.getOccupyingToken();
+                        if (player.hasToken(token)) {
+                        playerPositions.add(value);
+                    }
+                }
+            }
+        }
+        return playerPositions;
+    }
+
+    /**
+     * Get all the positions on the board.
+     * @return An ArrayList of all the positions on the board.
+     */
+    public ArrayList<Position> getAllPositions() {
+        ArrayList<Position> allPositions = new ArrayList<>();
+        for (Position[] position : positions) {
+            for (Position value : position) {
+                if (value != null) {
+                    allPositions.add(value);
+                }
+            }
+        }
+        return allPositions;
     }
 
     /**

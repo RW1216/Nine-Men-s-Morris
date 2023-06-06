@@ -33,15 +33,23 @@ public class MoveAction extends Action {
     @Override
     public boolean execute(Board board) {
         boolean success;
-        if (board.isPositionEmpty(moveToPosition) && initialPosition.isAdjacentTo(moveToPosition)) {
-            success = true;
+        success = isValid(board);
+        if (success) {
             board.moveToken(token, initialPosition, moveToPosition);
-            token.setPosition(moveToPosition);
-        } else {
-            success = false;
         }
 
-        System.out.println(description(success));
+        return success;
+    }
+
+    /**
+     * Checks if the Move action is valid.
+     * @param board The board on which the action is executed.
+     * @return True if the action is valid, false otherwise.
+     */
+    @Override
+    public boolean isValid(Board board) {
+        boolean success;
+        success = board.isPositionEmpty(moveToPosition) && initialPosition.isAdjacentTo(moveToPosition);
 
         return success;
     }

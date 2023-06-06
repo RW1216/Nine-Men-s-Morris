@@ -1,8 +1,7 @@
 package com.corgi.ninemensmorris.Game;
 
-import com.corgi.ninemensmorris.Actions.ActionList;
+import com.corgi.ninemensmorris.Actions.PositionFinder;
 import com.corgi.ninemensmorris.Players.Player;
-import com.corgi.ninemensmorris.Actions.Action;
 
 /**
  *
@@ -14,7 +13,7 @@ public class Token {
 
 
     private Player owner;
-    private ActionList allowableActions;
+    private PositionFinder allowableActions;
     private Position position;
     public boolean isPlaced;
 
@@ -26,44 +25,14 @@ public class Token {
     public Token(Player owner, Position position) {
         this.owner = owner;
         this.position = position;
-        this.allowableActions = new ActionList();
     }
 
     /**
      * A getter method to retrive the list of allowable actions on the token
      * @return List of actions
      */
-    public ActionList getAllowableActions() {
+    public PositionFinder getAllowableActions() {
         return this.getAllowableActions();
-    }
-
-    /**
-     * Add an action into the ActionList of the token
-     * @param action The Action to be added to the token
-     */
-    public void addAction(Action action) {
-        if(action == null){
-            throw new NullPointerException("Unable to add a null action!");
-        }
-        this.allowableActions.add(action);
-    }
-
-    /**
-     * Remove an action in the ActionList of the token
-     * @param action The Action to be removed
-     */
-    public void removeAction(Action action){
-        if(action == null){
-            throw new NullPointerException("Unable to add a null action!");
-        }
-        this.allowableActions.remove(action);
-    }
-
-    /**
-     * Method to clear the ActionList of the token by creating a new ActionList
-     */
-    public void clearActions(){
-        this.allowableActions = new ActionList();
     }
 
     /**

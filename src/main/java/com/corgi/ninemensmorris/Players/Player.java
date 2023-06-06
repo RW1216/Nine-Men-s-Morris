@@ -113,11 +113,16 @@ public abstract class Player {
     }
 
 
-
-    public void setPlayerState(PlayerState newPlayerState) {
-        this.playerState = newPlayerState;
+    /**
+     * Checks if the player has a token with the given token.
+     * @param token The token to check.
+     */
+    public boolean hasToken(Token token) {
+        if (token == null) {
+            throw new NullPointerException("Unable to check for a null token!");
+        }
+        return tokens.contains(token);
     }
-
 
     /**
      * Updates the player's state

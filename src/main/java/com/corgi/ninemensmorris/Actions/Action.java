@@ -16,6 +16,8 @@ public abstract class Action {
      */
     public abstract boolean execute(Board board);
 
+    public abstract boolean isValid(Board board);
+
     /**
      * Returns a description of the action.
      * @param success True if the action was executed successfully, false otherwise.

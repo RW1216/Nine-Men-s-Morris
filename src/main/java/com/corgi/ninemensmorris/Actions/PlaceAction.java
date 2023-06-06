@@ -32,17 +32,26 @@ public class PlaceAction extends Action {
     @Override
     public boolean execute(Board board) {
         boolean success;
-        if (board.isPositionEmpty(placeAt)) {
+        success = isValid(board);
+        if (success) {
             Token token = new Token(owner, placeAt);
             owner.addToken(token);
-            success = true;
             board.placeToken(token, placeAt);
             owner.addTokenCount();
-        } else {
-            success = false;
         }
 
-        System.out.println(description(success));
+        return success;
+    }
+
+    /**
+     * Checks if the Place action is valid.
+     * @param board The board on which the action is executed.
+     * @return True if the action is valid, false otherwise.
+     */
+    @Override
+    public boolean isValid(Board board) {
+        boolean success;
+        success = board.isPositionEmpty(placeAt);
 
         return success;
     }

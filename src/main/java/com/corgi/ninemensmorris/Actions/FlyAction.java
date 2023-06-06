@@ -16,7 +16,7 @@ public class FlyAction extends Action {
     private final Position initialPosition;
 
     /**
-     * COnstructor to create a Fly Action
+     * Constructor to create a Fly Action
      * @param token The token to apply the Fly Action on
      * @param initialPosition The initial position of the selected token
      * @param moveToPosition The selected position for the token to be moved to
@@ -35,14 +35,23 @@ public class FlyAction extends Action {
     @Override
     public boolean execute(Board board) {
         boolean success;
-        if (board.isPositionEmpty(moveToPosition)) {
-            success = true;
+        success = isValid(board);
+        if (success) {
             board.moveToken(token, initialPosition, moveToPosition);
-        } else {
-            success = false;
         }
 
-        System.out.println(description(success));
+        return success;
+    }
+
+    /**
+     * Checks if the Fly action is valid
+     * @param board The board on which the action is executed.
+     * @return a boolean to indicate if the action is valid on the board
+     */
+    @Override
+    public boolean isValid(Board board) {
+        boolean success;
+        success = board.isPositionEmpty(moveToPosition);
 
         return success;
     }
