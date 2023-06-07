@@ -46,6 +46,14 @@ public class PositionFinder {
             }
         }
 
+        if(positions.isEmpty()){
+            for (Position pos : board.getOccupiedPositions(player)){
+                removeAction = new RemoveAction(player, pos);
+                if (removeAction.includeMill(board)){
+                    positions.add((pos));
+                }
+            }
+        }
 
         return positions;
     }
