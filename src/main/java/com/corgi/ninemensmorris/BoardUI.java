@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +41,7 @@ public class BoardUI implements Initializable {
     public Label TurnTextBox;
     public Text Red_Tokens_Left;
     public Text Yellow_Tokens_Left;
+    public CheckBox Hint_Check_Box;
     private Stage stage;
     public Circle Turn_Circle;
     public Text Text_Box;
@@ -333,5 +335,9 @@ public class BoardUI implements Initializable {
 
     public void disableNextBtn(){
         btnNext.setDisable(true);
+    }
+
+    public boolean enableHint(){
+        return Hint_Check_Box.isSelected();
     }
 }
