@@ -67,9 +67,13 @@ public class RemoveAction extends Action{
     public boolean isValid(Board board) {
         boolean success;
         MillDetector millDetector = MillDetector.getInstance();
-        success = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
-                !millDetector.isMill(position);
-
+        if (millDetector.isMill((position)) == true){
+            success = true;
+        }
+        else{
+            success = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
+                    !millDetector.isMill(position);
+        }
         return success;
     }
 
