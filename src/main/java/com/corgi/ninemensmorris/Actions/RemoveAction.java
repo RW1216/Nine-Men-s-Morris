@@ -82,6 +82,13 @@ public class RemoveAction extends Action{
         return success;
     }
 
+    // A function to verify if there is a token in that position regardless its in a mill or not
+
+    /**
+     * Checks if the Remove action is valid but this is also valid for tokens in mills
+     * @param board The board on which the action is executed.
+     * @return Returs a true values if the Remove action is valid , or else returns a false
+     */
     public boolean includeMill(Board board){
         boolean pass;
 
