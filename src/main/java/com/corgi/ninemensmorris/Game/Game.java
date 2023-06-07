@@ -1,14 +1,11 @@
 package com.corgi.ninemensmorris.Game;
 
-import com.corgi.ninemensmorris.Actions.FlyAction;
-import com.corgi.ninemensmorris.Actions.MoveAction;
-import com.corgi.ninemensmorris.Actions.RemoveAction;
+import com.corgi.ninemensmorris.Actions.*;
 import com.corgi.ninemensmorris.BoardUI;
 import com.corgi.ninemensmorris.Enum.Color;
 import com.corgi.ninemensmorris.Enum.PlayerState;
 import com.corgi.ninemensmorris.Players.Human;
 import com.corgi.ninemensmorris.Players.Player;
-import com.corgi.ninemensmorris.Actions.PlaceAction;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -149,6 +146,7 @@ public class Game {
      */
     public void start(){
         MillDetector millDetector = MillDetector.getInstance();
+        PositionFinder positionFinder = PositionFinder.getInstance();
         System.out.println("Game started");
 
         while (gameActive()) {
@@ -193,6 +191,9 @@ public class Game {
                 phaseText = "Fly a token";
             }
 
+            // Highlight all clickable positions
+            positionFinder.getPositions(board, currentPlayer);
+
             //Update UI Components
             board_ui.updateTurnCircle(turnColor);
             board_ui.updateTextBox(phaseText);
@@ -227,6 +228,8 @@ public class Game {
                 } else {
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
+                    positionFinder.getPositions(board, currentPlayer, selectedPos1);
+                    //todo: highlight all possible positions
 
                     System.out.println("Selected token at " + selectedPos1);
                 }
@@ -241,6 +244,7 @@ public class Game {
 
                 //Unhighlight circle in the UI
                 board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
+                //todo: unhighlight all positions
 
             // FLYING PHASE =====================================================
             } else if (currentPhase == PlayerState.FLYING) {
@@ -256,6 +260,8 @@ public class Game {
                 } else {
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
+                    positionFinder.getPositions(board, currentPlayer, selectedPos1);
+                    //todo: highlight all possible positions
                     System.out.println("Selected token at " + selectedPos1);
                 }
 
@@ -269,6 +275,7 @@ public class Game {
 
                 //Unhighlight circle in the UI
                 board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
+                //todo: unhighlight all positions
             }
 
             updatePlayerState();
