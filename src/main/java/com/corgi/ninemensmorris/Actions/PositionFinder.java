@@ -46,6 +46,9 @@ public class PositionFinder {
             }
         }
 
+
+        // Check if position list is empty, if it's empty meaning only have mill on the board
+        // Then reinsert all the occupied place of the opponent's tokens
         if(positions.isEmpty()){
             for (Position pos : board.getOccupiedPositions(player)){
                 removeAction = new RemoveAction(player, pos);
