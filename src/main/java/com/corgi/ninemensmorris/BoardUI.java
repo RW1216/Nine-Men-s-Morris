@@ -206,7 +206,7 @@ public class BoardUI implements Initializable {
      * @param column Updates circle in the specified column
      */
     public void highlightPosition(int row, int column, String color){
-        UIPositions[row][column].setStroke(Paint.valueOf(LightBlue));
+        UIPositions[row][column].setStroke(Paint.valueOf(color));
     }
 
     /**
@@ -218,11 +218,11 @@ public class BoardUI implements Initializable {
         UIPositions[row][column].setStroke(Paint.valueOf(Black));
     }
 
-    public void unhighlightAllPosition(){
-        for (int i = 0; i < UIPositions.length; i++){
-            for (int j = 0; j < UIPositions[i].length; j++){
-                if (UIPositions[i][j] != null){
-                    UIPositions[i][j].setStroke(Paint.valueOf(Black));
+    public void unhighlightAllPositions(){
+        for (Circle[] uiPosition : UIPositions) {
+            for (Circle circle : uiPosition) {
+                if (circle != null) {
+                    circle.setStroke(Paint.valueOf(Black));
                 }
             }
         }

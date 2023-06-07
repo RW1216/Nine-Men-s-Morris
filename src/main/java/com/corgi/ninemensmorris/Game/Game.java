@@ -7,6 +7,7 @@ import com.corgi.ninemensmorris.Enum.PlayerState;
 import com.corgi.ninemensmorris.Players.Human;
 import com.corgi.ninemensmorris.Players.Player;
 
+import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -28,6 +29,7 @@ public class Game {
     private static final String Red = "#ff0000";
     private static final String Yellow = "#fffd00";
     private static final String LightBlue = "#68aafc";
+    private static final String Green = "#00ff00";
 
 
     /**
@@ -149,6 +151,8 @@ public class Game {
         PositionFinder positionFinder = PositionFinder.getInstance();
         System.out.println("Game started");
 
+        ArrayList<Position> highlightedPos;
+
         while (gameActive()) {
             // Initialize local variables
             boolean moveMade = false;
@@ -191,9 +195,6 @@ public class Game {
                 phaseText = "Fly a token";
             }
 
-            // Highlight all clickable positions
-            positionFinder.getPositions(board, currentPlayer);
-
             //Update UI Components
             board_ui.updateTurnCircle(turnColor);
             board_ui.updateTextBox(phaseText);
@@ -226,10 +227,14 @@ public class Game {
                     System.out.println("Selected token at " + selectedPos1);
                     continue;
                 } else {
+                    board_ui.unhighlightAllPositions();
+
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
-                    positionFinder.getPositions(board, currentPlayer, selectedPos1);
-                    //todo: highlight all possible positions
+                    highlightedPos = positionFinder.getRemovablePos(board, currentPlayer, selectedPos1);
+                    for (Position pos : highlightedPos){
+                        board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                    }
 
                     System.out.println("Selected token at " + selectedPos1);
                 }
@@ -244,7 +249,7 @@ public class Game {
 
                 //Unhighlight circle in the UI
                 board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
-                //todo: unhighlight all positions
+                board_ui.unhighlightAllPositions();
 
             // FLYING PHASE =====================================================
             } else if (currentPhase == PlayerState.FLYING) {
@@ -258,10 +263,14 @@ public class Game {
                     System.out.println("Selected token at " + selectedPos1);
                     continue;
                 } else {
+                    board_ui.unhighlightAllPositions();
+
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
-                    positionFinder.getPositions(board, currentPlayer, selectedPos1);
-                    //todo: highlight all possible positions
+                    highlightedPos = positionFinder.getRemovablePos(board, currentPlayer, selectedPos1);
+                    for (Position pos : highlightedPos){
+                        board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                    }
                     System.out.println("Selected token at " + selectedPos1);
                 }
 
@@ -275,7 +284,7 @@ public class Game {
 
                 //Unhighlight circle in the UI
                 board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
-                //todo: unhighlight all positions
+                board_ui.unhighlightAllPositions();
             }
 
             updatePlayerState();
@@ -288,6 +297,13 @@ public class Game {
                 System.out.println("token placed/moved at " + moveMadePos);
                 if (millDetector.isMill(moveMadePos)) {
                     System.out.println("Mill formed");
+
+                    // highlight all opponent tokens
+                    highlightedPos = positionFinder.getRemovablePos(board, opponent);
+                    for (Position pos : highlightedPos){
+                        board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                    }
+
                     boolean removeMade = false;
 
                     while (!removeMade) {
@@ -298,6 +314,9 @@ public class Game {
                         RemoveAction removeAction = new RemoveAction(opponent, selectedPos);
                         removeMade = removeAction.execute(board);
                     }
+
+                    // Unhighlight all positions
+                    board_ui.unhighlightAllPositions();
 
                     // Update the board UI
                     updatePlayerState();

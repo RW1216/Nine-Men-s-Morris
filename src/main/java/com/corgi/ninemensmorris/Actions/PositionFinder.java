@@ -34,19 +34,18 @@ public class PositionFinder {
         return instance;
     }
 
-    public ArrayList<Position> getPositions(Board board, Player player) {
-        PlayerState playerState = player.getPlayerState();
+    public ArrayList<Position> getRemovablePos(Board board, Player player) {
+        positions = new ArrayList<>();
+        RemoveAction removeAction;
 
-        ArrayList<Position> positions = board.getEmptyPositions();
+        for (Position pos : board.getOccupiedPositions(player)) {
 
-        switch (playerState) {
-            case PLACING:
-                positions = board.getEmptyPositions();
-                break;
-            case MOVING, FLYING:
-                positions = board.getOccupiedPositions(player);
-                break;
+            removeAction = new RemoveAction(player, pos);
+            if (removeAction.isValid(board)) {
+                positions.add(pos);
+            }
         }
+
 
         return positions;
     }
@@ -56,10 +55,10 @@ public class PositionFinder {
      * @param board The board to check for possible positions.
      * @return A list of all possible positions to place a token.
      */
-    public ArrayList<Position> getPositions(Board board, Player player, Position position) {
+    public ArrayList<Position> getRemovablePos(Board board, Player player, Position position) {
         PlayerState playerState = player.getPlayerState();
 
-        ArrayList<Position> positions = new ArrayList<>();
+        positions = new ArrayList<>();
         Token token;
 
         switch (playerState) {
