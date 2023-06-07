@@ -67,7 +67,7 @@
       <Line endX="181.0" endY="-380.0" layoutX="385.0" layoutY="774.0" startX="134.0" startY="-380.0" />
       <Line endX="-150.0" endY="-330.0" layoutX="335.0" layoutY="724.0" startX="-105.0" startY="-330.0" />
       <Line endX="-246.0" endY="-340.0" layoutX="345.0" layoutY="734.0" startX="-202.0" startY="-340.0" />
-      <Label layoutX="150.0" layoutY="647.0" text="Turn:">
+      <Label fx:id="TurnTextBox" layoutX="150.0" layoutY="647.0" text="Turn:">
          <font>
             <Font size="24.0" />
          </font>
@@ -78,12 +78,12 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Text layoutX="106.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Tokens Left:">
+      <Text fx:id="Red_Tokens_Left" layoutX="106.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Tokens Left:">
          <font>
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="369.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yellow Tokens Left:">
+      <Text fx:id="Yellow_Tokens_Left" layoutX="369.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yellow Tokens Left:">
          <font>
             <Font size="17.0" />
          </font>
@@ -99,7 +99,7 @@
          </font>
       </Text>
       <Rectangle fx:id="endGameRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="190.0" layoutX="87.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="482.0" />
-      <Text fx:id="endGameText" layoutX="289.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Won" visible="false">
+      <Text fx:id="endGameText" layoutX="239.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Won" textAlignment="CENTER" visible="false" wrappingWidth="186.46630859375" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0">
          <font>
             <Font size="21.0" />
          </font>
