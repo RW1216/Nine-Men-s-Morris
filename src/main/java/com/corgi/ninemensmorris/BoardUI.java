@@ -37,6 +37,9 @@ public class BoardUI implements Initializable {
     public Label title;
     //Only for tutorial mode
     public Button btnNext;
+    public Label TurnTextBox;
+    public Text Red_Tokens_Left;
+    public Text Yellow_Tokens_Left;
     private Stage stage;
     public Circle Turn_Circle;
     public Text Text_Box;
@@ -141,6 +144,13 @@ public class BoardUI implements Initializable {
                 //Enable next button
                 btnNext.setVisible(true);
                 Text_Box.setFont(new Font("System", 15));
+                //Disable buttons and text boxes
+                TurnTextBox.setVisible(false);
+                Turn_Circle.setVisible(false);
+                Red_Tokens_Left.setVisible(false);
+                Yellow_Tokens_Left.setVisible(false);
+                Red_Piece_Left_Txt.setVisible(false);
+                Yellow_Piece_Left_Txt.setVisible(false);
 
                 game.startTutorial();
             } //Normal game, mode = 1
