@@ -48,11 +48,20 @@ public class RemoveAction extends Action{
 //
 //        return success;
         boolean success;
+        boolean pass;
         success = isValid(board);
+        pass = includeMill(board);
         if (success) {
             Token tokenRemoved = position.getOccupyingToken();
             board.removeToken(position);
             opponent.removeToken(tokenRemoved);
+        }
+        else if (pass){
+            Token tokenRemoved = position.getOccupyingToken();
+            board.removeToken(position);
+            opponent.removeToken(tokenRemoved);
+            return pass;
+
         }
 
         return success;
@@ -67,14 +76,18 @@ public class RemoveAction extends Action{
     public boolean isValid(Board board) {
         boolean success;
         MillDetector millDetector = MillDetector.getInstance();
-        if (millDetector.isMill((position)) == true){
-            success = true;
-        }
-        else{
-            success = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
-                    !millDetector.isMill(position);
-        }
+
+        success = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
+                !millDetector.isMill(position);
         return success;
+    }
+
+    public boolean includeMill(Board board){
+        boolean pass;
+
+        pass = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent;
+
+        return pass;
     }
 
     /**
