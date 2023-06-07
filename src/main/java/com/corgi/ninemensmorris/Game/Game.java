@@ -72,10 +72,10 @@ public class Game {
         //Placing phase, user places their first token
         board_ui.disableNextBtn();
         board_ui.updateTextBox("It is placing phase now, click on the highlighted position to place your token!");
-        board_ui.highlightPosition(0, 0, LightBlue);
+        board_ui.highlightPosition(0, 0, Green);
         board_ui.enablePosition(0, 0);
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 0);
         //Update boardUI
         Position selectedPos = getClickedPosition();
@@ -113,10 +113,10 @@ public class Game {
         //Asking user to click on position 6, 0
         board_ui.updateTextBox("Here is an example. Click on the highlighted position to form a mill.");
         board_ui.disableNextBtn();
-        board_ui.highlightPosition(6, 0, LightBlue);
+        board_ui.highlightPosition(6, 0, Green);
         board_ui.enablePosition(6, 0);
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(6, 0);
         //Update board
         selectedPos = board.getPosition(6, 0);
@@ -127,8 +127,8 @@ public class Game {
                 "on the highlighted position to remove a token.");
         //Highlight and enable yellow tokens/position
         board_ui.disableNextBtn();
-        board_ui.highlightPosition(0, 6, LightBlue);
-        board_ui.highlightPosition(3, 6, LightBlue);
+        board_ui.highlightPosition(0, 6, Green);
+        board_ui.highlightPosition(3, 6, Green);
         board_ui.enablePosition(0, 6);
         board_ui.enablePosition(3, 6);
         //Ask user to click on yellow tokens
@@ -137,7 +137,7 @@ public class Game {
         RemoveAction removeAction = new RemoveAction(playerYellow, selectedPos);
         removeAction.execute(board);
         updateBoardUI();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 6);
         board_ui.disablePosition(3, 6);
         board_ui.updateTextBox("You have removed the opponents token! Now lets move on to moving phase. Click " +
@@ -175,18 +175,18 @@ public class Game {
         updateBoardUI();
         //Highlight position 0, 0, ask user to click on it
         board_ui.disableNextBtn();
-        board_ui.highlightPosition(0, 0, LightBlue);
+        board_ui.highlightPosition(0, 0, Green);
         board_ui.enablePosition(0, 0);
         board_ui.updateTextBox("Here is an example. Let's move the highlighted token to the right! Click on the highlighted position.");
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 0);
         //Highlight position 3, 0, ask user to click on it
-        board_ui.highlightPosition(0, 3, LightBlue);
+        board_ui.highlightPosition(0, 3, Green);
         board_ui.enablePosition(0, 3);
         board_ui.updateTextBox("Now click on the highlighted position to move your red token.");
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 3);
         //Move the red token
         MoveAction moveAction = new MoveAction(board.getPosition(0, 0).getOccupyingToken(), board.getPosition(0, 0), board.getPosition(0, 3));
@@ -218,17 +218,17 @@ public class Game {
         board_ui.updateTextBox("Now you can fly your token to any empty position. Click on the highlighted position to select your token.");
         //Ask the user to click on highlighted red token
         board_ui.disableNextBtn();
-        board_ui.highlightPosition(2, 3, LightBlue);
+        board_ui.highlightPosition(2, 3, Green);
         board_ui.enablePosition(2, 3);
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(2, 3);
         //Ask the user to click on the highlighted empty position
-        board_ui.highlightPosition(0, 0, LightBlue);
+        board_ui.highlightPosition(0, 0, Green);
         board_ui.enablePosition(0, 0);
         board_ui.updateTextBox("Now click on the highlighted position to fly the token.");
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 0);
         //Fly the token
         FlyAction flyAction = new FlyAction(board.getPosition(2, 3).getOccupyingToken(), board.getPosition(2, 3), board.getPosition(0, 0));
@@ -257,17 +257,17 @@ public class Game {
         board_ui.updateTextBox("It is currently your turn and you can win by forming a mill and removing their tokens. Click on " +
                 "the highlighted token to move to your left.");
         //Ask the user to select the highlighted token
-        board_ui.highlightPosition(0, 3, LightBlue);
+        board_ui.highlightPosition(0, 3, Green);
         board_ui.enablePosition(0, 3);
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 3);
         //Ask the user to select the empty position 0, 0
-        board_ui.highlightPosition(0, 0, LightBlue);
+        board_ui.highlightPosition(0, 0, Green);
         board_ui.enablePosition(0, 0);
         board_ui.updateTextBox("Now, click on the highlighted empty position to form a mill.");
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(0, 0);
         //Update the red token
         flyAction = new FlyAction(board.getPosition(0, 3).getOccupyingToken(), board.getPosition(0, 3), board.getPosition(0, 0));
@@ -275,10 +275,10 @@ public class Game {
         updateBoardUI();
         board_ui.updateTextBox("Mill has formed. Now lets remove the opponent piece at row 2, column 4");
         //Ask the user to click on the opponent token
-        board_ui.highlightPosition(2, 4, LightBlue);
+        board_ui.highlightPosition(2, 4, Green);
         board_ui.enablePosition(2, 4);
         startLatch();
-        board_ui.unhighlightAllPosition();
+        board_ui.unhighlightAllPositions();
         board_ui.disablePosition(2, 4);
         //Remove the token and update the board. Show the winner at the end.
         selectedPos = board.getPosition(2, 4);
