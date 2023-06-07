@@ -30,6 +30,7 @@ public class Game {
     private static final String White = "#ffffff";
     private static final String Red = "#ff0000";
     private static final String Yellow = "#fffd00";
+    private static final String LightBlue = "#68aafc";
 
 
     /**
@@ -72,7 +73,7 @@ public class Game {
         //Placing phase, user places their first token
         board_ui.disableNextBtn();
         board_ui.updateTextBox("It is placing phase now, click on the highlighted position to place your token!");
-        board_ui.highlightPosition(0, 0);
+        board_ui.highlightPosition(0, 0, LightBlue);
         board_ui.enablePosition(0, 0);
         startLatch();
         board_ui.unhighlightPosition(0, 0);
@@ -110,7 +111,7 @@ public class Game {
         //Asking user to click on position 6, 0
         board_ui.updateTextBox("Here is an example. Click on the highlighted position to form a mill");
         board_ui.disableNextBtn();
-        board_ui.highlightPosition(6, 0);
+        board_ui.highlightPosition(6, 0, LightBlue);
         board_ui.enablePosition(6, 0);
         startLatch();
         board_ui.unhighlightPosition(6, 0);
@@ -124,8 +125,8 @@ public class Game {
                 "on the highlighted position to remove a token");
         //Highlight and enable yellow tokens/position
         board_ui.disableNextBtn();
-        board_ui.highlightPosition(0, 6);
-        board_ui.highlightPosition(3, 6);
+        board_ui.highlightPosition(0, 6, LightBlue);
+        board_ui.highlightPosition(3, 6, LightBlue);
         board_ui.enablePosition(0, 6);
         board_ui.enablePosition(3, 6);
         //Ask user to click on yellow tokens
@@ -225,7 +226,7 @@ public class Game {
                     continue;
                 } else {
                     //Highlight circle in the UI
-                    board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
+                    board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
 
                     System.out.println("Selected token at " + selectedPos1);
                 }
@@ -254,7 +255,7 @@ public class Game {
                     continue;
                 } else {
                     //Highlight circle in the UI
-                    board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY());
+                    board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
                     System.out.println("Selected token at " + selectedPos1);
                 }
 
