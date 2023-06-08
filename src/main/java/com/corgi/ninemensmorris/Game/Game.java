@@ -55,7 +55,6 @@ public class Game {
     }
 
     public void startTutorial(){
-        MillDetector millDetector = MillDetector.getInstance();
         System.out.println("Tutorial started");
 
         //Disable all positions
@@ -365,7 +364,7 @@ public class Game {
                 moveMade = placeAction.execute(board);
                 moveMadePos = selectedPos;
 
-            // MOVING PHASE =====================================================
+                // MOVING PHASE =====================================================
             } else if (currentPhase == PlayerState.MOVING) {
                 System.out.println("Select a token to move");
 
@@ -384,8 +383,10 @@ public class Game {
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
                     highlightedPos = positionFinder.getRemovablePos(board, currentPlayer, selectedPos1);
-                    for (Position pos : highlightedPos){
-                        board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                    if (board_ui.enableHint()) {
+                        for (Position pos : highlightedPos) {
+                            board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                        }
                     }
 
                     System.out.println("Selected token at " + selectedPos1);
@@ -404,7 +405,7 @@ public class Game {
                 board_ui.unhighlightPosition(selectedPos1.getX(), selectedPos1.getY());
                 board_ui.unhighlightAllPositions();
 
-            // FLYING PHASE =====================================================
+                // FLYING PHASE =====================================================
             } else if (currentPhase == PlayerState.FLYING) {
                 System.out.println("Select a token to fly");
 
@@ -421,8 +422,10 @@ public class Game {
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
                     highlightedPos = positionFinder.getRemovablePos(board, currentPlayer, selectedPos1);
-                    for (Position pos : highlightedPos){
-                        board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                    if (board_ui.enableHint()) {
+                        for (Position pos : highlightedPos) {
+                            board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                        }
                     }
                     System.out.println("Selected token at " + selectedPos1);
                 }
@@ -455,8 +458,10 @@ public class Game {
 
                     // highlight all opponent tokens
                     highlightedPos = positionFinder.getRemovablePos(board, opponent);
-                    for (Position pos : highlightedPos){
-                        board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                    if (board_ui.enableHint()) {
+                        for (Position pos : highlightedPos) {
+                            board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
+                        }
                     }
 
                     boolean removeMade = false;
@@ -532,11 +537,11 @@ public class Game {
                 board_ui.showWinner("YELLOW WON");
                 active = false;
             } else if (playerYellow.getPlayerState() != PlayerState.PLACING)
-            if (playerYellow.getTokenCount() < 3) {
-                System.out.println("Game ended, Red wins");
-                board_ui.showWinner("RED WON");
-                active = false;
-            }
+                if (playerYellow.getTokenCount() < 3) {
+                    System.out.println("Game ended, Red wins");
+                    board_ui.showWinner("RED WON");
+                    active = false;
+                }
 
         if (playerRed.cannotMove()) {
             System.out.println("Game ended, Yellow wins");
