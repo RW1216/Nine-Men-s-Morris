@@ -59,3 +59,6 @@ hs_err_pid*
 /out/production/FIT3077/.idea/uiDesigner.xml
 /out/production/FIT3077/.idea/vcs.xml
 /out/production/FIT3077/src/Display/WinnerPage.fxml
+/target/classes/com/corgi/ninemensmorris/BoardUI.fxml
+/target/classes/com/corgi/ninemensmorris/MainUI.fxml
+/target/classes/com/corgi/ninemensmorris/PlayAgainstAIUI.fxml
