@@ -406,7 +406,7 @@ public class Game {
 
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
-                    highlightedPos = positionFinder.getRemovablePos(board, currentPlayer, selectedPos1);
+                    highlightedPos = positionFinder.getPositions(board, currentPlayer, selectedPos1);
                     if (board_ui.enableHint()) {
                         for (Position pos : highlightedPos) {
                             board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
@@ -445,7 +445,7 @@ public class Game {
 
                     //Highlight circle in the UI
                     board_ui.highlightPosition(selectedPos1.getX(), selectedPos1.getY(), LightBlue);
-                    highlightedPos = positionFinder.getRemovablePos(board, currentPlayer, selectedPos1);
+                    highlightedPos = positionFinder.getPositions(board, currentPlayer, selectedPos1);
                     if (board_ui.enableHint()) {
                         for (Position pos : highlightedPos) {
                             board_ui.highlightPosition(pos.getX(), pos.getY(), Green);
