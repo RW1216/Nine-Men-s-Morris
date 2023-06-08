@@ -66,7 +66,7 @@ public class PositionFinder {
      * @param board The board to check for possible positions.
      * @return A list of all possible positions to place a token.
      */
-    public ArrayList<Position> getRemovablePos(Board board, Player player, Position position) {
+    public ArrayList<Position> getPositions(Board board, Player player, Position position) {
         PlayerState playerState = player.getPlayerState();
 
         positions = new ArrayList<>();

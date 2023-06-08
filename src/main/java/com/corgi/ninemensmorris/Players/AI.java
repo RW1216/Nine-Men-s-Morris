@@ -41,7 +41,7 @@ public class AI extends Player {
     }
 
     public Token getMovableToken() {
-        ArrayList<Token> movableTokens = new ArrayList<Token>();
+        ArrayList<Token> movableTokens = new ArrayList<>();
 
         for (Token token: this.getTokens()) {
             if (token.isMovable()) {
@@ -60,7 +60,7 @@ public class AI extends Player {
     public Position getClickedPosition(CountDownLatch latch, Board board, BoardUI board_UI) {
 
         PositionFinder positionFinder = PositionFinder.getInstance();
-        ArrayList<Position> possiblePositions = null;
+        ArrayList<Position> possiblePositions;
 
         if (this.getIsRemoving()){
             System.out.println("removing");
@@ -83,12 +83,12 @@ public class AI extends Player {
             this.setSelectedToken(selectedToken);
 
 
-
+            assert selectedToken != null;
             return selectedToken.getPosition();
         }
         else {
             System.out.println("else");
-            possiblePositions = positionFinder.getRemovablePos(board, this, this.getSelectedToken().getPosition());
+            possiblePositions = positionFinder.getPositions(board, this, this.getSelectedToken().getPosition());
         }
 
         int positionIndex = (int) (Math.random() * possiblePositions.size());
