@@ -73,11 +73,18 @@ public class Game {
         turn = 0;
     }
 
+    /**
+     * Reset the game board and the mill detector instance.
+     */
     public void resetBoard(){
         board.resetInstance();
         MillDetector.getInstance().resetInstance();
     }
 
+
+    /**
+     * Start the game in tutorial mode.
+     */
     public void startTutorial(){
         System.out.println("Tutorial started");
 
@@ -597,6 +604,9 @@ public class Game {
         return currentPlayer.getClickedPosition(latch, board, board_ui);
     }
 
+    /**
+     * Starts the latch.
+     */
     private void startLatch(){
         //Wait for the user to click on a button
         latch = new CountDownLatch(1);

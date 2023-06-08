@@ -90,6 +90,11 @@ public class Position {
         return adjacentPositions;
     }
 
+
+    /**
+     * Adds a position to the list of adjacent positions.
+     * @param pos The position to add.
+     */
     public void addAdjacentPosition(Position pos) {
         if (!adjacentPositions.contains(pos)) {
             adjacentPositions.add(pos);

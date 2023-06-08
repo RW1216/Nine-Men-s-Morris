@@ -1,6 +1,5 @@
 package com.corgi.ninemensmorris.Game;
 
-import com.corgi.ninemensmorris.Actions.PositionFinder;
 import com.corgi.ninemensmorris.Players.Player;
 
 /**
@@ -13,9 +12,7 @@ public class Token {
 
 
     private Player owner;
-    private PositionFinder allowableActions;
     private Position position;
-    public boolean isPlaced;
 
     /**
      * Constructor to create a new token
@@ -25,14 +22,6 @@ public class Token {
     public Token(Player owner, Position position) {
         this.owner = owner;
         this.position = position;
-    }
-
-    /**
-     * A getter method to retrive the list of allowable actions on the token
-     * @return List of actions
-     */
-    public PositionFinder getAllowableActions() {
-        return this.getAllowableActions();
     }
 
     /**
@@ -57,6 +46,10 @@ public class Token {
         this.position = position;
     }
 
+    /**
+     * A method to check if the token is movable
+     * @return True if the token is movable, false otherwise
+     */
     public boolean isMovable() {
         boolean movable = false;
         for (Position position: this.getPosition().getAdjacentPositions()) {

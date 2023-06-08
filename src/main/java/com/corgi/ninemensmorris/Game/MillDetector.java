@@ -29,6 +29,9 @@ public class MillDetector {
         return instance;
     }
 
+    /**
+     * Resets the instance of the mill detector.
+     */
     public void resetInstance(){
         instance = null;
     }

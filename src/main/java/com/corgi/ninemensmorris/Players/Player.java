@@ -29,37 +29,7 @@ public abstract class Player {
 
     private Player opponent;
 
-    public boolean getIsRemoving() {
-        return isRemoving;
-    }
 
-    public void setRemoving(boolean removing) {
-        isRemoving = removing;
-    }
-
-    public boolean getHasSelectedToken() {
-        return hasSelectedToken;
-    }
-
-    public void setHasSelectedToken(boolean selectedToken) {
-        this.hasSelectedToken = selectedToken;
-    }
-
-    public Token getSelectedToken() {
-        return selectedToken;
-    }
-
-    public void setSelectedToken(Token selectedToken) {
-        this.selectedToken = selectedToken;
-    }
-
-    public Player getOpponent() {
-        return opponent;
-    }
-
-    public void setOpponent(Player opponent) {
-        this.opponent = opponent;
-    }
 
     /**
      * Constructor for a player.
@@ -137,9 +107,6 @@ public abstract class Player {
 
         boolean hasMovesLeft = false;
         for (Token token: tokens) {
-            if (hasMovesLeft) {
-                hasMovesLeft = true;
-            }
             for (Position position: token.getPosition().getAdjacentPositions()) {
                 if (!position.hasToken()) {
                     hasMovesLeft = true;
@@ -187,11 +154,39 @@ public abstract class Player {
         return playerState;
     }
 
-    public void setPlayerState(PlayerState playerState) {
-        this.playerState = playerState;
+    public abstract Position getClickedPosition(CountDownLatch latch, Board board, BoardUI board_UI);
+
+    public boolean getIsRemoving() {
+        return isRemoving;
     }
 
-    public abstract Position getClickedPosition(CountDownLatch latch, Board board, BoardUI board_UI);
+    public void setRemoving(boolean removing) {
+        isRemoving = removing;
+    }
+
+    public boolean getHasSelectedToken() {
+        return hasSelectedToken;
+    }
+
+    public void setHasSelectedToken(boolean selectedToken) {
+        this.hasSelectedToken = selectedToken;
+    }
+
+    public Token getSelectedToken() {
+        return selectedToken;
+    }
+
+    public void setSelectedToken(Token selectedToken) {
+        this.selectedToken = selectedToken;
+    }
+
+    public Player getOpponent() {
+        return opponent;
+    }
+
+    public void setOpponent(Player opponent) {
+        this.opponent = opponent;
+    }
 }
 
 

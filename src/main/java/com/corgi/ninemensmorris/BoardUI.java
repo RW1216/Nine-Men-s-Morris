@@ -229,6 +229,9 @@ public class BoardUI implements Initializable {
         UIPositions[row][column].setStroke(Paint.valueOf(Black));
     }
 
+    /**
+     * Unhighlight all the outer part of the Circle UI
+     */
     public void unhighlightAllPositions(){
         for (Circle[] uiPosition : UIPositions) {
             for (Circle circle : uiPosition) {

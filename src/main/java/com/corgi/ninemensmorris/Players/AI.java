@@ -27,8 +27,11 @@ public class AI extends Player {
         super(tokenColor);
     }
 
+    /**
+     * Returns a random token.
+     * @return A random token.
+     */
     public Token getRandomToken() {
-//        PositionFinder positionFinder = PositionFinder.getInstance();
 
         int tokenIndex = (int) (Math.random() * this.getTokenCount());
 
@@ -40,6 +43,10 @@ public class AI extends Player {
         return this.getTokens().get(tokenIndex);
     }
 
+    /**
+     * Returns a random movable token.
+     * @return A random movable token.
+     */
     public Token getMovableToken() {
         ArrayList<Token> movableTokens = new ArrayList<>();
 
@@ -56,6 +63,13 @@ public class AI extends Player {
         return movableTokens.get(tokenIndex);
     }
 
+    /**
+     * Returns the position of the clicked position.
+     * @param latch The latch to wait for the user to click a position.
+     * @param board The board to check for possible positions.
+     * @param board_UI The board UI to check for possible positions.
+     * @return The position of the clicked position.
+     */
     @Override
     public Position getClickedPosition(CountDownLatch latch, Board board, BoardUI board_UI) {
 
@@ -63,21 +77,17 @@ public class AI extends Player {
         ArrayList<Position> possiblePositions;
 
         if (this.getIsRemoving()){
-            System.out.println("removing");
             possiblePositions = positionFinder.getRemovablePos(board, this.getOpponent());
         }
         else if (this.getPlayerState() == PlayerState.PLACING) {
             possiblePositions = board.getEmptyPositions();
         }
         else if (!this.getHasSelectedToken()) {
-            System.out.println("AI selects token");
             Token selectedToken = null;
             if (this.getPlayerState() == PlayerState.MOVING) {
-                System.out.println("AI is moving");
                 selectedToken =  getMovableToken();
             }
             else if (this.getPlayerState() == PlayerState.FLYING) {
-                System.out.println("AI is flying");
                 selectedToken = getRandomToken();
             }
             this.setSelectedToken(selectedToken);
@@ -87,15 +97,10 @@ public class AI extends Player {
             return selectedToken.getPosition();
         }
         else {
-            System.out.println("else");
             possiblePositions = positionFinder.getPositions(board, this, this.getSelectedToken().getPosition());
         }
 
         int positionIndex = (int) (Math.random() * possiblePositions.size());
-
-//        System.out.println(possiblePositions.get(positionIndex));
-
-        System.out.println(possiblePositions);
 
         return possiblePositions.get(positionIndex);
     }

@@ -34,6 +34,11 @@ public class PositionFinder {
         return instance;
     }
 
+    /**
+     * Returns a list of all clickable positions for a player.
+     * @param board The board to check for possible positions.
+     * @return A list of all possible positions to place a token.
+     */
     public ArrayList<Position> getRemovablePos(Board board, Player player) {
         positions = new ArrayList<>();
         RemoveAction removeAction;
@@ -46,16 +51,8 @@ public class PositionFinder {
             }
         }
 
-
-        // Check if position list is empty, if it's empty meaning only have mill on the board
-        // Then reinsert all the occupied place of the opponent's tokens
-        if(positions.isEmpty()){
-            for (Position pos : board.getOccupiedPositions(player)){
-                removeAction = new RemoveAction(player, pos);
-                if (removeAction.includeMill(board)){
-                    positions.add((pos));
-                }
-            }
+        if (positions.isEmpty()){
+            System.out.println("No removable token");
         }
 
         return positions;
@@ -72,6 +69,8 @@ public class PositionFinder {
         positions = new ArrayList<>();
         Token token;
 
+
+        // Check the player state and add all possible positions to the list.
         switch (playerState) {
             case PLACING:
                 throw new IllegalArgumentException("Cannot get positions for placing a token with a position.");

@@ -6,6 +6,8 @@ import com.corgi.ninemensmorris.Game.Position;
 import com.corgi.ninemensmorris.Game.Token;
 import com.corgi.ninemensmorris.Players.Player;
 
+import java.util.ArrayList;
+
 
 /**
  * This class represents a Remove action.
@@ -32,20 +34,15 @@ public class RemoveAction extends Action{
     @Override
     public boolean execute(Board board) {
         boolean success;
-        boolean pass;
-        success = isValid(board);
-        pass = includeMill(board);
+
+        PositionFinder positionFinder = PositionFinder.getInstance();
+        ArrayList<Position> positions = positionFinder.getRemovablePos(board, opponent);
+        success = positions.contains(position);
+
         if (success) {
             Token tokenRemoved = position.getOccupyingToken();
             board.removeToken(position);
             opponent.removeToken(tokenRemoved);
-        }
-        else if (pass){
-            Token tokenRemoved = position.getOccupyingToken();
-            board.removeToken(position);
-            opponent.removeToken(tokenRemoved);
-            return pass;
-
         }
 
         return success;
@@ -63,22 +60,8 @@ public class RemoveAction extends Action{
 
         success = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
                 !millDetector.isMill(position);
+
         return success;
-    }
-
-    // A function to verify if there is a token in that position regardless its in a mill or not
-
-    /**
-     * Checks if the Remove action is valid but this is also valid for tokens in mills
-     * @param board The board on which the action is executed.
-     * @return Returs a true values if the Remove action is valid , or else returns a false
-     */
-    public boolean includeMill(Board board){
-        boolean pass;
-
-        pass = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent;
-
-        return pass;
     }
 
     /**

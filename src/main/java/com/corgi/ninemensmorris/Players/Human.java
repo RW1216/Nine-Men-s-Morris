@@ -23,6 +23,13 @@ public class Human extends Player {
         super(tokenColor);
     }
 
+    /**
+     * Returns the position clicked by the player.
+     * @param latch The latch used to wait for the player to click.
+     * @param board The board on which the action is executed.
+     * @param board_ui The board UI.
+     * @return The position clicked by the player.
+     */
     @Override
     public Position getClickedPosition(CountDownLatch latch, Board board, BoardUI board_ui) {
 
