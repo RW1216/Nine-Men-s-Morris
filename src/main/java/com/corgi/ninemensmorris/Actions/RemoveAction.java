@@ -31,28 +31,21 @@ public class RemoveAction extends Action{
      */
     @Override
     public boolean execute(Board board) {
-//        boolean success;
-//        MillDetector millDetector = MillDetector.getInstance();
-//        if (!board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
-//                !millDetector.isMill(position)) {
-//            success = true;
-//            Token tokenRemoved = position.getOccupyingToken();
-//            board.removeToken(position);
-//            opponent.removeToken(tokenRemoved);
-//        } else {
-//            success = false;
-//        }
-//
-//        // Prints the description of the action
-//        System.out.println(description(success));
-//
-//        return success;
         boolean success;
+        boolean pass;
         success = isValid(board);
+        pass = includeMill(board);
         if (success) {
             Token tokenRemoved = position.getOccupyingToken();
             board.removeToken(position);
             opponent.removeToken(tokenRemoved);
+        }
+        else if (pass){
+            Token tokenRemoved = position.getOccupyingToken();
+            board.removeToken(position);
+            opponent.removeToken(tokenRemoved);
+            return pass;
+
         }
 
         return success;
@@ -67,10 +60,25 @@ public class RemoveAction extends Action{
     public boolean isValid(Board board) {
         boolean success;
         MillDetector millDetector = MillDetector.getInstance();
+
         success = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
                 !millDetector.isMill(position);
-
         return success;
+    }
+
+    // A function to verify if there is a token in that position regardless its in a mill or not
+
+    /**
+     * Checks if the Remove action is valid but this is also valid for tokens in mills
+     * @param board The board on which the action is executed.
+     * @return Returs a true values if the Remove action is valid , or else returns a false
+     */
+    public boolean includeMill(Board board){
+        boolean pass;
+
+        pass = !board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent;
+
+        return pass;
     }
 
     /**
