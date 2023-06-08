@@ -72,12 +72,13 @@ public class Position {
      * Places a token on the position.
      * @param token The token to be placed on the position.
      */
-    public void placeToken(Token token) {
+    public void placeToken(Token token, Position position) {
         if (this.hasToken) {
             System.out.println("There is already a token on this position");
         } else {
             this.hasToken = true;
             this.occupyingToken = token;
+            token.setPosition(position);
         }
     }
 

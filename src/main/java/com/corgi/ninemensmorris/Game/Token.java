@@ -56,4 +56,16 @@ public class Token {
     public void setPosition(Position position) {
         this.position = position;
     }
+
+    public boolean isMovable() {
+        boolean movable = false;
+        for (Position position: this.getPosition().getAdjacentPositions()) {
+            if (!position.hasToken()) {
+                movable = true;
+                break;
+            }
+        }
+
+        return movable;
+    }
 }
