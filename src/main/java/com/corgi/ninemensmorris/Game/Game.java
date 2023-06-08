@@ -4,6 +4,7 @@ import com.corgi.ninemensmorris.Actions.*;
 import com.corgi.ninemensmorris.BoardUI;
 import com.corgi.ninemensmorris.Enum.Color;
 import com.corgi.ninemensmorris.Enum.PlayerState;
+import com.corgi.ninemensmorris.Players.AI;
 import com.corgi.ninemensmorris.Players.Human;
 import com.corgi.ninemensmorris.Players.Player;
 
@@ -21,6 +22,8 @@ public class Game {
     private int turn;
     private final Player playerRed;
     private final Player playerYellow;
+    Player currentPlayer;
+    Player opponent;
     private final Board board;
     private final BoardUI board_ui;
     CountDownLatch latch;
@@ -40,7 +43,9 @@ public class Game {
         this.board_ui = board_ui;
         board = Board.getInstance();
         playerRed = new Human(Color.RED);
-        playerYellow = new Human(Color.YELLOW);
+        playerYellow = new AI(Color.YELLOW);
+        playerRed.setOpponent(playerYellow);
+        playerYellow.setOpponent(playerRed);
         turn = 0;
     }
 
@@ -304,8 +309,6 @@ public class Game {
             boolean moveMade = false;
             Position moveMadePos = null;
             PlayerState currentPhase;
-            Player currentPlayer;
-            Player opponent;
 
             //Initialize CountDownLatch
             latch = new CountDownLatch(1);
@@ -330,6 +333,9 @@ public class Game {
                 turnColor = Yellow;
                 System.out.println("Yellow's turn");
             }
+            currentPlayer.setRemoving(false);
+            currentPlayer.setHasSelectedToken(false);
+            currentPlayer.setSelectedToken(null);
 
             // Update UI with current phase
             String phaseText = "";
@@ -385,6 +391,7 @@ public class Game {
                     System.out.println("Selected token at " + selectedPos1);
                 }
 
+                currentPlayer.setHasSelectedToken(true);
                 latch = new CountDownLatch(1);
 
                 Position selectedPos2 = getClickedPosition();
@@ -419,10 +426,11 @@ public class Game {
                     }
                     System.out.println("Selected token at " + selectedPos1);
                 }
-
+                currentPlayer.setHasSelectedToken(true);
                 latch = new CountDownLatch(1);
 
                 Position selectedPos2 = getClickedPosition();
+
 
                 FlyAction flyAction = new FlyAction(selectedToken, selectedPos1, selectedPos2);
                 moveMade = flyAction.execute(board);
@@ -443,6 +451,7 @@ public class Game {
                 System.out.println("token placed/moved at " + moveMadePos);
                 if (millDetector.isMill(moveMadePos)) {
                     System.out.println("Mill formed");
+                    currentPlayer.setRemoving(true);
 
                     // highlight all opponent tokens
                     highlightedPos = positionFinder.getRemovablePos(board, opponent);
@@ -556,17 +565,7 @@ public class Game {
      */
     private Position getClickedPosition(){
 
-        try {
-            latch.await();
-
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
-
-        int selectedCol = board_ui.getSelectedCol();
-        int selectedRow = board_ui.getSelectedRow();
-
-        return board.getPosition(selectedRow, selectedCol);
+        return currentPlayer.getClickedPosition(latch, board, board_ui);
     }
 
     private void startLatch(){

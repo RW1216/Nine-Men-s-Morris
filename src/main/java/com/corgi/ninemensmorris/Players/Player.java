@@ -1,11 +1,14 @@
 package com.corgi.ninemensmorris.Players;
 
+import com.corgi.ninemensmorris.BoardUI;
 import com.corgi.ninemensmorris.Enum.Color;
 import com.corgi.ninemensmorris.Enum.PlayerState;
+import com.corgi.ninemensmorris.Game.Board;
 import com.corgi.ninemensmorris.Game.Position;
 import com.corgi.ninemensmorris.Game.Token;
 
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 /**
  *
@@ -19,6 +22,44 @@ public abstract class Player {
     private PlayerState playerState;
     private int tokensPlaced;
     private int tokenCount;
+
+    private boolean isRemoving;
+    private boolean hasSelectedToken;
+    private Token selectedToken;
+
+    private Player opponent;
+
+    public boolean getIsRemoving() {
+        return isRemoving;
+    }
+
+    public void setRemoving(boolean removing) {
+        isRemoving = removing;
+    }
+
+    public boolean getHasSelectedToken() {
+        return hasSelectedToken;
+    }
+
+    public void setHasSelectedToken(boolean selectedToken) {
+        this.hasSelectedToken = selectedToken;
+    }
+
+    public Token getSelectedToken() {
+        return selectedToken;
+    }
+
+    public void setSelectedToken(Token selectedToken) {
+        this.selectedToken = selectedToken;
+    }
+
+    public Player getOpponent() {
+        return opponent;
+    }
+
+    public void setOpponent(Player opponent) {
+        this.opponent = opponent;
+    }
 
     /**
      * Constructor for a player.
@@ -135,12 +176,22 @@ public abstract class Player {
         }
     }
 
+    public ArrayList<Token> getTokens() {
+        return tokens;
+    }
+
     /**
      * Returns the player's state.
      */
     public PlayerState getPlayerState() {
         return playerState;
     }
+
+    public void setPlayerState(PlayerState playerState) {
+        this.playerState = playerState;
+    }
+
+    public abstract Position getClickedPosition(CountDownLatch latch, Board board, BoardUI board_UI);
 }
 
 
