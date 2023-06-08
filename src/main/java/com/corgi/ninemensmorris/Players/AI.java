@@ -32,7 +32,10 @@ public class AI extends Player {
 
         int tokenIndex = (int) (Math.random() * this.getTokenCount());
 
-        System.out.println(this.getTokens());
+        for (Token token: this.getTokens()) {
+            System.out.print(token.getPosition());
+        }
+        System.out.println();
 
         return this.getTokens().get(tokenIndex);
     }

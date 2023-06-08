@@ -201,7 +201,7 @@ public class Board {
      * @param position The position to place the token at.
      */
     public void placeToken(Token token, Position position) {
-        position.placeToken(token);
+        position.placeToken(token, position);
         tokens.add(token);
     }
 
@@ -215,7 +215,7 @@ public class Board {
     public boolean moveToken(Token token, Position pos1, Position pos2) {
         if (pos1.getOccupyingToken() == token && isPositionEmpty(pos2)) {
             pos1.removeToken();
-            pos2.placeToken(token);
+            pos2.placeToken(token, pos2);
             return true;
         }
         return false;
