@@ -31,22 +31,6 @@ public class RemoveAction extends Action{
      */
     @Override
     public boolean execute(Board board) {
-//        boolean success;
-//        MillDetector millDetector = MillDetector.getInstance();
-//        if (!board.isPositionEmpty(position) && board.getToken(position).getOwner() == opponent &&
-//                !millDetector.isMill(position)) {
-//            success = true;
-//            Token tokenRemoved = position.getOccupyingToken();
-//            board.removeToken(position);
-//            opponent.removeToken(tokenRemoved);
-//        } else {
-//            success = false;
-//        }
-//
-//        // Prints the description of the action
-//        System.out.println(description(success));
-//
-//        return success;
         boolean success;
         boolean pass;
         success = isValid(board);
