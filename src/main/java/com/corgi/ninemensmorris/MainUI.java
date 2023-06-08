@@ -31,6 +31,11 @@ public class MainUI {
         scene.setRoot(boardUI);
     }
 
+    /**
+     * button for player vs player
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnPlayAgainstPlayerClicked(ActionEvent actionEvent) throws IOException {
         //Update the GameMode
         GameMode.getInstance().setGameMode(2);
@@ -48,6 +53,11 @@ public class MainUI {
         scene.setRoot(boardUI);
     }
 
+    /**
+     * button for player vs AI
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnPlayAgainstAIClicked(ActionEvent actionEvent) throws IOException {
         //Update the GameMode
         GameMode.getInstance().setGameMode(1);
@@ -61,6 +71,11 @@ public class MainUI {
         scene.setRoot(boardUI);
     }
 
+    /**
+     * button for tutorial mode
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnTutorialClicked(ActionEvent actionEvent) throws IOException {
         //Update the GameMode
         GameMode.getInstance().setGameMode(0);

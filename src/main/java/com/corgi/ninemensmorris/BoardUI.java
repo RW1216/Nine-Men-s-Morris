@@ -285,6 +285,11 @@ public class BoardUI implements Initializable {
         btnGoodGame.setVisible(true);
     }
 
+    /**
+     * Goes back to main menu after clicked
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void btnGoodGameClicked(ActionEvent event) throws IOException {
         game.resetBoard();
@@ -310,30 +315,58 @@ public class BoardUI implements Initializable {
         scene.setRoot(boardUI);
     }
 
+    /**
+     * sets title for the board UI
+     * @param title
+     */
     public void setTitle(String title){
         this.title.setText(title);
     }
 
+    /**
+     * Notifies game when position are selected
+     * @param actionEvent
+     */
     public void btnNextClicked(ActionEvent actionEvent) {
         game.positionSelected();
     }
 
+    /**
+     * disable specified position
+     * @param row
+     * @param column
+     */
     public void disablePosition(int row, int column){
         UIPositions[row][column].setDisable(true);
     }
 
+    /**
+     * enable specified position
+     * @param row
+     * @param column
+     */
     public void enablePosition(int row, int column){
         UIPositions[row][column].setDisable(false);
     }
 
+    /**
+     * enable next button for tutorial mode
+     */
     public void enableNextBtn(){
         btnNext.setDisable(false);
     }
 
+    /**
+     * disable next button for tutorial mode
+     */
     public void disableNextBtn(){
         btnNext.setDisable(true);
     }
 
+    /**
+     * enable hints
+     * @return
+     */
     public boolean enableHint(){
         return Hint_Check_Box.isSelected();
     }
