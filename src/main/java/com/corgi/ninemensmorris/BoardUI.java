@@ -153,6 +153,7 @@ public class BoardUI implements Initializable {
                 Yellow_Tokens_Left.setVisible(false);
                 Red_Piece_Left_Txt.setVisible(false);
                 Yellow_Piece_Left_Txt.setVisible(false);
+                Hint_Check_Box.setVisible(false);
 
                 game.startTutorial();
             } //Normal game, mode = 1
