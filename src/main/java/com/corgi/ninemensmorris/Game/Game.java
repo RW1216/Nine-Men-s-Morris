@@ -20,8 +20,8 @@ import java.util.concurrent.CountDownLatch;
 public class Game {
 
     private int turn;
-    private final Player playerRed;
-    private final Player playerYellow;
+    private Player playerRed;
+    private Player playerYellow;
     Player currentPlayer;
     Player opponent;
     private final Board board;
@@ -34,6 +34,9 @@ public class Game {
     private static final String LightBlue = "#68aafc";
     private static final String Green = "#00ff00";
 
+    private static final int TUTORIAL = 0;
+    private static final int PVE = 1;
+    private static final int PVP = 2;
 
     /**
      * Constructor for a game.
@@ -42,8 +45,29 @@ public class Game {
     public Game(BoardUI board_ui) {
         this.board_ui = board_ui;
         board = Board.getInstance();
-        playerRed = new Human(Color.RED);
-        playerYellow = new AI(Color.YELLOW);
+
+        int gameMode = GameMode.getInstance().getGameMode();
+        boolean startAsRed = GameMode.getInstance().getStartAsRed();
+
+        if (gameMode == TUTORIAL){
+            playerRed = new Human(Color.RED);
+            playerYellow = new Human(Color.YELLOW);
+            currentPlayer = playerRed;
+        }
+        else if (gameMode == PVE){
+            if (startAsRed){
+                playerRed = new Human(Color.RED);
+                playerYellow = new AI(Color.YELLOW);
+            } else{
+                playerRed = new AI(Color.RED);
+                playerYellow = new Human(Color.YELLOW);
+            }
+        }
+        else if (gameMode == PVP){
+            playerRed = new Human(Color.RED);
+            playerYellow = new Human(Color.YELLOW);
+        }
+
         playerRed.setOpponent(playerYellow);
         playerYellow.setOpponent(playerRed);
         turn = 0;

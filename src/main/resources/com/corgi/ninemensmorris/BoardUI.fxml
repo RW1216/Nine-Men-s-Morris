@@ -12,30 +12,30 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="760.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.corgi.ninemensmorris.BoardUI">
    <children>
-      <Circle id="1" fx:id="Pos_1" fill="WHITE" layoutX="78.0" layoutY="183.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle id="2" fx:id="Pos_2" fill="WHITE" layoutX="333.0" layoutY="183.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle id="3" fx:id="Pos_3" fill="WHITE" layoutX="587.0" layoutY="183.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_5" fill="WHITE" layoutX="333.0" layoutY="253.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_8" fill="WHITE" layoutX="333.0" layoutY="324.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_17" fill="WHITE" layoutX="333.0" layoutY="465.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_20" fill="WHITE" layoutX="334.0" layoutY="541.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_23" fill="WHITE" layoutX="334.0" layoutY="609.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_10" fill="WHITE" layoutX="78.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_22" fill="WHITE" layoutX="78.0" layoutY="609.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_24" fill="WHITE" layoutX="587.0" layoutY="609.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_15" fill="WHITE" layoutX="587.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_6" fill="WHITE" layoutX="498.0" layoutY="253.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_14" fill="WHITE" layoutX="498.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_21" fill="WHITE" layoutX="498.0" layoutY="541.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_19" fill="WHITE" layoutX="164.0" layoutY="541.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_11" fill="WHITE" layoutX="164.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_4" fill="WHITE" layoutX="164.0" layoutY="253.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_16" fill="WHITE" layoutX="251.0" layoutY="465.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_12" fill="WHITE" layoutX="251.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_7" fill="WHITE" layoutX="251.0" layoutY="324.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_18" fill="WHITE" layoutX="410.0" layoutY="465.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_13" fill="WHITE" layoutX="410.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
-      <Circle fx:id="Pos_9" fill="WHITE" layoutX="410.0" layoutY="324.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="1.5" />
+      <Circle id="1" fx:id="Pos_1" fill="WHITE" layoutX="78.0" layoutY="183.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle id="2" fx:id="Pos_2" fill="WHITE" layoutX="333.0" layoutY="183.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle id="3" fx:id="Pos_3" fill="WHITE" layoutX="587.0" layoutY="183.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_5" fill="WHITE" layoutX="333.0" layoutY="253.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_8" fill="WHITE" layoutX="333.0" layoutY="324.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_17" fill="WHITE" layoutX="333.0" layoutY="465.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_20" fill="WHITE" layoutX="334.0" layoutY="541.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_23" fill="WHITE" layoutX="334.0" layoutY="609.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_10" fill="WHITE" layoutX="78.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_22" fill="WHITE" layoutX="78.0" layoutY="609.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_24" fill="WHITE" layoutX="587.0" layoutY="609.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_15" fill="WHITE" layoutX="587.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_6" fill="WHITE" layoutX="498.0" layoutY="253.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_14" fill="WHITE" layoutX="498.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_21" fill="WHITE" layoutX="498.0" layoutY="541.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_19" fill="WHITE" layoutX="164.0" layoutY="541.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_11" fill="WHITE" layoutX="164.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_4" fill="WHITE" layoutX="164.0" layoutY="253.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_16" fill="WHITE" layoutX="251.0" layoutY="465.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_12" fill="WHITE" layoutX="251.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_7" fill="WHITE" layoutX="251.0" layoutY="324.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_18" fill="WHITE" layoutX="410.0" layoutY="465.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_13" fill="WHITE" layoutX="410.0" layoutY="394.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+      <Circle fx:id="Pos_9" fill="WHITE" layoutX="410.0" layoutY="324.0" onMouseClicked="#positionClicked" radius="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
       <Line endY="108.0" layoutX="78.0" layoutY="265.0" startY="-61.0" />
       <Line endX="-21.0" endY="123.0" layoutX="99.0" layoutY="465.0" startX="-21.0" startY="-50.0" />
       <Line endX="128.0" endY="35.0" layoutX="185.0" layoutY="574.0" startX="-86.0" startY="35.0" />

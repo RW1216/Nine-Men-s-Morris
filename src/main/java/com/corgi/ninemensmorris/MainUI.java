@@ -1,5 +1,6 @@
 package com.corgi.ninemensmorris;
 
+import com.corgi.ninemensmorris.Game.GameMode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,9 @@ public class MainUI {
     }
 
     public void btnPlayAgainstPlayerClicked(ActionEvent actionEvent) throws IOException {
+        //Update the GameMode
+        GameMode.getInstance().setGameMode(2);
+
         //Load the UI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BoardUI.fxml"));
         Parent boardUI = loader.load();
@@ -38,7 +42,6 @@ public class MainUI {
         //Update the title
         BoardUI boardUI1 = loader.getController();
         boardUI1.setTitle("Player vs Player");
-        boardUI1.setMode(1);
 
         //Set scene
         Scene scene = rootPane.getScene();
@@ -46,6 +49,9 @@ public class MainUI {
     }
 
     public void btnPlayAgainstAIClicked(ActionEvent actionEvent) throws IOException {
+        //Update the GameMode
+        GameMode.getInstance().setGameMode(1);
+
         //Load the UI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayAgainstAIUI.fxml"));
         Parent boardUI = loader.load();
@@ -56,6 +62,9 @@ public class MainUI {
     }
 
     public void btnTutorialClicked(ActionEvent actionEvent) throws IOException {
+        //Update the GameMode
+        GameMode.getInstance().setGameMode(0);
+
         //Load the UI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BoardUI.fxml"));
         Parent boardUI = loader.load();
@@ -63,7 +72,6 @@ public class MainUI {
         //Update the title
         BoardUI boardUI1 = loader.getController();
         boardUI1.setTitle("Tutorial Mode");
-        boardUI1.setMode(0);
 
         //Set scene
         Scene scene = rootPane.getScene();

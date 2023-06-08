@@ -1,6 +1,7 @@
 package com.corgi.ninemensmorris;
 
 import com.corgi.ninemensmorris.Game.Game;
+import com.corgi.ninemensmorris.Game.GameMode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,7 @@ import java.util.ResourceBundle;
  */
 
 public class BoardUI implements Initializable {
-    
+
     public AnchorPane rootPane;
     public Rectangle endGameRectangle;
     public Text endGameText;
@@ -82,10 +83,6 @@ public class BoardUI implements Initializable {
     private static final String LightBlue = "#68aafc";
     private static final String Black = "#000000";
 
-    //Mode (Normal mode or tutorial mode)
-    //0 = tutorial, 1 = PvP
-    private int mode;
-
     private int selectedRow;
     private int selectedCol;
 
@@ -98,9 +95,6 @@ public class BoardUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        game = new Game(this);
-
         // Row 0
         UIPositions[0][0] = Pos_1;
         UIPositions[0][3] = Pos_2;
@@ -139,10 +133,12 @@ public class BoardUI implements Initializable {
         UIPositions[6][3] = Pos_23;
         UIPositions[6][6] = Pos_24;
 
+        int mode1 = GameMode.getInstance().getGameMode();
+
         //Start the game
         Thread gameThread = new Thread(() -> {
             //Tutorial mode, mode = 0
-            if (mode == 0){
+            if (mode1 == 0){
                 //Enable next button
                 btnNext.setVisible(true);
                 Text_Box.setFont(new Font("System", 15));
@@ -155,9 +151,11 @@ public class BoardUI implements Initializable {
                 Yellow_Piece_Left_Txt.setVisible(false);
                 Hint_Check_Box.setVisible(false);
 
+                game = new Game(this);
                 game.startTutorial();
-            } //Normal game, mode = 1
-            else if (mode == 1) {
+            }
+            else {
+                game = new Game(this);
                 game.start();
             }
         });
@@ -297,7 +295,6 @@ public class BoardUI implements Initializable {
 
     @FXML
     void btnTestingClicked(ActionEvent event){
-        System.out.println("Mode" + this.mode);
     }
 
     public void btnReturnToMainClicked(ActionEvent actionEvent) throws IOException {
@@ -312,10 +309,6 @@ public class BoardUI implements Initializable {
 
     public void setTitle(String title){
         this.title.setText(title);
-    }
-
-    public void setMode(int mode){
-        this.mode = mode;
     }
 
     public void btnNextClicked(ActionEvent actionEvent) {
@@ -341,4 +334,5 @@ public class BoardUI implements Initializable {
     public boolean enableHint(){
         return Hint_Check_Box.isSelected();
     }
+
 }
