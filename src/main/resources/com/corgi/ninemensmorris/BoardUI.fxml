@@ -112,7 +112,6 @@
             <Font size="39.0" />
          </font>
       </Label>
-      <Button layoutX="31.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnTestingClicked" text="test" />
       <Button fx:id="btnNext" layoutX="599.0" layoutY="722.0" mnemonicParsing="false" onAction="#btnNextClicked" text="Next" visible="false" />
       <CheckBox fx:id="Hint_Check_Box" layoutX="166.0" layoutY="709.0" mnemonicParsing="false" text="Enable Hint">
          <font>
