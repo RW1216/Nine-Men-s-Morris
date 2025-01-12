@@ -2,6 +2,12 @@
 
 Created a Nine Men's Morris JAR application during FIT3077, Software engineering: Architecture and design course. The project was completed in a group of 4, and tasks were divided among us during each sprint.
 
+### Technologies used
+- IDE: IntelliJ IDEA
+- Framework: JavaFX
+- Language: Java
+- Others: Scene Builder (designing the UI), Maven (manage dependencies and build process)
+
 ### Steps of running the program
 
 1. Download the application
