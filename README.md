@@ -1,6 +1,6 @@
 # Nine Men's Morris
 
-Created a Nine Men's Morris JAR application during FIT3077, Software engineering: Architecture and design course. The project was completed in a group of 4, and tasks were divided among us during each sprint.
+Created a Nine Men's Morris JAR application during FIT3077, Software engineering: Architecture and design course. The project was completed in a group of 4, and tasks were divided among us during each sprint. There are tutorial mode, vs AI mode, and player vs player mode.
 
 ### Technologies used
 - IDE: IntelliJ IDEA
